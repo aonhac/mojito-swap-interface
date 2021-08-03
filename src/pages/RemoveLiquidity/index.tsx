@@ -363,8 +363,10 @@ export default function RemoveLiquidity({
         <RowBetween style={{ alignItems: 'center', width: '100%' }}>
           <Text color="text">{`LP ${currencyA?.symbol}/${currencyB?.symbol}`} Burned</Text>
           <RowFixed>
-            <DoubleCurrencyLogo currency0={currencyA} currency1={currencyB} margin />
-            <Text>{parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}</Text>
+            <DoubleCurrencyLogo size={28} currency0={currencyA} currency1={currencyB} margin />
+            <Text fontWeight={500} fontSize="18px">
+              {parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}
+            </Text>
           </RowFixed>
         </RowBetween>
         {pair && (

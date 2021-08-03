@@ -11,6 +11,7 @@ import AddLiquidity from './AddLiquidity'
 import Pool from './Pool'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
+import Home from './Home'
 import Swap from './Swap'
 import Migration from './Migration'
 import { RedirectPathToSwapOnly } from './Swap/redirects'
@@ -40,7 +41,6 @@ const BodyWrapper = styled.div`
 const CACHE_KEY = 'pancakeSwapLanguage'
 
 export default function App() {
-
   const [selectedLanguage, setSelectedLanguage] = useState<any>(undefined)
   const [translatedLanguage, setTranslatedLanguage] = useState<any>(undefined)
   const [translations, setTranslations] = useState<Array<any>>([])
@@ -87,8 +87,9 @@ export default function App() {
                       <Route exact strict path="/swap" component={Swap} />
                       <Route exact strict path="/find" component={PoolFinder} />
                       <Route exact strict path="/pool" component={Pool} />
-                      <Route exact path="/add" component={AddLiquidity} />
                       <Route exact path="/migrate" component={Migration} />
+                      <Route exact path="/add" component={AddLiquidity} />
+                      <Route exact path="/home" component={Home} />
                       <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
 
                       {/* Redirection: These old routes are still used in the code base */}

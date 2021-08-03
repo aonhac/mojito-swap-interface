@@ -41,7 +41,6 @@ import AppBody from '../AppBody'
 const SwapCurrencyContainer = styled(AutoColumn)`
   background: #f4f9ee;
   border-radius: 10px;
-  border: 1px solid #dfe4da;
 `
 
 const SwapButton = styled(Button)`

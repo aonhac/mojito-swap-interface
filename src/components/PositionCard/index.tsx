@@ -199,11 +199,13 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
             <AutoColumn gap="8px" style={{ paddingTop: '15px', borderTop: `2px solid ${theme.colors.disabled}` }}>
               <FixedHeightRow>
                 <RowFixed>
-                  <Text style={{ fontWeight: 600 }}>Pooled {currency0.symbol}:</Text>
+                  <Text fontSize="16px" style={{ fontWeight: 500 }}>
+                    Pooled {currency0.symbol}:
+                  </Text>
                 </RowFixed>
                 {token0Deposited ? (
                   <RowFixed>
-                    <Text color={theme.colors.primary} style={{ fontWeight: 800 }} ml="6px">
+                    <Text color={theme.colors.primary} style={{ fontWeight: 500 }} ml="6px">
                       {token0Deposited?.toSignificant(6)}
                     </Text>
                   </RowFixed>
@@ -214,11 +216,13 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
 
               <FixedHeightRow>
                 <RowFixed>
-                  <Text style={{ fontWeight: 600 }}>Pooled {currency1.symbol}:</Text>
+                  <Text fontSize="16px" style={{ fontWeight: 500 }}>
+                    Pooled {currency1.symbol}:
+                  </Text>
                 </RowFixed>
                 {token1Deposited ? (
                   <RowFixed>
-                    <Text color={theme.colors.primary} style={{ fontWeight: 800 }} ml="6px">
+                    <Text color={theme.colors.primary} style={{ fontWeight: 500 }} ml="6px">
                       {token1Deposited?.toSignificant(6)}
                     </Text>
                   </RowFixed>
@@ -227,8 +231,10 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
                 )}
               </FixedHeightRow>
               <FixedHeightRow>
-                <Text style={{ fontWeight: 600 }}>Your pool share:</Text>
-                <Text color={theme.colors.primary} style={{ fontWeight: 800 }}>
+                <Text fontSize="16px" style={{ fontWeight: 500 }}>
+                  Your pool share:
+                </Text>
+                <Text color={theme.colors.primary} style={{ fontWeight: 500 }}>
                   {poolTokenPercentage ? `${poolTokenPercentage.toFixed(2)}%` : '-'}
                 </Text>
               </FixedHeightRow>

@@ -151,7 +151,7 @@ export function CurrencySearch({
     <Column style={{ width: '100%', flex: '1 1' }}>
       <PaddedColumn gap="14px">
         <RowBetween>
-          <Text fontSize="26px" color="primary" style={{ fontWeight: 800 }}>
+          <Text fontSize="22px" color="primary" style={{ fontWeight: 600 }}>
             {TranslateString(82, 'Select a token')}
             <QuestionHelper
               text={TranslateString(

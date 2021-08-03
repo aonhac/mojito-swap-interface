@@ -134,7 +134,7 @@ export default function Pool() {
                     </Text>
                     <FindButton
                       onClick={() => {
-                        history.push('/add')
+                        history.push('/find')
                       }}
                     >
                       {TranslateString(106, 'Find Other LP tokens')}
