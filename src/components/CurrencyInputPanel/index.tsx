@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, CSSProperties } from 'react'
 import { Currency, Pair } from '@nguyenphu27/sdk'
-import { Button, ChevronDownIcon, Text } from '@nguyenphu27/uikit'
-import styled from 'styled-components'
+import { Button, ChevronDownIcon, Text } from '../../uikit'
+import styled, { useTheme } from 'styled-components'
 import { darken } from 'polished'
 import useI18n from 'hooks/useI18n'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
@@ -20,20 +20,22 @@ const InputRow = styled.div<{ selected: boolean }>`
 `
 const CurrencySelect = styled.button<{ selected: boolean }>`
   align-items: center;
-  height: 34px;
+  height: 44px;
   font-size: 16px;
   font-weight: 500;
   background-color: transparent;
   color: ${({ selected, theme }) => (selected ? theme.colors.text : '#FFFFFF')};
-  border-radius: 12px;
+  border-radius: 4px;
   outline: none;
   cursor: pointer;
   user-select: none;
   border: none;
   padding: 0 0.5rem;
+
   :focus,
   :hover {
-    background-color: ${({ theme }) => darken(0.05, theme.colors.input)};
+    background-color: ${({ theme }) => darken(0.05, '#DAEEE4')};
+    color: #fff;
   }
 `
 const LabelRow = styled.div`
@@ -44,6 +46,7 @@ const LabelRow = styled.div`
   font-size: 0.75rem;
   line-height: 1rem;
   padding: 0.75rem 1rem 0 1rem;
+
   span:hover {
     cursor: pointer;
     color: ${({ theme }) => darken(0.2, theme.colors.textSubtle)};
@@ -58,15 +61,15 @@ const InputPanel = styled.div<{ hideInput?: boolean }>`
   display: flex;
   flex-flow: column nowrap;
   position: relative;
-  border-radius: ${({ hideInput }) => (hideInput ? '8px' : '20px')};
-  background-color: ${({ theme }) => theme.colors.background};
+  border-radius: ${({ hideInput }) => (hideInput ? '0px' : '4px')};
+  background-color: transparent;
   z-index: 1;
 `
 const Container = styled.div<{ hideInput: boolean }>`
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.input};
-  box-shadow: ${({ theme }) => theme.shadows.inset};
+  background-color: transparent;
 `
+
 interface CurrencyInputPanelProps {
   value: string
   onUserInput: (value: string) => void
@@ -82,7 +85,9 @@ interface CurrencyInputPanelProps {
   otherCurrency?: Currency | null
   id: string
   showCommonBases?: boolean
+  styles?: CSSProperties
 }
+
 export default function CurrencyInputPanel({
   value,
   onUserInput,
@@ -98,8 +103,10 @@ export default function CurrencyInputPanel({
   otherCurrency,
   id,
   showCommonBases,
+  styles,
 }: CurrencyInputPanelProps) {
   const [modalOpen, setModalOpen] = useState(false)
+  const theme = useTheme()
   const { account } = useActiveWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const TranslateString = useI18n()
@@ -108,14 +115,23 @@ export default function CurrencyInputPanel({
     setModalOpen(false)
   }, [setModalOpen])
   return (
-    <InputPanel id={id}>
+    <InputPanel id={id} style={styles}>
       <Container hideInput={hideInput}>
         {!hideInput && (
           <LabelRow>
             <RowBetween>
-              <Text fontSize="14px">{translatedLabel}</Text>
+              <Text
+                fontSize="18px"
+                style={{
+                  fontWeight: 800,
+                  fontFamily: 'alibaba-puhuiti, sans-serif',
+                  color: '#949494',
+                }}
+              >
+                {translatedLabel}
+              </Text>
               {account && (
-                <Text onClick={onMax} fontSize="14px" style={{ display: 'inline', cursor: 'pointer' }}>
+                <Text onClick={onMax} fontSize="17px" style={{ display: 'inline', cursor: 'pointer' }}>
                   {!hideBalance && !!currency && selectedCurrencyBalance
                     ? `Balance: ${selectedCurrencyBalance?.toSignificant(6)}`
                     : ' -'}
@@ -128,6 +144,7 @@ export default function CurrencyInputPanel({
           {!hideInput && (
             <>
               <NumericalInput
+                fontSize="30px"
                 className="token-amount-input"
                 value={value}
                 onUserInput={(val) => {
@@ -135,7 +152,7 @@ export default function CurrencyInputPanel({
                 }}
               />
               {account && currency && showMaxButton && label !== 'To' && (
-                <Button onClick={onMax} scale="sm" variant="text">
+                <Button style={{ fontSize: '22px' }} onClick={onMax} scale="sm" variant="text">
                   MAX
                 </Button>
               )}

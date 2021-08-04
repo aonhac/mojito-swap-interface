@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal } from '@nguyenphu27/uikit'
+import { Modal } from '../../uikit'
 import SlippageToleranceSetting from './SlippageToleranceSetting'
 import TransactionDeadlineSetting from './TransactionDeadlineSetting'
 import AudioSetting from './AudioSetting'
@@ -14,10 +14,9 @@ const defaultOnDismiss = () => null
 
 const SettingsModal = ({ onDismiss = defaultOnDismiss, translateString }: SettingsModalProps) => {
   return (
-    <Modal title={translateString(1200, 'Settings')} onDismiss={onDismiss}>
+    <Modal style={{ borderRadius: 4 }} title={translateString(1200, 'Settings')} onDismiss={onDismiss}>
       <SlippageToleranceSetting translateString={translateString} />
-      <TransactionDeadlineSetting translateString={translateString} />
-      <AudioSetting translateString={translateString} />
+      <TransactionDeadlineSetting translateString={translateString} styles={{ marginTop: '30px' }} />
     </Modal>
   )
 }

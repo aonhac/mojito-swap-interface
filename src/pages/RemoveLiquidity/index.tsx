@@ -4,7 +4,7 @@ import { splitSignature } from '@ethersproject/bytes'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, ETHER, Percent, WETH } from '@nguyenphu27/sdk'
-import { Button, Flex, Text } from '@nguyenphu27/uikit'
+import { Button, Flex, Text } from '../../uikit'
 import { ArrowDown, Plus } from 'react-feather'
 import { RouteComponentProps } from 'react-router'
 
@@ -41,10 +41,11 @@ import { useBurnActionHandlers, useDerivedBurnInfo, useBurnState } from '../../s
 
 import { Field } from '../../state/burn/actions'
 import { useUserDeadline, useUserSlippageTolerance } from '../../state/user/hooks'
+import { SwapButton } from '../../components/Button'
 
 const OutlineCard = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 24px;
 `
 
@@ -62,11 +63,10 @@ export default function RemoveLiquidity({
   const [currencyA, currencyB] = [useCurrency(currencyIdA) ?? undefined, useCurrency(currencyIdB) ?? undefined]
   const { account, chainId, library } = useActiveWeb3React()
   const TranslateString = useI18n()
-  const [tokenA, tokenB] = useMemo(() => [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)], [
-    currencyA,
-    currencyB,
-    chainId,
-  ])
+  const [tokenA, tokenB] = useMemo(
+    () => [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)],
+    [currencyA, currencyB, chainId]
+  )
 
   const theme = useContext(ThemeContext)
 
@@ -348,7 +348,7 @@ export default function RemoveLiquidity({
           </RowFixed>
         </RowBetween>
 
-        <Text small color="textSubtle" textAlign="left" padding="12px 0 0 0" style={{ fontStyle: 'italic' }}>
+        <Text small color="text" textAlign="left" padding="20px" style={{ background: '#F2FFF6' }}>
           {`Output is estimated. If the price changes by more than ${
             allowedSlippage / 100
           }% your transaction will revert.`}
@@ -360,17 +360,19 @@ export default function RemoveLiquidity({
   function modalBottom() {
     return (
       <>
-        <RowBetween>
-          <Text color="textSubtle">{`LP ${currencyA?.symbol}/${currencyB?.symbol}`} Burned</Text>
+        <RowBetween style={{ alignItems: 'center', width: '100%' }}>
+          <Text color="text">{`LP ${currencyA?.symbol}/${currencyB?.symbol}`} Burned</Text>
           <RowFixed>
-            <DoubleCurrencyLogo currency0={currencyA} currency1={currencyB} margin />
-            <Text>{parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}</Text>
+            <DoubleCurrencyLogo size={28} currency0={currencyA} currency1={currencyB} margin />
+            <Text fontWeight={500} fontSize="18px">
+              {parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}
+            </Text>
           </RowFixed>
         </RowBetween>
         {pair && (
           <>
             <RowBetween>
-              <Text color="textSubtle">{TranslateString(1182, 'Price')}</Text>
+              <Text color="text">{TranslateString(1182, 'Price')}</Text>
               <Text>
                 1 {currencyA?.symbol} = {tokenA ? pair.priceOf(tokenA).toSignificant(6) : '-'} {currencyB?.symbol}
               </Text>
@@ -383,9 +385,9 @@ export default function RemoveLiquidity({
             </RowBetween>
           </>
         )}
-        <Button disabled={!(approval === ApprovalState.APPROVED || signatureData !== null)} onClick={onRemove}>
+        <SwapButton disabled={!(approval === ApprovalState.APPROVED || signatureData !== null)} onClick={onRemove}>
           {TranslateString(1136, 'Confirm')}
-        </Button>
+        </SwapButton>
       </>
     )
   }
@@ -639,7 +641,7 @@ export default function RemoveLiquidity({
                   <ConnectWalletButton width="100%" />
                 ) : (
                   <RowBetween>
-                    <Button
+                    <SwapButton
                       onClick={onAttemptToApprove}
                       variant={approval === ApprovalState.APPROVED || signatureData !== null ? 'success' : 'primary'}
                       disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
@@ -652,8 +654,8 @@ export default function RemoveLiquidity({
                       ) : (
                         'Approve'
                       )}
-                    </Button>
-                    <Button
+                    </SwapButton>
+                    <SwapButton
                       onClick={() => {
                         setShowConfirm(true)
                       }}
@@ -665,7 +667,7 @@ export default function RemoveLiquidity({
                       }
                     >
                       {error || 'Remove'}
-                    </Button>
+                    </SwapButton>
                   </RowBetween>
                 )}
               </div>

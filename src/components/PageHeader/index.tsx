@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Heading, IconButton, Text, Flex, useModal, TuneIcon, HistoryIcon } from '@nguyenphu27/uikit'
+import { Heading, IconButton, Text, Flex, useModal, TuneIcon, HistoryIcon } from '../../uikit'
 import useI18n from 'hooks/useI18n'
 import SettingsModal from './SettingsModal'
 import RecentTransactionsModal from './RecentTransactionsModal'
@@ -29,15 +29,17 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
     <StyledPageHeader>
       <Flex alignItems="center">
         <Details>
-          <Heading mb="8px">{title}</Heading>
+          <Heading mb="8px" style={{ fontSize: '28px' }}>
+            {title}
+          </Heading>
           {description && (
-            <Text color="textSubtle" fontSize="14px">
+            <Text color="textSubtle" fontSize="17px">
               {description}
             </Text>
           )}
         </Details>
         <IconButton variant="text" onClick={onPresentSettings} title={TranslateString(1200, 'Settings')}>
-          <TuneIcon width="24px" color="currentColor" />
+          <TuneIcon width="34px" color="currentColor" />
         </IconButton>
         <IconButton
           variant="text"

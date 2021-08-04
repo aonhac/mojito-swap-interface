@@ -22,7 +22,6 @@ sftp-config.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-yarn.lock
 
 notes.txt
 .idea/
@@ -36,3 +35,5 @@ cypress/screenshots
 cypress/fixtures/example.json
 
 .eslintcache
+
+src/lib/node_modules

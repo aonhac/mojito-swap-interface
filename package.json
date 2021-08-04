@@ -1,6 +1,6 @@
 {
-  "name": "@pancakeswap/interface",
-  "description": "Pancakeswap Interface",
+  "name": "@mojito/interface",
+  "description": "mojito Interface",
   "homepage": ".",
   "private": true,
   "dependencies": {
@@ -8,7 +8,6 @@
     "@crowdin/crowdin-api-client": "^1.8.16",
     "@ethersproject/experimental": "^5.0.1",
     "@nguyenphu27/sdk": "1.0.1",
-    "@nguyenphu27/uikit": "^0.1.8",
     "@popperjs/core": "^2.4.4",
     "@reach/dialog": "^0.10.3",
     "@reach/portal": "^0.10.3",
@@ -57,6 +56,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "^4.0.1",
     "react-spring": "^8.0.27",
+    "react-transition-group": "^4.4.2",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
     "rebass": "^4.0.7",
@@ -88,13 +88,17 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
-    "integration-test": "start-server-and-test 'serve build -l 3000' http://localhost:3000 'cypress run'"
+    "integration-test": "start-server-and-test 'serve build -l 3000' http://localhost:3000 'cypress run'",
+    "commit": "npx git-cz"
   },
   "husky": {
-    "hooks": {
-      "pre-commit": "yarn format",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "hooks": {}
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [

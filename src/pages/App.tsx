@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import { Language } from '@nguyenphu27/uikit'
+import { Language } from '../uikit'
 import VersionBar from 'components/VersionBar'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -11,8 +11,10 @@ import AddLiquidity from './AddLiquidity'
 import Pool from './Pool'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
+import Home from './Home'
 import Swap from './Swap'
 import Migration from './Migration'
+import NotFound from './Error/NotFound/NotFound'
 import { RedirectPathToSwapOnly } from './Swap/redirects'
 import { EN, allLanguages } from '../constants/localisation/languageCodes'
 import { LanguageContext } from '../hooks/LanguageContext'
@@ -86,16 +88,16 @@ export default function App() {
                       <Route exact strict path="/swap" component={Swap} />
                       <Route exact strict path="/find" component={PoolFinder} />
                       <Route exact strict path="/pool" component={Pool} />
-                      <Route exact path="/add" component={AddLiquidity} />
                       <Route exact path="/migrate" component={Migration} />
-                      <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
+                      <Route exact path="/add" component={AddLiquidity} />
+                      <Route exact path="/home" component={Home} />
 
+                      <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
                       {/* Redirection: These old routes are still used in the code base */}
                       <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
                       <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
                       <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
-
-                      <Route component={RedirectPathToSwapOnly} />
+                      <Route path="*" component={NotFound} />
                     </Switch>
                   </Web3ReactManager>
                 </BodyWrapper>

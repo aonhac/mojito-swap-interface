@@ -1,11 +1,12 @@
 import { ChainId } from '@nguyenphu27/sdk'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Button, LinkExternal } from '@nguyenphu27/uikit'
+import { Button, LinkExternal } from '../../uikit'
 import { ArrowUpCircle } from 'react-feather'
 import { AutoColumn } from '../Column'
 import { getBscScanLink } from '../../utils'
 import { Wrapper, Section, ConfirmedIcon, ContentHeader } from './helpers'
+import { SwapButton } from '../Button'
 
 type TransactionSubmittedContentProps = {
   onDismiss: () => void
@@ -25,11 +26,11 @@ const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSu
         </ConfirmedIcon>
         <AutoColumn gap="8px" justify="center">
           {chainId && hash && (
-            <LinkExternal href={getBscScanLink(chainId, hash, 'transaction')}>View on BscScan</LinkExternal>
+            <LinkExternal href={getBscScanLink(chainId, hash, 'transaction')}>View on KccScan</LinkExternal>
           )}
-          <Button onClick={onDismiss} mt="20px">
+          <SwapButton style={{ height: '48px' }} onClick={onDismiss} mt="20px">
             Close
-          </Button>
+          </SwapButton>
         </AutoColumn>
       </Section>
     </Wrapper>

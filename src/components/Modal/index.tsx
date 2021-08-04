@@ -11,13 +11,10 @@ const AnimatedDialogOverlay = animated(DialogOverlay)
 const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
   &[data-reach-dialog-overlay] {
     z-index: 2;
-    background-color: transparent;
     overflow: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: rgba(0, 0, 0, 0.3);
   }
 `
@@ -35,13 +32,13 @@ const StyledDialogContent = styled(({ minHeight, maxHeight, mobile, isOpen, ...r
     border: 1px solid ${({ theme }) => theme.colors.invertedContrast};
     background-color: ${({ theme }) => theme.colors.invertedContrast};
     box-shadow: 0 4px 8px 0 ${transparentize(0.95, '#191326')};
-    padding: 0px;
+    padding: 0;
     width: 80%;
     overflow: hidden;
 
     align-self: ${({ mobile }) => (mobile ? 'flex-end' : 'center')};
 
-    max-width: 420px;
+    max-width: 560px;
     ${({ maxHeight }) =>
       maxHeight &&
       css`
@@ -53,7 +50,7 @@ const StyledDialogContent = styled(({ minHeight, maxHeight, mobile, isOpen, ...r
         min-height: ${minHeight}vh;
       `}
     display: flex;
-    border-radius: 20px;
+    border-radius: 0px;
 
     ${({ theme }) => theme.mediaQueries.lg} {
       width: 65vw;

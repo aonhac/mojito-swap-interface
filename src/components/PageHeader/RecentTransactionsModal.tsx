@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { CheckmarkCircleIcon, ErrorIcon, Flex, LinkExternal, Text, Modal, Button } from '@nguyenphu27/uikit'
+import { CheckmarkCircleIcon, ErrorIcon, Flex, LinkExternal, Text, Modal, Button } from '../../uikit'
 import { useActiveWeb3React } from 'hooks'
 import { getBscScanLink } from 'utils'
 import { isTransactionRecent, useAllTransactions } from 'state/transactions/hooks'
@@ -41,7 +41,7 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss, translateString
   }, [allTransactions])
 
   return (
-    <Modal title={translateString(1202, 'Recent transactions')} onDismiss={onDismiss}>
+    <Modal title={translateString(1202, 'Recent transactions')} onDismiss={onDismiss} style={{ width: '600px' }}>
       {!account && (
         <Flex justifyContent="center" flexDirection="column" alignItems="center">
           <Text mb="8px" bold>
