@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { Text } from '../../uikit'
 import Bar from './Bar'
-import { AutoRow, RowBetween } from '../../components/Row'
+import { RowBetween } from '../../components/Row'
 import TVL from './TVL'
 import Trade from './Trade'
 

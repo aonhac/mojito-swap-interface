@@ -10,7 +10,6 @@ import UserBlock from './components/UserBlock'
 import { NavProps } from './types'
 import Avatar from './components/Avatar'
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from './config'
-import { useTransition } from 'react-spring'
 
 const Wrapper = styled.div`
   position: relative;
@@ -40,6 +39,30 @@ const BodyWrapper = styled.div`
   display: flex;
 `
 
+const GetMjtButton = styled.div`
+  margin-left: 10px;
+  width: auto;
+  height: 36px;
+  border-radius: 4px;
+
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: alibaba-puhuiti, sans-serif;
+  color: #5dda98;
+  background: #fff;
+  border: 2px solid #5dda98;
+  &:hover {
+    color: #fff;
+    background: #5dda98;
+  }
+`
+
 const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   flex-grow: 1;
   margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
@@ -60,27 +83,6 @@ const MobileOnlyOverlay = styled(Overlay)`
   ${({ theme }) => theme.mediaQueries.nav} {
     display: none;
   }
-`
-
-const GetMJTButton = styled.div`
-  width: auto;
-  height: 36px;
-  border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  text-align: center;
-  padding: 0 15px;
-  line-height: 36px;
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: 14px;
-  cursor: pointer;
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary};
-    color: #fff;
-  }
-`
-
-const FlexCenter = styled(Flex)`
-  align-items: center;
 `
 
 const Menu: React.FC<NavProps> = ({
@@ -145,10 +147,10 @@ const Menu: React.FC<NavProps> = ({
           href={homeLink?.href ?? '/'}
         />
         {!!login && !!logout && (
-          <FlexCenter>
-            <GetMJTButton>Get MJT</GetMJTButton>
+          <Flex>
+            <GetMjtButton>Get MJT</GetMjtButton>
             <UserBlock account={account} login={login} logout={logout} />
-          </FlexCenter>
+          </Flex>
         )}
       </StyledNav>
       <BodyWrapper>

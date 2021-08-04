@@ -2,19 +2,19 @@ import React from 'react'
 import { SvgProps } from '../../../components/Svg'
 import styled from 'styled-components'
 
-const PoolIcon = require('../../../../assets/images/menu/Pool.svg').default
-const ActivePoolIcon = require('../../../../assets/images/menu/ActivePool.svg').default
+const BarIcon = require('../../../../assets/images/menu/BarIcon.svg').default
+const ActiveBarIcon = require('../../../../assets/images/menu/ActiveBarIcon.svg').default
 
 const Svg = styled.img`
   width: 50px;
-  height: 60px;
+  height: 50px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {
   if (props?.isActive) {
-    return <Svg src={ActivePoolIcon} />
+    return <Svg src={ActiveBarIcon} />
   }
-  return <Svg src={PoolIcon} />
+  return <Svg src={BarIcon} />
 }
 
 export default Icon

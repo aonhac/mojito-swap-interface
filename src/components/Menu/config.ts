@@ -4,23 +4,23 @@ const config: MenuEntry[] = [
   {
     label: 'Home',
     icon: 'HomeIcon',
-    href: 'https://pancakeswap.finance',
+    href: '/home',
   },
   {
     label: 'Trade',
-    icon: 'TradeIcon',
+    icon: 'Swap',
     initialOpenState: true,
     href: '/swap',
   },
   {
     label: 'BAR',
-    icon: 'FarmIcon',
-    href: 'https://pancakeswap.financefarms',
+    icon: 'Bar',
+    href: '/',
   },
   {
     label: 'WINE POOLS',
-    icon: 'PoolIcon',
-    href: 'https://pancakeswap.finance/pools',
+    icon: 'Pool',
+    href: '/',
   },
   // {
   //   label: 'Prediction (BETA)',
@@ -29,8 +29,8 @@ const config: MenuEntry[] = [
   // },
   {
     label: 'COCKTAIL TICKETS',
-    icon: 'TicketIcon',
-    href: 'https://pancakeswap.finance/lottery',
+    icon: 'Ticket',
+    href: '',
   },
   // {
   //   label: 'Collectibles',
@@ -62,7 +62,7 @@ const config: MenuEntry[] = [
   // },
   {
     label: 'Info',
-    icon: 'InfoIcon',
+    icon: 'Info',
     items: [
       {
         label: 'Overview',

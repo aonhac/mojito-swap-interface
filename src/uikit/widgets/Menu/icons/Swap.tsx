@@ -2,8 +2,8 @@ import React from 'react'
 import { SvgProps } from '../../../components/Svg'
 import styled from 'styled-components'
 
-const HomeIcon = require('../../../../assets/images/menu/HomeIcon.svg').default
-const ActiveHomeIcon = require('../../../../assets/images/menu/ActiveHomeIcon.svg').default
+const SwapIcon = require('../../../../assets/images/menu/SwapIcon.svg').default
+const ActiveSwapIcon = require('../../../../assets/images/menu/ActiveSwapIcon.svg').default
 
 const Svg = styled.img`
   width: 42px;
@@ -12,9 +12,9 @@ const Svg = styled.img`
 
 const Icon: React.FC<SvgProps> = (props) => {
   if (props?.isActive) {
-    return <Svg src={ActiveHomeIcon} />
+    return <Svg src={ActiveSwapIcon} />
   }
-  return <Svg src={HomeIcon} />
+  return <Svg src={SwapIcon} />
 }
 
 export default Icon
