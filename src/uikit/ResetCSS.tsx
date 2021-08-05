@@ -20,6 +20,7 @@ const ResetCSS = createGlobalStyle`
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
+    font-family: Kanit, sans-serif;
   }
   /* HTML5 display-role reset for older browsers */
   /* prettier-ignore */
@@ -64,7 +65,7 @@ const ResetCSS = createGlobalStyle`
     box-sizing: border-box;
   }
   * {
-    font-family: 'alibaba-puhuiti','Kanit', sans-serif;
+    font-family: 'Kanit', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

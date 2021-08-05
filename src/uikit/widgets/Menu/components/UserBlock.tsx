@@ -24,7 +24,7 @@ const ConnectButton = styled.div`
   text-align: center;
   cursor: pointer;
   font-size: 14px;
-  font-family: alibaba-puhuiti, sans-serif;
+  font-family: 'Kanit', sans-serif;
 `
 
 const UserBlock: React.FC<Props> = ({ account, login, logout }) => {

@@ -13,12 +13,12 @@ const config: MenuEntry[] = [
     href: '/swap',
   },
   {
-    label: 'BAR',
+    label: 'Bar',
     icon: 'Bar',
     href: '/',
   },
   {
-    label: 'WINE POOLS',
+    label: 'Wine Pools',
     icon: 'Pool',
     href: '/',
   },
@@ -28,9 +28,9 @@ const config: MenuEntry[] = [
   //   href: 'https://pancakeswap.finance/prediction',
   // },
   {
-    label: 'COCKTAIL TICKETS',
+    label: 'Cocktail Tickets',
     icon: 'Ticket',
-    href: '',
+    href: '/',
   },
   // {
   //   label: 'Collectibles',

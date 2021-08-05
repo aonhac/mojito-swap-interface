@@ -17,10 +17,10 @@ const getFontSize = ({ fontSize, small }: TextProps) => {
 
 const Text = styled.div<TextProps>`
   color: ${getColor};
-  font-size: 17px;
+  font-size: 16px;
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   line-height: 1.5;
-  font-family: alibaba-puhuiti, sans-serif;
+  font-family: Kanit, sans-serif;
   ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}
   ${({ ellipsis }) =>
     ellipsis &&

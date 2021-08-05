@@ -121,17 +121,17 @@ export default function CurrencyInputPanel({
           <LabelRow>
             <RowBetween>
               <Text
-                fontSize="18px"
+                fontSize="14px"
                 style={{
-                  fontWeight: 800,
-                  fontFamily: 'alibaba-puhuiti, sans-serif',
+                  fontWeight: 400,
+                  fontFamily: 'Kanit, sans-serif',
                   color: '#949494',
                 }}
               >
                 {translatedLabel}
               </Text>
               {account && (
-                <Text onClick={onMax} fontSize="17px" style={{ display: 'inline', cursor: 'pointer' }}>
+                <Text onClick={onMax} fontSize="16px" style={{ display: 'inline', cursor: 'pointer',fontFamily: 'Kanit, sans-serif',color: '#949494' }}>
                   {!hideBalance && !!currency && selectedCurrencyBalance
                     ? `Balance: ${selectedCurrencyBalance?.toSignificant(6)}`
                     : ' -'}
@@ -144,7 +144,7 @@ export default function CurrencyInputPanel({
           {!hideInput && (
             <>
               <NumericalInput
-                fontSize="30px"
+                fontSize="16px"
                 className="token-amount-input"
                 value={value}
                 onUserInput={(val) => {

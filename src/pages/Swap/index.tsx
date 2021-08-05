@@ -46,8 +46,8 @@ const SwapCurrencyContainer = styled(AutoColumn)`
 const SwapButton = styled(Button)`
   border-radius: 5px;
   height: 60px;
-  font-size: 18px;
-  font-family: alibaba-puhuiti, sans-serif;
+  font-size: 16px;
+  font-family: Kanit, sans-serif;
   color: #fff;
 `
 
@@ -369,7 +369,7 @@ const Swap = () => {
                       zIndex: 5,
                       background: theme.colors.input,
                       opacity: 1,
-                      padding: '0 20px',
+                      padding: '0 16px',
                     }}
                   >
                     <IconButton
@@ -454,7 +454,7 @@ const Swap = () => {
                 </SwapButton>
               ) : noRoute && userHasSpecifiedInputOutput ? (
                 <GreyCard style={{ textAlign: 'center', borderRadius: '5px' }}>
-                  <Text style={{ fontFamily: 'alibaba-puhuiti, sans-serif', fontWeight: 600 }} mb="4px">
+                  <Text style={{ fontFamily: 'Kanit, sans-serif', fontWeight: 600 }} mb="4px">
                     {TranslateString(1194, 'Insufficient liquidity for this trade.')}
                   </Text>
                 </GreyCard>

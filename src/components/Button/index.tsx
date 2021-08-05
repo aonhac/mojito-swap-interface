@@ -4,6 +4,6 @@ import styled from 'styled-components'
 export const SwapButton = styled(Button)`
   border-radius: 5px;
   height: 60px;
-  font-size: 18px;
-  font-family: alibaba-puhuiti, sans-serif;
+  font-size: 16px;
+  font-family: Kanit, sans-serif;
 `
