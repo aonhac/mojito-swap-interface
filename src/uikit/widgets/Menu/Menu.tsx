@@ -29,9 +29,17 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   width: 100%;
   height: ${MENU_HEIGHT}px;
   background-color: ${({ theme }) => theme.nav.background};
-  border-bottom: solid 2px rgba(133, 133, 133, 0.1);
   z-index: 20;
   transform: translate3d(0, 0, 0);
+`
+
+const ColorBorder = styled.div`
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(90deg, #1b6d8a, #15a689, #5dda98);
+  height: 4px;
+  bottom: 0;
+  left: 0;
 `
 
 const BodyWrapper = styled.div`
@@ -140,6 +148,7 @@ const Menu: React.FC<NavProps> = ({
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
+        <ColorBorder />
         <Logo
           isPushed={isPushed}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
