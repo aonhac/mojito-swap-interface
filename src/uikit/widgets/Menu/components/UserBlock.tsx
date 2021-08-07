@@ -25,6 +25,12 @@ const ConnectButton = styled.div`
   cursor: pointer;
   font-size: 14px;
   font-family: 'Kanit', sans-serif;
+  border: 1px solid #5dda98;
+   &:hover {
+    color: #53eb96;
+    background: #044f97;
+    border: 1px solid #043a6d;
+  }
 `
 
 const UserBlock: React.FC<Props> = ({ account, login, logout }) => {

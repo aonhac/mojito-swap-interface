@@ -58,8 +58,9 @@ const GetMjtButton = styled.div`
   background: #fff;
   border: 2px solid #5dda98;
   &:hover {
-    color: #fff;
-    background: #5dda98;
+    color: #53eb96;
+    background: #044f97;
+    border: 1px solid #043a6d;
   }
 `
 
