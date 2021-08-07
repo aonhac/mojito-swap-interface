@@ -20,7 +20,7 @@ const NotFound = styled.div`
 
 const Modal = styled.div`
   width: 587px;
-  height: 438px;
+  height: 538px;
   background: #ffffff;
   box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
   border-radius: 8px;
@@ -39,12 +39,17 @@ const LogoIcon = styled.img`
 `
 
 const Number404 = styled.div`
-  margin-top: 64px;
+  margin-top: 20px;
   height: 54px;
   font-weight: bold;
   color: #5dda98;
   font-size: 64px;
   line-height: 54px;
+`
+
+const BuildImage = styled.img`
+  margin-top: 30px;
+  height: 200px;
 `
 
 export default function Notfound() {
@@ -53,12 +58,13 @@ export default function Notfound() {
     <NotFound>
       <Modal>
         <LogoIcon src={require('../../../assets/images/logo.svg').default} />
-        <Number404>Wait Building</Number404>
+        <BuildImage src={require('../../../assets/images/build.svg').default} />
+        <Number404>`Wait Building`</Number404>
         <Text color="#033a6e" style={{ marginTop: '20px' }}>
           This page is under development.
         </Text>
         <SwapButton
-          style={{ width: '100%', height: '60px', marginTop: '110px' }}
+          style={{ width: '100%', height: '60px', marginTop: '20px' }}
           onClick={() => {
             history.push('/home')
           }}
