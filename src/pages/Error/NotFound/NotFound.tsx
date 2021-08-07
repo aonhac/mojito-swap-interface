@@ -53,9 +53,9 @@ export default function Notfound() {
     <NotFound>
       <Modal>
         <LogoIcon src={require('../../../assets/images/logo.svg').default} />
-        <Number404>404</Number404>
+        <Number404>Wait Building</Number404>
         <Text color="#033a6e" style={{ marginTop: '20px' }}>
-          Oops.page not found
+          This page is under development.
         </Text>
         <SwapButton
           style={{ width: '100%', height: '60px', marginTop: '110px' }}
