@@ -37,15 +37,15 @@ const Bar: FunctionComponent = (props) => {
     <BarWrap>
       <TitleWrap>
         <Cup src={require('../../assets/images/whitecup.svg').default} />
-        <Text fontSize="24px" color="#fff" fontWeight={500}>
+        <Text fontSize="20px" color="#fff" fontWeight={500} fontFamily='font-family: Kanit, sans-serif;'>
           Bar
         </Text>
       </TitleWrap>
       <Content>
-        <Text style={{ marginTop: '100px' }} fontSize="24px" fontWeight={500} color="#fff">
+        <Text style={{ marginTop: '100px' }} fontSize="24px" fontWeight={500} color="#fff" fontFamily='font-family: Kanit, sans-serif;'>
           Comming
         </Text>
-        <Text fontSize="24px" fontWeight={500} color="#fff">
+        <Text fontSize="24px" fontWeight={500} color="#fff" fontFamily='font-family: Kanit, sans-serif;'>
           Soon
         </Text>
       </Content>
