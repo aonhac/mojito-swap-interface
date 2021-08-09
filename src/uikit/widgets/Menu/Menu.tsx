@@ -40,27 +40,30 @@ const BodyWrapper = styled.div`
 `
 
 const GetMjtButton = styled.div`
-  margin-left: 10px;
-  width: auto;
-  height: 36px;
-  border-radius: 4px;
-
-  padding: 0 20px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-  font-size: 14px;
-  font-family: 'Kanit', sans-serif;
-  color: #5dda98;
-  background: #fff;
-  border: 2px solid #5dda98;
+align-items: center;
+background: none;
+background-size: auto 50%;
+border-radius: 4px;
+box-sizing: border-box;
+border: 2px solid #033A6E;
+color: #033A6E;
+cursor: pointer;
+display: flex;
+font-size: 14px;
+font-weight: bold;
+height: 45px;
+justify-content: center;
+margin: 0px;
+margin-left: 5px;
+min-width: 36px;
+width: 120px;
+outline: none;
+padding-left: 16px;
+padding-right: 16px;
+white-space: nowrap;
   &:hover {
-    color: #53eb96;
-    background: #044f97;
-    border: 1px solid #043a6d;
+    background: #043a6c29;
+    border: 2px solid #043a6c;
   }
 `
 

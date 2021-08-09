@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { escapeRegExp } from '../../utils'
 
 const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: string }>`
-  color: ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.primary)};
+  // color: ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.primary)};
+  color: #323232;
   width: 0;
   position: relative;
   font-weight: 800;
@@ -18,7 +19,7 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   text-overflow: ellipsis;
   padding: 0;
   -webkit-appearance: textfield;
-  font-family:alibaba-puhuiti, sans-serif;
+  font-family:Kanit,sans-serif;
 
   ::-webkit-search-decoration {
     -webkit-appearance: none;

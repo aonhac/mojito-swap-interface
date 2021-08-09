@@ -39,7 +39,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import AppBody from '../AppBody'
 
 const SwapCurrencyContainer = styled(AutoColumn)`
-  background: #f4f9ee;
+  background: #f3f3f3;
   border-radius: 10px;
 `
 
@@ -367,7 +367,8 @@ const Swap = () => {
                     style={{
                       position: 'absolute',
                       zIndex: 5,
-                      background: theme.colors.input,
+                      // background: theme.colors.input,
+                      background: 'rgb(243 243 243)',
                       opacity: 1,
                       padding: '0 16px',
                     }}

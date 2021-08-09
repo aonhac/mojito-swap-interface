@@ -14,11 +14,12 @@ const QuestionWrapper = styled.div`
   cursor: default;
   border-radius: 36px;
   background-color: ${({ theme }) => theme.colors.invertedContrast};
-  color: ${({ theme }) => theme.colors.textSubtle};
+  // color: ${({ theme }) => theme.colors.textSubtle};
 
   :hover,
   :focus {
-    opacity: 0.7;
+    // opacity: 0.7;
+     color: ${({ theme }) => theme.colors.textSubtle};
   }
 `
 

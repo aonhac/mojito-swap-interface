@@ -30,7 +30,8 @@ const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
   ${({ theme }) => theme.mediaQueries.lg} {
     font-size: 18px;
   }
-  color: ${({ theme }) => theme.colors.primary};
+  // color: ${({ theme }) => theme.colors.primary};
+  color:#4c4c4c
 `
 
 Heading.defaultProps = {
