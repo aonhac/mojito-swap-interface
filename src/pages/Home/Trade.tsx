@@ -40,15 +40,15 @@ const Trade: FunctionComponent = (props) => {
     <TradeWrap>
       <TitleWrap>
         <Cup src={require('../../assets/images/trade.svg').default} />
-        <Text fontSize="24px" color={theme.colors.primary} fontWeight={500}>
+        <Text fontSize="24px" color='#000' fontWeight={500}>
           Trade
         </Text>
       </TitleWrap>
       <Content>
-        <Text fontWeight={500} color="#fff">
+        <Text fontWeight={500} color="#000">
           Comming
         </Text>
-        <Text fontWeight={500} color="#fff">
+        <Text fontWeight={500} color="#000">
           Soon
         </Text>
       </Content>

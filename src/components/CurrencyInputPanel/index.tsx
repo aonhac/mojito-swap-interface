@@ -24,7 +24,8 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   font-size: 16px;
   font-weight: 500;
   background-color: transparent;
-  color: ${({ selected, theme }) => (selected ? theme.colors.text : '#FFFFFF')};
+  // color: ${({ selected, theme }) => (selected ? theme.colors.text : '#FFFFFF')};
+  color: #fff;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
@@ -178,7 +179,11 @@ export default function CurrencyInputPanel({
                   {pair?.token0.symbol}:{pair?.token1.symbol}
                 </Text>
               ) : (
-                <Text id="pair">
+                <Text 
+                id="pair"
+                style={{
+                  color:'#000'
+                }}>
                   {(currency && currency.symbol && currency.symbol.length > 20
                     ? `${currency.symbol.slice(0, 4)}...${currency.symbol.slice(
                         currency.symbol.length - 5,

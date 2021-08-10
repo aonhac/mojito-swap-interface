@@ -6,7 +6,7 @@ const BarWrap = styled.div`
   justify-self: stretch;
   align-self: stretch;
   width: 100%;
-  background: #5dda98;
+  background: #fff;
   box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
   border-radius: 8px;
 `
@@ -36,8 +36,8 @@ const Bar: FunctionComponent = (props) => {
   return (
     <BarWrap>
       <TitleWrap>
-        <Cup src={require('../../assets/images/whitecup.svg').default} />
-        <Text fontSize="20px" color="#fff" fontWeight={500} fontFamily='font-family: Kanit, sans-serif;'>
+        <Cup src={require('../../assets/images/whitecup.svg').default} style={{fill:'#5DDA98'}} />
+        <Text fontSize="20px" color="#000" fontWeight={500} fontFamily='font-family: Kanit, sans-serif;'>
           Bar
         </Text>
       </TitleWrap>

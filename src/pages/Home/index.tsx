@@ -84,10 +84,10 @@ const index: FunctionComponent = (props) => {
           <CartoonLogo src={require('../../assets/images/cow.png').default} />
           <NameWrap>
             {/* eslint-disable-next-line react/jsx-no-undef */}
-            <Text fontSize="28px" fontWeight={500} color="#1B6D8A">
+            <Text fontSize="28px" fontWeight={500} color="#000">
               Mojito Finance
             </Text>
-            <Text fontSize="18px" fontWeight={400} color="#1B6D8A" style={{ marginTop: '10px' }}>
+            <Text fontSize="18px" fontWeight={400} color="#000" style={{ marginTop: '10px' }}>
               The #1 AMM and yield farm on KuCoin Community Chain
             </Text>
           </NameWrap>

@@ -15,12 +15,12 @@ const config: MenuEntry[] = [
   {
     label: 'Bar',
     icon: 'Bar',
-    href: '/',
+    href: '/farm',
   },
   {
     label: 'Wine Pools',
     icon: 'Pool',
-    href: '/',
+    href: '/pools',
   },
   // {
   //   label: 'Prediction (BETA)',
@@ -30,7 +30,7 @@ const config: MenuEntry[] = [
   {
     label: 'Cocktail Tickets',
     icon: 'Ticket',
-    href: '/',
+    href: '/ticket',
   },
   // {
   //   label: 'Collectibles',

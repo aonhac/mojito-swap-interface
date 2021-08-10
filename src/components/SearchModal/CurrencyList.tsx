@@ -26,7 +26,7 @@ const StyledBalanceText = styled(Text)`
   overflow: hidden;
   max-width: 5rem;
   text-overflow: ellipsis;
-  font-weight: 800;
+  font-weight: normal;
 `
 
 const Tag = styled.div`

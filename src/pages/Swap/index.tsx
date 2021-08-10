@@ -371,6 +371,7 @@ const Swap = () => {
                       background: 'rgb(243 243 243)',
                       opacity: 1,
                       padding: '0 16px',
+                      top:'-15px',
                     }}
                   >
                     <IconButton
@@ -435,9 +436,9 @@ const Swap = () => {
                       </RowBetween>
                     )}
                     {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
-                      <RowBetween align="center" style={{ padding: '0 0 20px 0' }}>
-                        <Text fontSize="14px">{TranslateString(88, 'Slippage Tolerance')}</Text>
-                        <Text fontSize="14px">{allowedSlippage / 100}%</Text>
+                      <RowBetween align="center" style={{ padding: '0 0 20px 0' , color:'#000' }}>
+                        <Text fontSize="14px" style={{color:'#000'}}>{TranslateString(88, 'Slippage Tolerance')}</Text>
+                        <Text fontSize="14px" style={{color:'#000'}}>{allowedSlippage / 100}%</Text>
                       </RowBetween>
                     )}
                   </AutoColumn>
