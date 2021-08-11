@@ -159,6 +159,8 @@ export default function CurrencyInputPanel({
               )}
             </>
           )}
+
+          
           <CurrencySelect
             selected={!!currency}
             className="open-currency-select-button"

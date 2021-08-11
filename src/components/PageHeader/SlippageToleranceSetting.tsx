@@ -107,7 +107,7 @@ const SlippageToleranceSettings = ({ translateString }: SlippageToleranceSetting
         <Flex alignItems="center">
           <Option>
             <Input
-              style={{ borderRadius: '4px',background:'#fff',border:'1px solid #d9d9d9',boxShadow:'none' }}
+              style={{ borderRadius: '4px',background:'#fff',border:'1px solid #d9d9d9' }}
               type="number"
               scale="lg"
               step={0.1}

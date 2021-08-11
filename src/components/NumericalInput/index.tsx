@@ -35,7 +35,14 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   }
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.textSubtle};
+    // color: ${({ theme }) => theme.colors.textSubtle};
+    color: #323232;
+  }
+
+  :focus{
+    ::placeholder{
+      color:transparent;
+    }
   }
 `
 
