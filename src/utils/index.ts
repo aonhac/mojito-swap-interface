@@ -17,13 +17,13 @@ export function isAddress(value: any): string | false {
   }
 }
 
-const KCCSCAN_PREFIXES: { [chainId in ChainId]: string } = {
+const EXPLOREER_PREFIXES: { [chainId in ChainId]: string } = {
   321: 'https://explorer.kcc.io',
   322: 'https://scan-testnet.kcc.network',
 }
 
-export function getBscScanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
-  const prefix = `${KCCSCAN_PREFIXES[chainId] || KCCSCAN_PREFIXES[ChainId.MAINNET]}`
+export function getKCCExplorerLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
+  const prefix = `${EXPLOREER_PREFIXES[chainId] || EXPLOREER_PREFIXES[ChainId.MAINNET]}`
 
   switch (type) {
     case 'transaction': {
