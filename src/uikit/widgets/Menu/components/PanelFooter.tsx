@@ -15,7 +15,7 @@ const Container = styled.div`
   flex: none;
   padding: 8px 4px;
   background-color: ${({ theme }) => theme.nav.background};
-  border-top: solid 2px rgba(133, 133, 133, 0.1);
+  // border-top: solid 2px rgba(133, 133, 133, 0.1);
 `
 
 const SettingsEntry = styled.div`
@@ -60,10 +60,10 @@ const PanelFooter: React.FC<Props> = ({
         <CakePrice cakePriceUsd={cakePriceUsd} />
         {/* <SocialLinks /> */}
       </SocialEntry>
-      <SettingsEntry>
-        {/* <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />  */}
-        <LangSelector currentLang={currentLang} langs={langs} setLang={setLang} /> 
-      </SettingsEntry>
+      {/* <SettingsEntry> */}
+      {/* <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />  */}
+      {/* <LangSelector currentLang={currentLang} langs={langs} setLang={setLang} /> */}
+      {/* </SettingsEntry> */}
     </Container>
   )
 }

@@ -4,11 +4,12 @@ import { Card } from '../uikit'
 
 export const BodyWrapper = styled(Card)`
   position: relative;
-  max-width: 436px;
+  max-width: 588px;
   width: 100%;
   z-index: 5;
-  border-radius: 8px;
-  box-shadow: 0 2px 15px 0 rgba(223,229,216,1);
+  border-radius: 24px;
+  box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
+  box-sizing: border-box;
 `
 
 /**

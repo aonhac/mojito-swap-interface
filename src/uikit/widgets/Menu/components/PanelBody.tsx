@@ -20,6 +20,7 @@ const Container = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
+  width: 322px;
 `
 
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
@@ -32,7 +33,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
     <Container>
       {links.map((entry) => {
         const Icon = Icons[entry.icon]
-        const iconElement = <Icon mr="8px" isActive={true} />
+        const iconElement = <Icon mr="8px" isActive={entry.href === location.pathname} />
         const calloutClass = entry.calloutClass ? entry.calloutClass : undefined
 
         if (entry.items) {
@@ -67,6 +68,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
             </Accordion>
           )
         }
+
         return (
           <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
             <MenuLink href={entry.href} onClick={handleClick}>
