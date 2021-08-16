@@ -12,7 +12,8 @@ export const baseColors = {
 
 export const additionalColors = {
   binance: '#F0B90B',
-  overlay: '#452a7a',
+  // Settings Card Mask color
+  overlay: '#00000094',
 }
 
 export const lightColors: Colors = {

@@ -1,4 +1,4 @@
-import { Token } from '@nguyenphu27/sdk'
+import { Token } from 'mojito-sdk'
 import { transparentize } from 'polished'
 import { Button, Text } from '../../uikit'
 import React, { useCallback, useMemo, useState } from 'react'

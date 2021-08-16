@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@nguyenphu27/sdk'
+import { Currency, ETHER, Token } from 'mojito-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import useHttpLocations from '../../hooks/useHttpLocations'
@@ -9,7 +9,7 @@ import CoinLogo from '../pancake/CoinLogo'
 const getTokenLogoURL = (address: string) =>
   `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/${address}/logo.png`
 
-const StyledBnbLogo = styled.img<{ size: string }>`
+const StyledKCSLogo = styled.img<{ size: string }>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
@@ -46,7 +46,7 @@ export default function CurrencyLogo({
   }, [currency, uriLocations])
 
   if (currency === ETHER) {
-    return <StyledBnbLogo src="/images/coins/kcs.png" size={size} style={style} />
+    return <StyledKCSLogo src="/images/coins/kcs.png" size={size} style={style} />
   }
 
   return (currency as any)?.symbol ? (

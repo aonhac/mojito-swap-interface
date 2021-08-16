@@ -93,7 +93,8 @@ const SlippageToleranceSettings = ({ translateString }: SlippageToleranceSetting
             return (
               <Option key={predefinedValue}>
                 <Button
-                  style={{ borderRadius: '4px', border: `2px solid ${theme.colors.primary}` }}
+                  // style={{ borderRadius: '4px', border: `2px solid ${theme.colors.primary}` }}
+                  style={{ borderRadius: '4px',boxShadow:'none' }}
                   variant={value === predefinedValue ? 'primary' : 'tertiary'}
                   onClick={handleClick}
                 >
@@ -106,7 +107,7 @@ const SlippageToleranceSettings = ({ translateString }: SlippageToleranceSetting
         <Flex alignItems="center">
           <Option>
             <Input
-              style={{ borderRadius: '4px' }}
+              style={{ borderRadius: '4px',background:'#fff',border:'1px solid #d9d9d9' }}
               type="number"
               scale="lg"
               step={0.1}

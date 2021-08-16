@@ -43,8 +43,8 @@ const Number404 = styled.div`
   height: 54px;
   font-weight: bold;
   color: #5dda98;
-  font-size: 64px;
-  line-height: 54px;
+  font-size: 36px;
+  line-height: 40px;
 `
 
 const BuildImage = styled.img`
@@ -58,7 +58,7 @@ export default function Notfound() {
     <NotFound>
       <Modal>
         <LogoIcon src={require('../../../assets/images/logo.svg').default} />
-        <BuildImage src={require('../../../assets/images/build.svg').default} />
+        <BuildImage src={require('../../../assets/images/build.svg').default} style={{padding:'18px',marginBottom:'10px'}} />
         <Number404>`Wait Building`</Number404>
         <Text color="#033a6e" style={{ marginTop: '20px' }}>
           This page is under development.

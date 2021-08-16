@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@nguyenphu27/sdk'
+import { Currency, ETHER, Token } from 'mojito-sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Text, CloseIcon } from '../../uikit'
 import { useSelector } from 'react-redux'
@@ -69,7 +69,7 @@ export function CurrencySearch({
 
   const showETH: boolean = useMemo(() => {
     const s = searchQuery.toLowerCase().trim()
-    return s === '' || s === 'b' || s === 'bn' || s === 'bnb'
+    return s === '' || s === 'b' || s === 'bn' || s === 'KCS'
   }, [searchQuery])
 
   const tokenComparator = useTokenComparator(invertSearchOrder)
@@ -130,7 +130,7 @@ export function CurrencySearch({
     (e: KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
         const s = searchQuery.toLowerCase().trim()
-        if (s === 'bnb') {
+        if (s === 'KCS') {
           handleCurrencySelect(ETHER)
         } else if (filteredSortedTokens.length > 0) {
           if (
@@ -151,7 +151,7 @@ export function CurrencySearch({
     <Column style={{ width: '100%', flex: '1 1' }}>
       <PaddedColumn gap="14px">
         <RowBetween>
-          <Text fontSize="22px" color="primary" style={{ fontWeight: 600 }}>
+          <Text fontSize="22px" color="#000" style={{ fontWeight: 600, color: '#000' }}>
             {TranslateString(82, 'Select a token')}
             <QuestionHelper
               text={TranslateString(
@@ -190,7 +190,7 @@ export function CurrencySearch({
           {({ height }) => (
             <CurrencyList
               height={height}
-              showETH={showETH}
+              showETH={true}
               currencies={filteredSortedTokens}
               onCurrencySelect={handleCurrencySelect}
               otherCurrency={otherSelectedCurrency}

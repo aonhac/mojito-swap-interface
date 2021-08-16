@@ -60,7 +60,7 @@ const TransactionDeadlineSetting = ({ translateString, styles }: TransactionDead
           min="1"
           value={value}
           onChange={handleChange}
-          style={{ border: `2px solid ${theme.colors.primary}` }}
+          style={{ borderRadius: '4px',background:'#fff',border:'1px solid #d9d9d9' }}
         />
         <Text fontSize="14px" ml="8px">
           Minutes

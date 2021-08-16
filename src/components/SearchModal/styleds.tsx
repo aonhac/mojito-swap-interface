@@ -47,9 +47,9 @@ export const SearchInput = styled.input`
   }
   transition: border 100ms;
   :focus {
-    background: #f2fff6;
-    // border: 1px solid ${({ theme }) => theme.colors.primary};
-    border: none;
+    // background: #f2fff6;
+     border: 1px solid ${({ theme }) => theme.colors.primary};
+    // border: none;
     outline: none;
   }
 `

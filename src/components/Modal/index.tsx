@@ -11,6 +11,8 @@ const AnimatedDialogOverlay = animated(DialogOverlay)
 const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
   &[data-reach-dialog-overlay] {
     z-index: 2;
+    padding-top:85px;
+    left:230px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -56,7 +58,7 @@ const StyledDialogContent = styled(({ minHeight, maxHeight, mobile, isOpen, ...r
       width: 65vw;
     }
     ${({ theme }) => theme.mediaQueries.sm} {
-      width: 85vw;
+      width: 35vw;
     }
   }
 `

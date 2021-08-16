@@ -8,11 +8,14 @@
   },
   "tags": {},
   "logoURI": "https://exchange.pancakeswap.finance/images/pancakeswap.png",
-  "keywords": ["pancake", "default"],
+  "keywords": [
+    "pancake",
+    "default"
+  ],
   "tokens": [
     {
-      "name": "WBNB Token",
-      "symbol": "WBNB",
+      "name": "WKCS Token",
+      "symbol": "WKCS",
       "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
       "chainId": 56,
       "decimals": 18,

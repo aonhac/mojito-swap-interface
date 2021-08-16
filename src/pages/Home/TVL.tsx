@@ -22,7 +22,7 @@ const TVL: FunctionComponent = (props) => {
       <Text color="#fff" fontSize="18px" fontWeight={500}>
         Total Value Locked (TVL)
       </Text>
-      <Text color="#fff" fontSize="28px" fontWeight={600} style={{ marginTop: '10px' }}>
+      <Text color="#fff" fontSize="28px" fontWeight={500} style={{ marginTop: '10px' }}>
         {/* $ <CountUp start={0} end={39824} separator="," duration="5" decimal="."  decimals="1" prefix="$" suffix="+"/> */}
         $ 100000
       </Text>

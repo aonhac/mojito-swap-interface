@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@nguyenphu27/sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'mojito-sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import styled from 'styled-components'
@@ -26,7 +26,7 @@ const StyledBalanceText = styled(Text)`
   overflow: hidden;
   max-width: 5rem;
   text-overflow: ellipsis;
-  font-weight: 800;
+  font-weight: normal;
 `
 
 const Tag = styled.div`

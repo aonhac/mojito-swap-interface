@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@nguyenphu27/sdk'
+import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'mojito-sdk'
 import { Button, CardBody, AddIcon, Text as UIKitText } from '../../uikit'
 import { RouteComponentProps } from 'react-router-dom'
 import { LightCard } from 'components/Card'
@@ -57,7 +57,7 @@ export default function AddLiquidity({
   const currencyB = useCurrency(currencyIdB)
   const TranslateString = useI18n()
 
-  const oneCurrencyIsWBNB = Boolean(
+  const oneCurrencyIsWKCS = Boolean(
     chainId &&
       ((currencyA && currencyEquals(currencyA, WETH[chainId])) ||
         (currencyB && currencyEquals(currencyB, WETH[chainId])))
@@ -145,19 +145,22 @@ export default function AddLiquidity({
     let args: Array<string | string[] | number>
     let value: BigNumber | null
     if (currencyA === ETHER || currencyB === ETHER) {
-      const tokenBIsBNB = currencyB === ETHER
+      console.log('has kcs')
+
+      const tokenBIsKCS = currencyB === ETHER
       estimate = router.estimateGas.addLiquidityETH
       method = router.addLiquidityETH
       args = [
-        wrappedCurrency(tokenBIsBNB ? currencyA : currencyB, chainId)?.address ?? '', // token
-        (tokenBIsBNB ? parsedAmountA : parsedAmountB).raw.toString(), // token desired
-        amountsMin[tokenBIsBNB ? Field.CURRENCY_A : Field.CURRENCY_B].toString(), // token min
-        amountsMin[tokenBIsBNB ? Field.CURRENCY_B : Field.CURRENCY_A].toString(), // eth min
+        wrappedCurrency(tokenBIsKCS ? currencyA : currencyB, chainId)?.address ?? '', // token
+        (tokenBIsKCS ? parsedAmountA : parsedAmountB).raw.toString(), // token desired
+        amountsMin[tokenBIsKCS ? Field.CURRENCY_A : Field.CURRENCY_B].toString(), // token min
+        amountsMin[tokenBIsKCS ? Field.CURRENCY_B : Field.CURRENCY_A].toString(), // eth min
         account,
         deadlineFromNow,
       ]
-      value = BigNumber.from((tokenBIsBNB ? parsedAmountB : parsedAmountA).raw.toString())
+      value = BigNumber.from((tokenBIsKCS ? parsedAmountB : parsedAmountA).raw.toString())
     } else {
+      console.log('don"t has kcs')
       estimate = router.estimateGas.addLiquidity
       method = router.addLiquidity
       args = [
@@ -172,6 +175,8 @@ export default function AddLiquidity({
       ]
       value = null
     }
+
+    // eslint-disable-next-line no-debugger
 
     setAttemptingTxn(true)
     // const aa = await estimate(...args, value ? { value } : {})
@@ -281,7 +286,7 @@ export default function AddLiquidity({
           history.push(`/add/${newCurrencyIdB}`)
         }
       } else {
-        history.push(`/add/${currencyIdA || 'BNB'}/${newCurrencyIdB}`)
+        history.push(`/add/${currencyIdA || 'KCS'}/${newCurrencyIdB}`)
       }
     },
     [currencyIdA, history, currencyIdB]
@@ -454,7 +459,7 @@ export default function AddLiquidity({
       </AppBody>
       {pair && !noLiquidity && pairState !== PairState.INVALID ? (
         <AutoColumn style={{ minWidth: '20rem', marginTop: '1rem' }}>
-          <MinimalPositionCard showUnwrapped={oneCurrencyIsWBNB} pair={pair} />
+          <MinimalPositionCard showUnwrapped={oneCurrencyIsWKCS} pair={pair} />
         </AutoColumn>
       ) : null}
     </Container>

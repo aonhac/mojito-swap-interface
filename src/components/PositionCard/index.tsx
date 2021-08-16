@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { JSBI, Pair, Percent } from '@nguyenphu27/sdk'
+import { JSBI, Pair, Percent } from 'mojito-sdk'
 import { Button, Card as UIKitCard, CardBody, Text } from '../../uikit'
 import { darken } from 'polished'
 import { ChevronDown, ChevronUp } from 'react-feather'
