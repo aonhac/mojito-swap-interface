@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components'
 import { Button, LinkExternal } from '../../uikit'
 import { ArrowUpCircle } from 'react-feather'
 import { AutoColumn } from '../Column'
-import { getBscScanLink } from '../../utils'
+import { getKCCExplorerLink } from '../../utils'
 import { Wrapper, Section, ConfirmedIcon, ContentHeader } from './helpers'
 import { SwapButton } from '../Button'
 
@@ -26,7 +26,7 @@ const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSu
         </ConfirmedIcon>
         <AutoColumn gap="8px" justify="center">
           {chainId && hash && (
-            <LinkExternal href={getBscScanLink(chainId, hash, 'transaction')}>View on KccScan</LinkExternal>
+            <LinkExternal href={getKCCExplorerLink(chainId, hash, 'transaction')}>View on KCC Explorer</LinkExternal>
           )}
           <SwapButton style={{ height: '48px' }} onClick={onDismiss} mt="20px">
             Close

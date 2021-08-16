@@ -32,6 +32,7 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   border-bottom: solid 2px rgba(133, 133, 133, 0.1);
   z-index: 20;
   transform: translate3d(0, 0, 0);
+  height: 85px;
 `
 
 const BodyWrapper = styled.div`
@@ -40,30 +41,26 @@ const BodyWrapper = styled.div`
 `
 
 const GetMjtButton = styled.div`
-align-items: center;
-background: none;
-background-size: auto 50%;
-border-radius: 4px;
-box-sizing: border-box;
-border: 2px solid #033A6E;
-color: #033A6E;
-cursor: pointer;
-display: flex;
-font-size: 14px;
-font-weight: bold;
-height: 45px;
-justify-content: center;
-margin: 0px;
-margin-left: 5px;
-min-width: 36px;
-width: 120px;
-outline: none;
-padding-left: 16px;
-padding-right: 16px;
-white-space: nowrap;
+  align-items: center;
+  background: none;
+  background-size: auto 50%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 2px solid ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: 400;
+  height: 48px;
+  justify-content: center;
+  margin: 0px;
+  width: 120px;
+  outline: none;
+  white-space: nowrap;
   &:hover {
     background: #043a6c29;
-    border: 2px solid #043a6c;
+    border: 2px solid ${({ theme }) => theme.colors.primary};
   }
 `
 

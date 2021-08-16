@@ -1,22 +1,22 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
-import { LogoIcon } from "../../../components/Svg";
-import Flex from "../../../components/Box/Flex";
-import { HamburgerIcon, HamburgerCloseIcon, LogoIcon as LogoWithText } from "../icons";
-import MenuButton from "./MenuButton";
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
+import { Link } from 'react-router-dom'
+import { LogoIcon } from '../../../components/Svg'
+import Flex from '../../../components/Box/Flex'
+import { LogoIcon as LogoWithText } from '../icons'
+import MenuButton from './MenuButton'
 
 interface Props {
-  isPushed: boolean;
-  isDark: boolean;
-  togglePush: () => void;
-  href: string;
+  isPushed: boolean
+  isDark: boolean
+  togglePush: () => void
+  href: string
 }
 
 const blink = keyframes`
   0%,  100% { transform: scaleY(1); } 
   50% { transform:  scaleY(0.1); } 
-`;
+`
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -30,7 +30,7 @@ const StyledLink = styled(Link)`
   .desktop-icon {
     width: 212px;
     margin-left: 16px;
-    height: 28px: 
+    height: 28px;
     display: none;
     ${({ theme }) => theme.mediaQueries.nav} {
       display: block;
@@ -48,15 +48,15 @@ const StyledLink = styled(Link)`
       animation-iteration-count: 1;
     }
   }
-`;
+`
 
 const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
-  const isAbsoluteUrl = href.startsWith("http");
+  const isAbsoluteUrl = href.startsWith('http')
   const innerLogo = (
     <>
       <LogoWithText className="desktop-icon" isDark={isDark} />
     </>
-  );
+  )
 
   return (
     <Flex>
@@ -71,7 +71,7 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
         </StyledLink>
       )}
     </Flex>
-  );
-};
+  )
+}
 
-export default React.memo(Logo, (prev, next) => prev.isPushed === next.isPushed && prev.isDark === next.isDark);
+export default React.memo(Logo, (prev, next) => prev.isPushed === next.isPushed && prev.isDark === next.isDark)

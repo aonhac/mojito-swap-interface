@@ -88,7 +88,7 @@ const index: FunctionComponent = (props) => {
               Mojito Finance
             </Text>
             <Text fontSize="18px" fontWeight={400} color="#000" style={{ marginTop: '10px' }}>
-              The #1 AMM and yield farm on KuCoin Community Chain
+              The #1 AMM and yield farm on KCC
             </Text>
           </NameWrap>
           <MintImage src={require('../../assets/images/mint.png').default} />

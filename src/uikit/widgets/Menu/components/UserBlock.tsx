@@ -11,32 +11,32 @@ interface Props {
 }
 
 const ConnectButton = styled.div`
-align-items: center;
-border: 2px solid #033A6E;
-background: #043a6d;
-background-size: auto 50%;
-border-radius: 4px;
-box-sizing: border-box;
-color: #fff;
-cursor: pointer;
-display: flex;
-font-size: 14px;
-font-weight: bold;
-height: 45px;
-justify-content: center;
-margin: 0px;
-margin-left: 5px;
-min-width: 36px;
-width: 160px;
-outline: none;
-padding-left: 16px;
-padding-right: 16px;
-white-space: nowrap;
-// display: inline-block;
-&:hover{
-    background: #2b4789;
-    border: 1px solid #2b4789;
-}
+  align-items: center;
+  border: 2px solid ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
+  background-size: auto 50%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: 400;
+  height: 48px;
+  justify-content: center;
+  margin: 0px;
+  margin-left: 18px;
+  min-width: 36px;
+  width: 180px;
+  outline: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  // display: inline-block;
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary};
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+  }
 `
 
 const UserBlock: React.FC<Props> = ({ account, login, logout }) => {

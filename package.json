@@ -1,5 +1,5 @@
 {
-  "name": "@mojito/interface",
+  "name": "mojito-swap-interface",
   "description": "mojito Interface",
   "homepage": ".",
   "private": true,

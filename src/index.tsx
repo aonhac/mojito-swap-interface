@@ -12,12 +12,14 @@ import Providers from './Providers'
 import 'inter-ui'
 import './i18n'
 
+import './assets/font/style.css'
+
 if ('ethereum' in window) {
-  (window.ethereum as any).autoRefreshOnNetworkChange = false
+  window.ethereum.autoRefreshOnNetworkChange = false
 }
 
 window.addEventListener('error', () => {
-   localStorage?.removeItem('redux_localstorage_simple_lists')
+  localStorage?.removeItem('redux_localstorage_simple_lists')
 })
 
 ReactDOM.render(

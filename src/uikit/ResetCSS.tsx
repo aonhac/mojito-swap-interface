@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const ResetCSS = createGlobalStyle`
   /* prettier-ignore */
@@ -20,7 +20,7 @@ const ResetCSS = createGlobalStyle`
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
-    font-family: Kanit, sans-serif;
+    font-family: 'SF Pro Display',Kanit, sans-serif;
   }
   /* HTML5 display-role reset for older browsers */
   /* prettier-ignore */
@@ -114,6 +114,6 @@ const ResetCSS = createGlobalStyle`
     border-color: transparent;
     color: transparent;
   }  
-`;
+`
 
-export default ResetCSS;
+export default ResetCSS

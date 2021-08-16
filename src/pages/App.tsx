@@ -19,7 +19,6 @@ import { RedirectPathToSwapOnly } from './Swap/redirects'
 import { EN, allLanguages } from '../constants/localisation/languageCodes'
 import { LanguageContext } from '../hooks/LanguageContext'
 import { TranslationsContext } from '../hooks/TranslationsContext'
-import { Pair, Token } from 'mojito-sdk'
 
 import Menu from '../components/Menu'
 
@@ -91,7 +90,7 @@ export default function App() {
                       <Route exact strict path="/pool" component={Pool} />
                       <Route exact path="/migrate" component={Migration} />
                       <Route exact path="/add" component={AddLiquidity} />
-                      <Route exact path="/home" component={Home} />
+                      <Route exact path="/" component={Home} />
 
                       <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
                       {/* Redirection: These old routes are still used in the code base */}
