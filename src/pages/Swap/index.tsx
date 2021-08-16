@@ -1,4 +1,4 @@
-import { CurrencyAmount, JSBI, Token, Trade } from '@nguyenphu27/sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from 'mojito-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
 import { CardBody, ArrowDownIcon, Button, IconButton, Text, Link } from '../../uikit'
@@ -371,7 +371,7 @@ const Swap = () => {
                       background: 'rgb(243 243 243)',
                       opacity: 1,
                       padding: '0 16px',
-                      top:'-15px',
+                      top: '-15px',
                     }}
                   >
                     <IconButton
@@ -436,9 +436,13 @@ const Swap = () => {
                       </RowBetween>
                     )}
                     {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
-                      <RowBetween align="center" style={{ padding: '0 0 20px 0' , color:'#000' }}>
-                        <Text fontSize="14px" style={{color:'#000'}}>{TranslateString(88, 'Slippage Tolerance')}</Text>
-                        <Text fontSize="14px" style={{color:'#000'}}>{allowedSlippage / 100}%</Text>
+                      <RowBetween align="center" style={{ padding: '0 0 20px 0', color: '#000' }}>
+                        <Text fontSize="14px" style={{ color: '#000' }}>
+                          {TranslateString(88, 'Slippage Tolerance')}
+                        </Text>
+                        <Text fontSize="14px" style={{ color: '#000' }}>
+                          {allowedSlippage / 100}%
+                        </Text>
                       </RowBetween>
                     )}
                   </AutoColumn>

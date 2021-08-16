@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@nguyenphu27/sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'mojito-sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import styled from 'styled-components'

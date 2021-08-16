@@ -1,5 +1,5 @@
 import React, { useState, useCallback, CSSProperties } from 'react'
-import { Currency, Pair } from '@nguyenphu27/sdk'
+import { Currency, Pair } from 'mojito-sdk'
 import { Button, ChevronDownIcon, Text } from '../../uikit'
 import styled, { useTheme } from 'styled-components'
 import { darken } from 'polished'
@@ -132,7 +132,11 @@ export default function CurrencyInputPanel({
                 {translatedLabel}
               </Text>
               {account && (
-                <Text onClick={onMax} fontSize="16px" style={{ display: 'inline', cursor: 'pointer',fontFamily: 'Kanit, sans-serif',color: '#949494' }}>
+                <Text
+                  onClick={onMax}
+                  fontSize="16px"
+                  style={{ display: 'inline', cursor: 'pointer', fontFamily: 'Kanit, sans-serif', color: '#949494' }}
+                >
                   {!hideBalance && !!currency && selectedCurrencyBalance
                     ? `Balance: ${selectedCurrencyBalance?.toSignificant(6)}`
                     : ' -'}
@@ -160,7 +164,6 @@ export default function CurrencyInputPanel({
             </>
           )}
 
-          
           <CurrencySelect
             selected={!!currency}
             className="open-currency-select-button"
@@ -181,11 +184,12 @@ export default function CurrencyInputPanel({
                   {pair?.token0.symbol}:{pair?.token1.symbol}
                 </Text>
               ) : (
-                <Text 
-                id="pair"
-                style={{
-                  color:'#000'
-                }}>
+                <Text
+                  id="pair"
+                  style={{
+                    color: '#000',
+                  }}
+                >
                   {(currency && currency.symbol && currency.symbol.length > 20
                     ? `${currency.symbol.slice(0, 4)}...${currency.symbol.slice(
                         currency.symbol.length - 5,

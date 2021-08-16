@@ -1,4 +1,4 @@
-import { ChainId } from '@nguyenphu27/sdk'
+import { ChainId } from 'mojito-sdk'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Button, LinkExternal } from '../../uikit'

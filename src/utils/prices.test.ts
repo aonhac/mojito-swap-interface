@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@nguyenphu27/sdk'
+import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from 'mojito-sdk'
 import { computeTradePriceBreakdown } from './prices'
 
 describe('prices', () => {

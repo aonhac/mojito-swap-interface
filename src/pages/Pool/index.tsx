@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import { Pair } from '@nguyenphu27/sdk'
+import { Pair } from 'mojito-sdk'
 import { Button, CardBody, Text } from '../../uikit'
 import CardNav from 'components/CardNav'
 import Question from 'components/QuestionHelper'
@@ -153,7 +153,7 @@ export default function Pool() {
         <Button
           id="join-pool-button"
           as={Link}
-          to="/add/BNB"
+          to="/add/KCS"
           style={{ margin: '20px 5% 20px', borderRadius: '4px', width: '90%', height: '60px' }}
         >
           <AddIcon style={{ marginRight: '10px' }} src={require('../../assets/images/plus.svg').default} />

@@ -19,6 +19,7 @@ import { RedirectPathToSwapOnly } from './Swap/redirects'
 import { EN, allLanguages } from '../constants/localisation/languageCodes'
 import { LanguageContext } from '../hooks/LanguageContext'
 import { TranslationsContext } from '../hooks/TranslationsContext'
+import { Pair, Token } from 'mojito-sdk'
 
 import Menu from '../components/Menu'
 

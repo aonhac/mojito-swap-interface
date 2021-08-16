@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { Card, CardHeader, CardBody, Text, Box, Button, Flex, ArrowDownIcon, Link } from '../../uikit'
-import { Pair } from '@nguyenphu27/sdk'
+import { Pair } from 'mojito-sdk'
 import { useTokenBalancesWithLoadingIndicator } from 'state/wallet/hooks'
 import { toV2LiquidityToken, useTrackedTokenPairs } from 'state/user/hooks'
 import { StyledInternalLink } from 'components/Shared'
@@ -23,9 +23,10 @@ const SecondCard = () => {
     () => trackedTokenPairs.map((tokens) => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
     [trackedTokenPairs]
   )
-  const liquidityTokens = useMemo(() => tokenPairsWithLiquidityTokens.map((tpwlt) => tpwlt.liquidityToken), [
-    tokenPairsWithLiquidityTokens,
-  ])
+  const liquidityTokens = useMemo(
+    () => tokenPairsWithLiquidityTokens.map((tpwlt) => tpwlt.liquidityToken),
+    [tokenPairsWithLiquidityTokens]
+  )
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
     account ?? undefined,
     liquidityTokens
