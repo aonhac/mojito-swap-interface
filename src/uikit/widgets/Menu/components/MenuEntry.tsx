@@ -22,7 +22,7 @@ const rainbowAnimation = keyframes`
 
 const LinkLabel = styled.div<{ isPushed: boolean; isActive: boolean }>`
   // color: ${({ isActive, isPushed, theme }) => theme.colors.primary};
-  // color:${({ isActive, theme }) => (isActive ? `#5dda98` : '#000')};
+  // color: ${({ isActive, theme }) => (isActive ? theme.colors.primary : '#000')};
   // color:'#000';
   transition: color 0.4s;
   flex-grow: 1;
@@ -33,22 +33,26 @@ const MenuEntry = styled.div<Props>`
   display: flex;
   align-items: center;
   height: ${MENU_ENTRY_HEIGHT}px;
-  padding: ${({ secondary }) => (secondary ? '0 32px' : '0 16px')};
-  font-size: ${({ secondary }) => (secondary ? '14px' : '16px')};
+  padding: ${({ secondary }) => (secondary ? '0 32px' : '0 20px')};
+  padding-left: 0px;
+  font-size: ${({ secondary }) => (secondary ? '14px' : '21px')};
   background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : 'transparent')};
-//  color: ${({ theme }) => theme.colors.textSubtle};
-  color:${({ isActive, theme }) => (isActive ? `#5dda98` : '#000')};
+  //  color: ${({ theme }) => theme.colors.textSubtle};
+  color: ${({ isActive, theme }) => (isActive ? theme.colors.primary : '#01142A')};
   box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : 'none')};
+  border-left: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.primary}` : 'none')};
 
   a {
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
+    margin-left: 20px;
+    color: ${({ isActive, theme }) => (isActive ? theme.colors.primary : '#01142A')};
   }
 
   svg {
-    fill: ${({ theme }) => theme.colors.textSubtle};
+    fill: '#01142A';
   }
 
   &:hover {
@@ -73,7 +77,7 @@ MenuEntry.defaultProps = {
 const LinkStatus = styled(Text)<{ color: keyof Colors }>`
   border-radius: ${({ theme }) => theme.radii.default};
   padding: 0 8px;
-  border: ${({ theme, color }) => `2px solid${theme.colors[color]}`};
+  border: ${({ theme, color }) => `2px solid ${theme.colors[color]}`};
   box-shadow: none;
   color: ${({ theme, color }) => theme.colors[color]};
   margin-left: 8px;

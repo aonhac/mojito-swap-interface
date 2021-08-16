@@ -23,15 +23,14 @@ const style = {
 
 const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
   font-size: ${({ scale }) => style[scale || scales.MD].fontSize};
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.1;
-  font-family: Kanit, sans-serif;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     font-size: 18px;
   }
   // color: ${({ theme }) => theme.colors.primary};
-  color:#4c4c4c
+  color: #4c4c4c;
 `
 
 Heading.defaultProps = {

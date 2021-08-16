@@ -13,7 +13,7 @@ interface PageHeaderProps {
 
 const StyledPageHeader = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  padding: 24px;
+  padding: 32px;
 `
 
 const Details = styled.div`
@@ -29,12 +29,12 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
     <StyledPageHeader>
       <Flex alignItems="center">
         <Details>
-          <Heading mb="8px" style={{ fontSize: '20px' }}>
+          <Heading mb="8px" style={{ fontSize: '26px' }}>
             {title}
           </Heading>
           {description && (
             // <Text color="textSubtle" fontSize="14px">
-            <Text color="#999999" fontSize="14px">
+            <Text color="#999999" fontSize="17px">
               {description}
             </Text>
           )}
