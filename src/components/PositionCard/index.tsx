@@ -18,6 +18,7 @@ import DoubleCurrencyLogo from '../DoubleLogo'
 import { RowBetween, RowFixed } from '../Row'
 import { Dots } from '../swap/styleds'
 import { SwapButton } from '../Button'
+import { variant } from '../../uikit/components/Skeleton/types'
 
 export const FixedHeightRow = styled(RowBetween)`
   height: 24px;
@@ -87,29 +88,29 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
             LP Tokens in your Wallet
           </Text>
 
-          <CardBody style={{ width: '450px' }}>
+          <CardBody style={{ width: '100%' }}>
             <AutoColumn gap="12px" style={{ width: '100%', padding: '20px' }}>
               <FixedHeightRow onClick={() => setShowMore(!showMore)}>
                 <RowFixed>
-                  <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={36} />
-                  <Text fontSize="18px" fontWeight={600}>
+                  <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24} />
+                  <Text fontSize="14px" fontWeight={600} color="text">
                     {currency0.symbol}/{currency1.symbol}
                   </Text>
                 </RowFixed>
                 <RowFixed>
-                  <Text fontSize="20px" color={theme.colors.text} fontWeight={800}>
+                  <Text fontSize="14px" color={theme.colors.textSubtle} fontWeight={800}>
                     {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
                   </Text>
                 </RowFixed>
               </FixedHeightRow>
               <AutoColumn gap="4px">
                 <FixedHeightRow>
-                  <Text fontSize="16px" fontWeight={600}>
+                  <Text fontSize="14px" fontWeight={600}>
                     {currency0.symbol}:
                   </Text>
                   {token0Deposited ? (
                     <RowFixed>
-                      <Text ml="6px" color="#6F8FA8" fontSize="18px" fontWeight={800}>
+                      <Text ml="6px" color="textSubtle" fontSize="14px" fontWeight={800}>
                         {token0Deposited?.toSignificant(6)}
                       </Text>
                     </RowFixed>
@@ -118,12 +119,12 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
                   )}
                 </FixedHeightRow>
                 <FixedHeightRow>
-                  <Text fontSize="16px" fontWeight={600}>
+                  <Text fontSize="14px" fontWeight={600}>
                     {currency1.symbol}:
                   </Text>
                   {token1Deposited ? (
                     <RowFixed>
-                      <Text ml="6px" fontSize="18px" color="#6F8FA8" fontWeight={800}>
+                      <Text ml="6px" fontSize="14px" color="textSubtle" fontWeight={800}>
                         {token1Deposited?.toSignificant(6)}
                       </Text>
                     </RowFixed>

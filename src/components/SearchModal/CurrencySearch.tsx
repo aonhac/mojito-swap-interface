@@ -148,10 +148,10 @@ export function CurrencySearch({
   const selectedListInfo = useSelectedListInfo()
   const TranslateString = useI18n()
   return (
-    <Column style={{ width: '100%', flex: '1 1' }}>
+    <Column style={{ width: '100%', flex: '1 1', borderRadius: '16px' }}>
       <PaddedColumn gap="14px">
         <RowBetween>
-          <Text fontSize="22px" color="#000" style={{ fontWeight: 600, color: '#000' }}>
+          <Text fontSize="20px" color="text" style={{ fontWeight: 500 }}>
             {TranslateString(82, 'Select a token')}
             <QuestionHelper
               text={TranslateString(
@@ -163,7 +163,7 @@ export function CurrencySearch({
           <CloseIcon style={{ cursor: 'pointer' }} onClick={onDismiss} />
         </RowBetween>
 
-        <ThroughLine />
+        {/* <ThroughLine /> */}
 
         <SearchInput
           type="text"
