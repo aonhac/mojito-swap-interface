@@ -2,7 +2,7 @@ import React from 'react'
 import { SvgProps } from '../../../components/Svg'
 import styled from 'styled-components'
 
-const BarIcon = require('../../../../assets/images/menu/bar.svg').default
+const BarIcon = require('../../../../assets/images/menu/bar_b.svg').default
 const ActiveBarIcon = require('../../../../assets/images/menu/bar_g.svg').default
 
 const Svg = styled.img`
