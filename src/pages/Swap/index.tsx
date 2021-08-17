@@ -460,11 +460,9 @@ const Swap = () => {
                     (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
                 </SwapButton>
               ) : noRoute && userHasSpecifiedInputOutput ? (
-                <GreyCard style={{ textAlign: 'center', borderRadius: '5px' }}>
-                  <Text style={{ fontFamily: 'Kanit, sans-serif', fontWeight: 600 }} mb="4px">
-                    {TranslateString(1194, 'Insufficient liquidity for this trade.')}
-                  </Text>
-                </GreyCard>
+                <SwapButton disabled style={{ textAlign: 'center', width: '100%', borderRadius: '12px' }}>
+                  {TranslateString(1194, 'Insufficient liquidity for this trade.')}
+                </SwapButton>
               ) : showApproveFlow ? (
                 <RowBetween>
                   <SwapButton

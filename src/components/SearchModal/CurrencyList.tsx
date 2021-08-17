@@ -45,7 +45,7 @@ const Tag = styled.div`
 
 function Balance({ balance }: { balance: CurrencyAmount }) {
   return (
-    <StyledBalanceText fontSize="18px" color="#033A6E" title={balance.toExact()}>
+    <StyledBalanceText fontSize="14px" color="text" title={balance.toExact()}>
       {balance.toSignificant(4)}
     </StyledBalanceText>
   )
@@ -117,14 +117,14 @@ function CurrencyRow({
       disabled={isSelected}
       selected={otherSelected}
     >
-      <CurrencyLogo currency={currency} size="36px" />
+      <CurrencyLogo currency={currency} size="24px" />
       <Column>
-        <Text fontSize="18px" color="#033A6E" style={{ fontWeight: 600 }} title={currency.name}>
+        <Text fontSize="14px" color="text" style={{ fontWeight: 500 }} title={currency.name}>
           {currency.symbol}
         </Text>
         <FadedSpan>
           {!isOnSelectedList && customAdded && !(currency instanceof WrappedTokenInfo) ? (
-            <Text fontSize="18px" color="#033A6E">
+            <Text fontSize="14px" color="text">
               Added by user
               <LinkStyledButton
                 onClick={(event) => {
@@ -137,7 +137,7 @@ function CurrencyRow({
             </Text>
           ) : null}
           {!isOnSelectedList && !customAdded && !(currency instanceof WrappedTokenInfo) ? (
-            <Text fontSize="18px" color="#033A6E">
+            <Text fontSize="18px" color="text">
               Found by address
               <LinkStyledButton
                 onClick={(event) => {
@@ -206,7 +206,7 @@ export default function CurrencyList({
       width="100%"
       itemData={itemData}
       itemCount={itemData.length}
-      itemSize={56}
+      itemSize={48}
       itemKey={itemKey}
     >
       {Row}

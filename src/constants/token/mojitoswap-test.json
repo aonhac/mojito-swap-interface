@@ -14,13 +14,6 @@
   ],
   "tokens": [
     {
-      "name": "WKCS Token",
-      "symbol": "WKCS",
-      "address": "0x6551358EDC7fee9ADAB1E2E49560E68a12E82d9e",
-      "chainId": 322,
-      "decimals": 18
-    },
-    {
       "name": "KCC-Peg Wrapped ETH",
       "symbol": "WETH",
       "address": "0xF8Cb9f1D136Ff4c883320b5B4fa80048b888F459",

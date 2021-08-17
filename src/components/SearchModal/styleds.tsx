@@ -29,18 +29,19 @@ export const MenuItem = styled(RowBetween)`
 export const SearchInput = styled.input`
   position: relative;
   display: flex;
-  padding: 16px;
+  padding: 10px;
   align-items: center;
   width: 100%;
   white-space: nowrap;
   background: none;
   outline: none;
-  border-radius: 4px;
+  border-radius: 16px;
   color: ${({ theme }) => theme.colors.text};
   border: 1px solid ${({ theme }) => theme.colors.tertiary};
   -webkit-appearance: none;
+  font-family: 'San Pro Display';
 
-  font-size: 18px;
+  font-size: 14px;
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.textDisabled};
@@ -48,7 +49,7 @@ export const SearchInput = styled.input`
   transition: border 100ms;
   :focus {
     // background: #f2fff6;
-     border: 1px solid ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
     // border: none;
     outline: none;
   }

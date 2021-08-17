@@ -30,31 +30,29 @@ export function PoolPriceBar({
     <AutoColumn gap="md">
       <AutoRow justify="space-around" gap="4px">
         <AutoColumn justify="center">
-          <Text fontSize="24px" fontWeight={800} color={theme.colors.primary}>
+          <Text fontSize="16px" fontWeight={800} color={theme.colors.primary}>
             {price?.toSignificant(6) ?? '-'}
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="text" pt={1}>
+          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
             {currencies[Field.CURRENCY_B]?.symbol} per {currencies[Field.CURRENCY_A]?.symbol}
           </Text>
         </AutoColumn>
-        <Line />
         <AutoColumn justify="center">
-          <Text fontSize="24px" fontWeight={800} color={theme.colors.primary}>
+          <Text fontSize="16px" fontWeight={800} color={theme.colors.primary}>
             {price?.invert()?.toSignificant(6) ?? '-'}
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="text" pt={1}>
+          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
             {currencies[Field.CURRENCY_A]?.symbol} per {currencies[Field.CURRENCY_B]?.symbol}
           </Text>
         </AutoColumn>
-        <Line />
         <AutoColumn justify="center">
-          <Text fontSize="24px" fontWeight={800} color={theme.colors.primary}>
+          <Text fontSize="16px" fontWeight={800} color={theme.colors.primary}>
             {noLiquidity && price
               ? '100'
               : (poolTokenPercentage?.lessThan(ONE_BIPS) ? '<0.01' : poolTokenPercentage?.toFixed(2)) ?? '0'}
             %
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="text" pt={1}>
+          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
             Share of Pool
           </Text>
         </AutoColumn>
