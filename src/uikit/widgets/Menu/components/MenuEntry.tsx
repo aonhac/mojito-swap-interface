@@ -40,7 +40,7 @@ const MenuEntry = styled.div<Props>`
   //  color: ${({ theme }) => theme.colors.textSubtle};
   color: ${({ isActive, theme }) => (isActive ? theme.colors.primary : '#01142A')};
   box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : 'none')};
-  border-left: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.primary}` : 'none')};
+  border-left: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.primary}` : '2px solid transparent')};
 
   a {
     display: flex;

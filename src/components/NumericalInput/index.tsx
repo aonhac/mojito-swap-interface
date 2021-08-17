@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { escapeRegExp } from '../../utils'
 
 const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: string }>`
-  // color: ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.primary)};
-  color: #323232;
+  color: ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.primary)};
   width: 0;
   position: relative;
   font-weight: 800;
@@ -19,7 +18,7 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   text-overflow: ellipsis;
   padding: 0;
   -webkit-appearance: textfield;
-  font-family:Kanit,sans-serif;
+  font-family: 'SF Pro Display', Kanit, sans-serif;
 
   ::-webkit-search-decoration {
     -webkit-appearance: none;
@@ -36,12 +35,12 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
 
   ::placeholder {
     // color: ${({ theme }) => theme.colors.textSubtle};
-    color: #323232;
+    color: #c9c9c9;
   }
 
-  :focus{
-    ::placeholder{
-      color:transparent;
+  :focus {
+    ::placeholder {
+      color: transparent;
     }
   }
 `

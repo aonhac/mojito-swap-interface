@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const SwapBg = require('../assets/images/background.png').default
-
+const SwapBg = require('../assets/images/trade-bg.png').default
 
 const Container = styled.div`
   display: flex;
@@ -10,12 +8,11 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   flex: 1;
-  
 
   width: 100%;
   padding: 32px 16px;
 
-  background: url(${SwapBg}) top center no-repeat;
+  background: url(${SwapBg}) top center no-repeat, #94b7b1;
   background-size: cover;
 
   ${({ theme }) => theme.mediaQueries.xs} {
@@ -25,9 +22,8 @@ const Container = styled.div`
   ${({ theme }) => theme.mediaQueries.lg} {
     // background-image: url('/images/arch-${({ theme }) => (theme.isDark ? 'dark' : 'light')}.svg'),
     //   url('/images/left-pancake.svg'), url('/images/right-pancake.svg');
-    background: url(${SwapBg}) top center repeat-y;
     background-size: cover;
-    min-height: 90vh;
+    min-height: calc(100vh - 64px);
   }
 `
 

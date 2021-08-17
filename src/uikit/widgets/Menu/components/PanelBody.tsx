@@ -72,7 +72,15 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
         return (
           <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
             <MenuLink href={entry.href} onClick={handleClick}>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50px' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '50px',
+                  marginRight: '5px',
+                }}
+              >
                 {iconElement}
               </div>
               <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>

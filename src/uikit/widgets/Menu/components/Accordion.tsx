@@ -55,7 +55,16 @@ const Accordion: React.FC<Props> = ({
   return (
     <Container>
       <MenuEntry onClick={handleClick} className={className} isActive={isActive} role="button">
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50px' }}>{icon}</div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '50px',
+          }}
+        >
+          {icon}
+        </div>
         <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
         {status && (
           <LinkStatusComponent color={status.color} fontSize="14px">
