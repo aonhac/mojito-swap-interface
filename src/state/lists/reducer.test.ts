@@ -3,26 +3,25 @@ import { DEFAULT_LIST_OF_LISTS, DEFAULT_TOKEN_LIST_URL } from '../../constants/l
 import { updateVersion } from '../global/actions'
 import { fetchTokenList, acceptListUpdate, addList, removeList, selectList } from './actions'
 import reducer, { ListsState } from './reducer'
-import PANCAKESWAP_DEFAULT_TOKEN_LIST from '../../constants/token/pancakeswap.json'
 
 const STUB_TOKEN_LIST = {
   name: '',
   timestamp: '',
   version: { major: 1, minor: 1, patch: 1 },
-  tokens: []
+  tokens: [],
 }
 
 const PATCHED_STUB_LIST = {
   ...STUB_TOKEN_LIST,
-  version: { ...STUB_TOKEN_LIST.version, patch: STUB_TOKEN_LIST.version.patch + 1 }
+  version: { ...STUB_TOKEN_LIST.version, patch: STUB_TOKEN_LIST.version.patch + 1 },
 }
 const MINOR_UPDATED_STUB_LIST = {
   ...STUB_TOKEN_LIST,
-  version: { ...STUB_TOKEN_LIST.version, minor: STUB_TOKEN_LIST.version.minor + 1 }
+  version: { ...STUB_TOKEN_LIST.version, minor: STUB_TOKEN_LIST.version.minor + 1 },
 }
 const MAJOR_UPDATED_STUB_LIST = {
   ...STUB_TOKEN_LIST,
-  version: { ...STUB_TOKEN_LIST.version, major: STUB_TOKEN_LIST.version.major + 1 }
+  version: { ...STUB_TOKEN_LIST.version, major: STUB_TOKEN_LIST.version.major + 1 },
 }
 
 describe('list reducer', () => {
@@ -31,7 +30,7 @@ describe('list reducer', () => {
   beforeEach(() => {
     store = createStore(reducer, {
       byUrl: {},
-      selectedListUrl: undefined
+      selectedListUrl: undefined,
     })
   })
 
@@ -45,10 +44,10 @@ describe('list reducer', () => {
               error: null,
               loadingRequestId: 'request-id',
               current: null,
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
 
@@ -59,10 +58,10 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               pendingUpdate: null,
-              loadingRequestId: null
-            }
+              loadingRequestId: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
 
         store.dispatch(fetchTokenList.pending({ requestId: 'request-id', url: 'fake-url' }))
@@ -72,10 +71,10 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: 'request-id',
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
     })
@@ -91,10 +90,10 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
 
@@ -111,10 +110,10 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
 
@@ -132,10 +131,10 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: PATCHED_STUB_LIST
-            }
+              pendingUpdate: PATCHED_STUB_LIST,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
       it('does not save to current if list is newer minor version', () => {
@@ -152,10 +151,10 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: MINOR_UPDATED_STUB_LIST
-            }
+              pendingUpdate: MINOR_UPDATED_STUB_LIST,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
       it('does not save to pending if list is newer major version', () => {
@@ -172,10 +171,10 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: MAJOR_UPDATED_STUB_LIST
-            }
+              pendingUpdate: MAJOR_UPDATED_STUB_LIST,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
     })
@@ -185,7 +184,7 @@ describe('list reducer', () => {
         store.dispatch(fetchTokenList.rejected({ requestId: 'request-id', errorMessage: 'abcd', url: 'fake-url' }))
         expect(store.getState()).toEqual({
           byUrl: {},
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
 
@@ -196,10 +195,10 @@ describe('list reducer', () => {
               error: null,
               current: null,
               loadingRequestId: 'request-id',
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
         store.dispatch(fetchTokenList.rejected({ requestId: 'request-id', errorMessage: 'abcd', url: 'fake-url' }))
         expect(store.getState()).toEqual({
@@ -208,10 +207,10 @@ describe('list reducer', () => {
               error: 'abcd',
               current: null,
               loadingRequestId: null,
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
       })
     })
@@ -226,10 +225,10 @@ describe('list reducer', () => {
             error: null,
             current: null,
             loadingRequestId: null,
-            pendingUpdate: null
-          }
+            pendingUpdate: null,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
     })
     it('no op for existing list', () => {
@@ -239,10 +238,10 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: null
-          }
+            pendingUpdate: null,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
       store.dispatch(addList('fake-url'))
       expect(store.getState()).toEqual({
@@ -251,10 +250,10 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: null
-          }
+            pendingUpdate: null,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
     })
   })
@@ -267,10 +266,10 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
-          }
+            pendingUpdate: PATCHED_STUB_LIST,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
       store.dispatch(acceptListUpdate('fake-url'))
       expect(store.getState()).toEqual({
@@ -279,10 +278,10 @@ describe('list reducer', () => {
             error: null,
             current: PATCHED_STUB_LIST,
             loadingRequestId: null,
-            pendingUpdate: null
-          }
+            pendingUpdate: null,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
     })
   })
@@ -295,15 +294,15 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
-          }
+            pendingUpdate: PATCHED_STUB_LIST,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
       store.dispatch(removeList('fake-url'))
       expect(store.getState()).toEqual({
         byUrl: {},
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
     })
     it('unselects the list if selected', () => {
@@ -313,15 +312,15 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
-          }
+            pendingUpdate: PATCHED_STUB_LIST,
+          },
         },
-        selectedListUrl: 'fake-url'
+        selectedListUrl: 'fake-url',
       })
       store.dispatch(removeList('fake-url'))
       expect(store.getState()).toEqual({
         byUrl: {},
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
     })
   })
@@ -334,10 +333,10 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
-          }
+            pendingUpdate: PATCHED_STUB_LIST,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
       store.dispatch(selectList('fake-url'))
       expect(store.getState()).toEqual({
@@ -346,10 +345,10 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
-          }
+            pendingUpdate: PATCHED_STUB_LIST,
+          },
         },
-        selectedListUrl: 'fake-url'
+        selectedListUrl: 'fake-url',
       })
     })
     it('selects if not present already', () => {
@@ -359,10 +358,10 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
-          }
+            pendingUpdate: PATCHED_STUB_LIST,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
       store.dispatch(selectList('fake-url-invalid'))
       expect(store.getState()).toEqual({
@@ -371,16 +370,16 @@ describe('list reducer', () => {
             error: null,
             current: STUB_TOKEN_LIST,
             loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
+            pendingUpdate: PATCHED_STUB_LIST,
           },
           'fake-url-invalid': {
             error: null,
             current: null,
             loadingRequestId: null,
-            pendingUpdate: null
-          }
+            pendingUpdate: null,
+          },
         },
-        selectedListUrl: 'fake-url-invalid'
+        selectedListUrl: 'fake-url-invalid',
       })
     })
     it('works if list already added', () => {
@@ -390,10 +389,10 @@ describe('list reducer', () => {
             error: null,
             current: null,
             loadingRequestId: null,
-            pendingUpdate: null
-          }
+            pendingUpdate: null,
+          },
         },
-        selectedListUrl: undefined
+        selectedListUrl: undefined,
       })
       store.dispatch(selectList('fake-url'))
       expect(store.getState()).toEqual({
@@ -402,10 +401,10 @@ describe('list reducer', () => {
             error: null,
             current: null,
             loadingRequestId: null,
-            pendingUpdate: null
-          }
+            pendingUpdate: null,
+          },
         },
-        selectedListUrl: 'fake-url'
+        selectedListUrl: 'fake-url',
       })
     })
   })
@@ -419,16 +418,16 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: null
+              pendingUpdate: null,
             },
             'https://unpkg.com/@uniswap/default-token-list@latest': {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
-          selectedListUrl: undefined
+          selectedListUrl: undefined,
         })
         store.dispatch(updateVersion())
       })
@@ -445,20 +444,20 @@ describe('list reducer', () => {
       })
       it('all lists are empty', () => {
         const s = store.getState()
-        Object.keys(s.byUrl).forEach(url => {
+        Object.keys(s.byUrl).forEach((url) => {
           if (url === DEFAULT_TOKEN_LIST_URL) {
             expect(s.byUrl[url]).toEqual({
               error: null,
-              current: PANCAKESWAP_DEFAULT_TOKEN_LIST,
+              current: null,
               loadingRequestId: null,
-              pendingUpdate: null
+              pendingUpdate: null,
             })
           } else {
             expect(s.byUrl[url]).toEqual({
               error: null,
               current: null,
               loadingRequestId: null,
-              pendingUpdate: null
+              pendingUpdate: null,
             })
           }
         })
@@ -475,17 +474,17 @@ describe('list reducer', () => {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: null
+              pendingUpdate: null,
             },
             'https://unpkg.com/@uniswap/default-token-list@latest': {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
-              pendingUpdate: null
-            }
+              pendingUpdate: null,
+            },
           },
           selectedListUrl: undefined,
-          lastInitializedDefaultListOfLists: ['https://unpkg.com/@uniswap/default-token-list@latest']
+          lastInitializedDefaultListOfLists: ['https://unpkg.com/@uniswap/default-token-list@latest'],
         })
         store.dispatch(updateVersion())
       })
@@ -497,7 +496,7 @@ describe('list reducer', () => {
           error: null,
           current: STUB_TOKEN_LIST,
           loadingRequestId: null,
-          pendingUpdate: null
+          pendingUpdate: null,
         })
       })
       it('removes lists in the last initialized list of lists', () => {
@@ -509,16 +508,16 @@ describe('list reducer', () => {
       })
 
       it('each of those initialized lists is empty', () => {
-        const {byUrl} = store.getState()
+        const { byUrl } = store.getState()
         // note we don't expect the uniswap default list to be prepopulated
         // this is ok.
-        Object.keys(byUrl).forEach(url => {
+        Object.keys(byUrl).forEach((url) => {
           if (url !== 'https://unpkg.com/@uniswap/default-token-list@latest/uniswap-default.tokenlist.json') {
             expect(byUrl[url]).toEqual({
               error: null,
               current: null,
               loadingRequestId: null,
-              pendingUpdate: null
+              pendingUpdate: null,
             })
           }
         })

@@ -39,8 +39,9 @@ export const SearchInput = styled.input`
   color: ${({ theme }) => theme.colors.text};
   border: 1px solid ${({ theme }) => theme.colors.tertiary};
   -webkit-appearance: none;
+  font-family: 'San Pro Display';
 
-  font-size: 16px;
+  font-size: 14px;
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.textDisabled};

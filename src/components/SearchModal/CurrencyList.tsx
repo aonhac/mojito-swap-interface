@@ -124,7 +124,7 @@ function CurrencyRow({
         </Text>
         <FadedSpan>
           {!isOnSelectedList && customAdded && !(currency instanceof WrappedTokenInfo) ? (
-            <Text fontSize="18px" color="#033A6E">
+            <Text fontSize="14px" color="text">
               Added by user
               <LinkStyledButton
                 onClick={(event) => {

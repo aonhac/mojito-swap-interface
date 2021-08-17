@@ -1,15 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "../../components/Link";
-import { HelpIcon } from "../../components/Svg";
-import { Modal } from "../Modal";
-import WalletCard from "./WalletCard";
-import config from "./config";
-import { Login } from "./types";
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from '../../components/Link'
+import { Modal } from '../Modal'
+import WalletCard from './WalletCard'
+import config from './config'
+import { Login } from './types'
 
 interface Props {
-  login: Login;
-  onDismiss?: () => void;
+  login: Login
+  onDismiss?: () => void
 }
 
 const HelpLink = styled(Link)`
@@ -17,7 +16,7 @@ const HelpLink = styled(Link)`
   align-self: center;
   align-items: center;
   margin-top: 24px;
-`;
+`
 
 const ConnectModal: React.FC<Props> = ({ login, onDismiss = () => null }) => (
   <Modal title="Connect to a wallet" onDismiss={onDismiss}>
@@ -27,14 +26,14 @@ const ConnectModal: React.FC<Props> = ({ login, onDismiss = () => null }) => (
         login={login}
         walletConfig={entry}
         onDismiss={onDismiss}
-        mb={index < config.length - 1 ? "8px" : "0"}
+        mb={index < config.length - 1 ? '8px' : '0'}
       />
     ))}
-    <HelpLink href="https://docs.pancakeswap.finance/get-started/connection-guide" external>
+    {/*  <HelpLink href="https://docs.pancakeswap.finance/get-started/connection-guide" external>
       <HelpIcon color="primary" mr="6px" />
       Learn how to connect
-    </HelpLink>
+    </HelpLink> */}
   </Modal>
-);
+)
 
-export default ConnectModal;
+export default ConnectModal

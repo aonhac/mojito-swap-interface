@@ -5,10 +5,9 @@ import useAuth from 'hooks/useAuth'
 import styled from 'styled-components'
 
 const MojitoButton = styled(Button)`
-  border-radius: 5px;
-  height: 60px;
-  font-size: 18px;
-  font-family: alibaba-puhuiti, sans-serif;
+  border-radius: 12px;
+  height: 48px;
+  font-size: 16px;
   color: #fff;
 `
 

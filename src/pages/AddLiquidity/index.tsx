@@ -208,16 +208,16 @@ export default function AddLiquidity({
 
   const modalHeader = () => {
     return noLiquidity ? (
-      <AutoColumn gap="20px">
+      <AutoColumn gap="0px">
         <LightCard mt="20px" borderRadius="20px">
-          <RowFlat style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+          <RowFlat style={{ width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
             <UIKitText fontSize="28px" mr="0px" fontWeight={600}>
               {`${currencies[Field.CURRENCY_A]?.symbol}/${currencies[Field.CURRENCY_B]?.symbol}`}
             </UIKitText>
             <DoubleCurrencyLogo
               currency0={currencies[Field.CURRENCY_A]}
               currency1={currencies[Field.CURRENCY_B]}
-              size={36}
+              size={28}
             />
           </RowFlat>
         </LightCard>
@@ -235,11 +235,11 @@ export default function AddLiquidity({
           />
         </RowFlat>
         <Row>
-          <UIKitText fontSize="20px" color="text">
+          <UIKitText fontSize="16px" color="text">
             {`${currencies[Field.CURRENCY_A]?.symbol}/${currencies[Field.CURRENCY_B]?.symbol} Pool Tokens`}
           </UIKitText>
         </Row>
-        <UIKitText small textAlign="left" padding="20px 30px" style={{ background: '#F2FFF6' }}>
+        <UIKitText small textAlign="left" padding="20px" style={{ background: '#F5F5F5' }}>
           {`Output is estimated. If the price changes by more than ${
             allowedSlippage / 100
           }% your transaction will revert.`}
@@ -330,8 +330,8 @@ export default function AddLiquidity({
             <AutoColumn gap="20px">
               {noLiquidity && (
                 <ColumnCenter>
-                  <Pane>
-                    <AutoColumn gap="12px">
+                  <Pane style={{ background: '#F5F5F5', border: 'none' }}>
+                    <AutoColumn gap="6px">
                       <UIKitText>{TranslateString(1158, 'You are the first liquidity provider.')}</UIKitText>
                       <UIKitText>
                         {TranslateString(1160, 'The ratio of tokens you add will set the price of this pool.')}
@@ -354,10 +354,10 @@ export default function AddLiquidity({
                 currency={currencies[Field.CURRENCY_A]}
                 id="add-liquidity-input-tokena"
                 showCommonBases={false}
-                styles={{ border: `2px solid ${theme.colors.primary}`, background: `${theme.colors.inputSecondary}` }}
+                styles={{ background: '#F5F5F5', borderRadius: '12px' }}
               />
               <ColumnCenter>
-                <AddIcon color="textSubtle" />
+                <AddIcon color="primary" />
               </ColumnCenter>
               <CurrencyInputPanel
                 value={formattedAmounts[Field.CURRENCY_B]}
@@ -370,12 +370,19 @@ export default function AddLiquidity({
                 currency={currencies[Field.CURRENCY_B]}
                 id="add-liquidity-input-tokenb"
                 showCommonBases={false}
-                styles={{ border: `2px solid ${theme.colors.primary}`, background: `${theme.colors.inputSecondary}` }}
+                styles={{ background: '#F5F5F5', borderRadius: '12px' }}
               />
               {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
-                <div style={{ background: `#F2FFF6`, padding: '20px 0' }}>
+                <div
+                  style={{
+                    background: `#fff`,
+                    padding: '20px 0',
+                    border: '1px solid rgba(115,126,141,0.16)',
+                    borderRadius: '12px',
+                  }}
+                >
                   <UIKitText
-                    style={{ textTransform: 'uppercase', fontWeight: 600, textAlign: 'center' }}
+                    style={{ textTransform: 'uppercase', fontWeight: 500, textAlign: 'center' }}
                     color="text"
                     fontSize="16px"
                     mb="2px"
@@ -394,7 +401,6 @@ export default function AddLiquidity({
                   </Pane>
                 </div>
               )}
-
               {!account ? (
                 <ConnectWalletButton width="100%" />
               ) : (

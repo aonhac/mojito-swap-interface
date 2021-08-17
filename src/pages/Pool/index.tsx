@@ -21,6 +21,7 @@ import PageHeader from 'components/PageHeader'
 import { Link, useHistory } from 'react-router-dom'
 import AppBody from '../AppBody'
 import NoLiquidity from './NoLiquidity'
+import Row from 'components/Row'
 
 const AddIcon = styled.img`
   width: 24px;
@@ -53,6 +54,12 @@ const FindButton = styled.div`
   color: #fff;
   font-size: 14px;
   cursor: pointer;
+`
+
+const Line = styled.div`
+  width: 100%;
+  opacity: 0.22;
+  border: 1px solid #979797;
 `
 
 export default function Pool() {
@@ -102,7 +109,7 @@ export default function Pool() {
         <AutoColumn gap="lg" justify="center" style={{ width: '100%' }}>
           <CardBody style={{ width: '100%' }}>
             <AutoColumn gap="12px" style={{ width: '100%' }}>
-              <RowBetween padding="0 8px">
+              <RowBetween padding="0 8px" align="center" justifyContent="flex-start">
                 <Text color={theme.colors.text}>{TranslateString(107, 'Your Liquidity')}</Text>
                 <Question
                   text={TranslateString(
@@ -113,19 +120,19 @@ export default function Pool() {
               </RowBetween>
 
               {!account ? (
-                <LightCard padding="20px" style={{ border: `2px solid ${theme.colors.primary}`, borderRadius: '4px' }}>
-                  <Text color="textDisabled" textAlign="center">
+                <LightCard padding="20px" style={{ background: '#F4F3F3', height: '120px', borderRadius: '16px' }}>
+                  <Text color="#666666" fontSize="14px" textAlign="center" style={{ lineHeight: '70px' }}>
                     {TranslateString(156, 'Connect to a wallet to view your liquidity.')}
                   </Text>
                 </LightCard>
               ) : v2IsLoading ? (
-                <LightCard padding="20px" style={{ border: `2px solid ${theme.colors.primary}`, borderRadius: '4px' }}>
+                <LightCard padding="20px">
                   <Text color="textDisabled" textAlign="center">
                     <Dots>Loading</Dots>
                   </Text>
                 </LightCard>
               ) : allV2PairsWithLiquidity?.length > 0 ? (
-                <LightCard padding="10px" style={{ border: `2px solid ${theme.colors.primary}`, borderRadius: '16px' }}>
+                <LightCard padding="10px" style={{ borderRadius: '16px' }}>
                   {allV2PairsWithLiquidity.map((v2Pair) => (
                     <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
                   ))}
@@ -151,6 +158,22 @@ export default function Pool() {
                 // no liquidity found
                 <LightCard padding="40px">
                   <NoLiquidity TranslateString={TranslateString} />
+                  <Row>
+                    <Text color="textDisabled" fontSize="14px" style={{ padding: '.5rem 0 .5rem 0' }}>
+                      {TranslateString(106, "Don't see a pool you joined?")}
+                    </Text>
+                    <Text
+                      fontSize="14px"
+                      style={{ marginLeft: '7px' }}
+                      color="primary"
+                      onClick={() => {
+                        history.push('/find')
+                      }}
+                    >
+                      {TranslateString(106, 'Find Other LP tokens')}
+                    </Text>
+                  </Row>
+                  <Line />
                 </LightCard>
               )}
             </AutoColumn>

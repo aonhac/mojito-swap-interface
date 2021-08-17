@@ -22,6 +22,7 @@ const style = {
 }
 
 const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
+  width: 100%;
   font-size: ${({ scale }) => style[scale || scales.MD].fontSize};
   font-weight: 500;
   line-height: 1.1;
@@ -30,7 +31,7 @@ const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
     font-size: 18px;
   }
   // color: ${({ theme }) => theme.colors.primary};
-  color: #4c4c4c;
+  color: ${({ theme }) => theme.colors.text};
 `
 
 Heading.defaultProps = {
