@@ -2,12 +2,12 @@ import React from 'react'
 import { SvgProps } from '../../../components/Svg'
 import styled from 'styled-components'
 
-const HomeIcon = require('../../../../assets/images/menu/HomeIcon.svg').default
-const ActiveHomeIcon = require('../../../../assets/images/menu/ActiveHomeIcon.svg').default
+const HomeIcon = require('../../../../assets/images/menu/home.svg').default
+const ActiveHomeIcon = require('../../../../assets/images/menu/home_g.svg').default
 
 const Svg = styled.img`
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

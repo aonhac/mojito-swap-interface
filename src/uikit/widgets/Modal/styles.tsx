@@ -27,8 +27,8 @@ export const ModalBody = styled(Flex)`
 
 export const ModalCloseButton: React.FC<{ onDismiss: ModalProps['onDismiss'] }> = ({ onDismiss }) => {
   return (
-    <IconButton variant="text" onClick={onDismiss} aria-label="Close the dialog" style={{ fill:'#000'}}>
-      <CloseIcon color="primary" style={{ fill:'#000' }} />
+    <IconButton variant="text" onClick={onDismiss} aria-label="Close the dialog" style={{ fill: '#000' }}>
+      <CloseIcon color="primary" style={{ fill: '#000' }} />
     </IconButton>
   )
 }
@@ -46,7 +46,7 @@ export const ModalContainer = styled(Box)<{ minWidth: string }>`
   background: ${({ theme }) => theme.modal.background};
   box-shadow: 0 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  border-radius: 4px;
+
   width: 100%;
   max-height: 100vh;
   z-index: ${({ theme }) => theme.zIndices.modal};
@@ -54,8 +54,9 @@ export const ModalContainer = styled(Box)<{ minWidth: string }>`
   ${({ theme }) => theme.mediaQueries.xs} {
     // width: auto;
     // min-width: ${({ minWidth }) => minWidth};
-    width:550px;
-    min-width:550px;
+    width: 550px;
+    min-width: 550px;
     max-width: 100%;
   }
+  border-radius: 12px;
 `

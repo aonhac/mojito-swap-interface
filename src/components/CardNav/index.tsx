@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { ButtonMenu, ButtonMenuItem } from '../../uikit'
 import useI18n from 'hooks/useI18n'
-import { background } from 'styled-system'
 
 const StyledNav = styled.div`
   margin-top: 50px;

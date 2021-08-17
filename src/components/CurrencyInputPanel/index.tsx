@@ -124,9 +124,9 @@ export default function CurrencyInputPanel({
               <Text
                 fontSize="14px"
                 style={{
-                  fontWeight: 400,
-                  fontFamily: 'Kanit, sans-serif',
-                  color: '#949494',
+                  fontWeight: 700,
+                  fontFamily: 'SF Pro Display',
+                  color: '#666666',
                 }}
               >
                 {translatedLabel}
@@ -134,8 +134,14 @@ export default function CurrencyInputPanel({
               {account && (
                 <Text
                   onClick={onMax}
-                  fontSize="16px"
-                  style={{ display: 'inline', cursor: 'pointer', fontFamily: 'Kanit, sans-serif', color: '#949494' }}
+                  fontSize="14px"
+                  style={{
+                    display: 'inline',
+                    cursor: 'pointer',
+                    fontWeight: 700,
+                    fontFamily: 'SF Pro Display',
+                    color: '#666666',
+                  }}
                 >
                   {!hideBalance && !!currency && selectedCurrencyBalance
                     ? `Balance: ${selectedCurrencyBalance?.toSignificant(6)}`
@@ -157,7 +163,12 @@ export default function CurrencyInputPanel({
                 }}
               />
               {account && currency && showMaxButton && label !== 'To' && (
-                <Button style={{ fontSize: '22px' }} onClick={onMax} scale="sm" variant="text">
+                <Button
+                  style={{ fontSize: '16px', fontFamily: 'SF Pro Display' }}
+                  onClick={onMax}
+                  scale="sm"
+                  variant="text"
+                >
                   MAX
                 </Button>
               )}
@@ -187,7 +198,10 @@ export default function CurrencyInputPanel({
                 <Text
                   id="pair"
                   style={{
-                    color: '#000',
+                    fontSize: '18px',
+                    color: '#01142A',
+                    fontFamily: 'SF Pro Display',
+                    marginRight: '4px',
                   }}
                 >
                   {(currency && currency.symbol && currency.symbol.length > 20

@@ -2,7 +2,7 @@ import React from 'react'
 import { SvgProps } from '../types'
 import styled from 'styled-components'
 
-const swapIconSource = require('../../../../assets/images/menu/swap.svg').default
+const swapIconSource = require('../../../../assets/images/swap.svg').default
 
 const SwapIcon = styled.img`
   width: 35px;
