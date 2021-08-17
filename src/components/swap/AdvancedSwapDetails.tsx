@@ -19,7 +19,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
   const TranslateString = useI18n()
 
   return (
-    <Card>
+    <Card style={{ borderRadius: '16px' }}>
       <CardBody>
         <RowBetween>
           <RowFixed>

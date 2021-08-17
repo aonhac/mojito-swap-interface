@@ -6,8 +6,8 @@ const BarIcon = require('../../../../assets/images/menu/bar_b.svg').default
 const ActiveBarIcon = require('../../../../assets/images/menu/bar_g.svg').default
 
 const Svg = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

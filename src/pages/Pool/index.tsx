@@ -47,10 +47,11 @@ const FindButton = styled.div`
   align-items: center;
   padding: 10px 15px;
   height: 34px;
-  background: #033a6e;
-  border-radius: 2px;
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: 16px;
+  background: ${({ theme }) => theme.colors.primary};
+  border-radius: 14px;
+  font-weight: 400;
+  color: #fff;
+  font-size: 14px;
   cursor: pointer;
 `
 
@@ -124,12 +125,17 @@ export default function Pool() {
                   </Text>
                 </LightCard>
               ) : allV2PairsWithLiquidity?.length > 0 ? (
-                <LightCard padding="20px" style={{ border: `2px solid ${theme.colors.primary}`, borderRadius: '4px' }}>
+                <LightCard padding="10px" style={{ border: `2px solid ${theme.colors.primary}`, borderRadius: '16px' }}>
                   {allV2PairsWithLiquidity.map((v2Pair) => (
                     <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
                   ))}
                   <NoLiquuidityNotice>
-                    <Text width="auto" color="#033A6E" fontSize="14px" style={{ padding: '.5rem 0 .5rem 0' }}>
+                    <Text
+                      width="auto"
+                      color={theme.colors.primary}
+                      fontSize="14px"
+                      style={{ padding: '.5rem 0 .5rem 0' }}
+                    >
                       {TranslateString(106, "Don't see a pool you joined?")}
                     </Text>
                     <FindButton
@@ -154,7 +160,7 @@ export default function Pool() {
           id="join-pool-button"
           as={Link}
           to="/add/KCS"
-          style={{ margin: '20px 5% 20px', borderRadius: '4px', width: '90%', height: '60px' }}
+          style={{ margin: '10px 5% 20px', borderRadius: '16px', width: '90%', height: '48px' }}
         >
           <AddIcon style={{ marginRight: '10px' }} src={require('../../assets/images/plus.svg').default} />
           {TranslateString(168, 'Add Liquidity')}

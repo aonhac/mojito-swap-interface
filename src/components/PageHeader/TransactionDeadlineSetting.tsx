@@ -48,7 +48,7 @@ const TransactionDeadlineSetting = ({ translateString, styles }: TransactionDead
   return (
     <Box mb="16px" style={styles}>
       <Flex alignItems="center" mb="8px">
-        <Text bold>{translateString(90, 'Transaction deadline')}</Text>
+        <Text>{translateString(90, 'Transaction deadline')}</Text>
         <QuestionHelper
           text={translateString(188, 'Your transaction will revert if it is pending for more than this long.')}
         />
@@ -60,7 +60,8 @@ const TransactionDeadlineSetting = ({ translateString, styles }: TransactionDead
           min="1"
           value={value}
           onChange={handleChange}
-          style={{ borderRadius: '4px',background:'#fff',border:'1px solid #d9d9d9' }}
+          scale="md"
+          style={{ borderRadius: '4px', background: '#fff', border: '1px solid #d9d9d9', height: '48px' }}
         />
         <Text fontSize="14px" ml="8px">
           Minutes

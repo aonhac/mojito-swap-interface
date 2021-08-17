@@ -33,14 +33,15 @@ const MenuEntry = styled.div<Props>`
   display: flex;
   align-items: center;
   height: ${MENU_ENTRY_HEIGHT}px;
-  padding: ${({ secondary }) => (secondary ? '0 32px' : '0 20px')};
+  padding: ${({ secondary }) => (secondary ? '0px 32px' : '0px')};
   padding-left: 0px;
-  font-size: ${({ secondary }) => (secondary ? '14px' : '21px')};
+  font-size: ${({ secondary }) => (secondary ? '14px' : '14px')};
+  font-weight: 500;
   background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : 'transparent')};
   //  color: ${({ theme }) => theme.colors.textSubtle};
   color: ${({ isActive, theme }) => (isActive ? theme.colors.primary : '#01142A')};
   box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : 'none')};
-  border-left: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.primary}` : '2px solid transparent')};
+  border-left: ${({ isActive, theme }) => (isActive ? `1px solid ${theme.colors.primary}` : '1px solid transparent')};
 
   a {
     display: flex;

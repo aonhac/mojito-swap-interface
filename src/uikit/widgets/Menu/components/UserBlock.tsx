@@ -20,14 +20,14 @@ const ConnectButton = styled.div`
   color: #fff;
   cursor: pointer;
   display: flex;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  height: 48px;
+  height: 40px;
   justify-content: center;
   margin: 0px;
   margin-left: 18px;
   min-width: 36px;
-  width: 180px;
+  width: 140px;
   outline: none;
   padding-left: 16px;
   padding-right: 16px;

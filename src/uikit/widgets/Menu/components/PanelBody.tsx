@@ -20,7 +20,8 @@ const Container = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
-  width: 322px;
+  width: 250px;
+  padding-top: 20px;
 `
 
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {

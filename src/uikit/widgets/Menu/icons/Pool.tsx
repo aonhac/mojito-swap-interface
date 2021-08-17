@@ -6,8 +6,8 @@ const PoolIcon = require('../../../../assets/images/menu/pool_b.svg').default
 const ActivePoolIcon = require('../../../../assets/images/menu/pool_g.svg').default
 
 const Svg = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

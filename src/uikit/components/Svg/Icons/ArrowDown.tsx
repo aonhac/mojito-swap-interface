@@ -5,8 +5,8 @@ import styled from 'styled-components'
 const swapIconSource = require('../../../../assets/images/swap.svg').default
 
 const SwapIcon = styled.img`
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

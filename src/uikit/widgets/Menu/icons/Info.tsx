@@ -6,8 +6,8 @@ const InfoIcon = require('../../../../assets/images/menu/info_b.svg').default
 const ActiveInfoIcon = require('../../../../assets/images/menu/info_g.svg').default
 
 const Svg = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

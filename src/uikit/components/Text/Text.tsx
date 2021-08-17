@@ -20,7 +20,7 @@ const Text = styled.div<TextProps>`
   font-size: 16px;
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   line-height: 1.5;
-  font-family: Kanit, sans-serif;
+  font-family: 'SF Pro Display';
   ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}
   ${({ ellipsis }) =>
     ellipsis &&
