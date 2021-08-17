@@ -6,8 +6,8 @@ const TicketIcon = require('../../../../assets/images/menu/ticket_b.svg').defaul
 const ActiveTicketIcon = require('../../../../assets/images/menu/ticket_g.svg').default
 
 const Svg = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

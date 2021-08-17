@@ -10,7 +10,7 @@ const Container = styled.div`
   flex: 1;
 
   width: 100%;
-  padding: 32px 16px;
+  padding: 16px;
 
   background: url(${SwapBg}) top center no-repeat, #94b7b1;
   background-size: cover;
@@ -23,7 +23,7 @@ const Container = styled.div`
     // background-image: url('/images/arch-${({ theme }) => (theme.isDark ? 'dark' : 'light')}.svg'),
     //   url('/images/left-pancake.svg'), url('/images/right-pancake.svg');
     background-size: cover;
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 48px);
   }
 `
 

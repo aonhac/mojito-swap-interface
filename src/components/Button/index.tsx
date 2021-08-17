@@ -2,8 +2,8 @@ import { Button } from '../../uikit'
 import styled from 'styled-components'
 
 export const SwapButton = styled(Button)`
-  border-radius: 5px;
-  height: 60px;
+  border-radius: 12px;
+  height: 48px;
   font-size: 16px;
-  font-family: Kanit, sans-serif;
+  font-weight: 700;
 `

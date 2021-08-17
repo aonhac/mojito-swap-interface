@@ -11,13 +11,13 @@ const AnimatedDialogOverlay = animated(DialogOverlay)
 const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
   &[data-reach-dialog-overlay] {
     z-index: 2;
-    padding-top:85px;
-    left:230px;
+    padding-top: 85px;
+    left: 230px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background: rgba(1, 1, 1, 0.8);
   }
 `
 

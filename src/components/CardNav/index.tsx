@@ -5,8 +5,8 @@ import { ButtonMenu, ButtonMenuItem } from '../../uikit'
 import useI18n from 'hooks/useI18n'
 
 const StyledNav = styled.div`
-  margin-top: 50px;
-  margin-bottom: 46px;
+  margin-top: 48px;
+  margin-bottom: 32px;
 `
 
 function Nav({ activeIndex = 0 }: { activeIndex?: number }) {
@@ -16,16 +16,16 @@ function Nav({ activeIndex = 0 }: { activeIndex?: number }) {
       <ButtonMenu
         activeIndex={activeIndex}
         variant="subtle"
-        styles={{ height: '53px', borderRadius: '26.5px', background: '#fff' }}
+        styles={{ height: '44px', borderRadius: '22px', background: '#fff' }}
       >
         <ButtonMenuItem
           id="swap-nav-link"
           to="/swap"
           as={Link}
           style={{
-            borderRadius: '21px',
-            height: '43px',
-            fontSize: '21px',
+            borderRadius: '18px',
+            height: '36px',
+            fontSize: '16px',
             fontWeight: 600,
             color: activeIndex === 0 ? '#fff' : '#000',
           }}
@@ -37,9 +37,9 @@ function Nav({ activeIndex = 0 }: { activeIndex?: number }) {
           to="/pool"
           as={Link}
           style={{
-            borderRadius: '21px',
-            height: '43px',
-            fontSize: '21px',
+            borderRadius: '18px',
+            height: '36px',
+            fontSize: '16px',
             fontWeight: 600,
             color: activeIndex === 1 ? '#fff' : '#000',
           }}

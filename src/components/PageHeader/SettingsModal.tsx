@@ -13,7 +13,7 @@ const defaultOnDismiss = () => null
 
 const SettingsModal = ({ onDismiss = defaultOnDismiss, translateString }: SettingsModalProps) => {
   return (
-    <Modal style={{ borderRadius: 4 }} title={translateString(1200, 'Settings')} onDismiss={onDismiss}>
+    <Modal style={{ borderRadius: 16 }} title={translateString(1200, 'Settings')} onDismiss={onDismiss}>
       <SlippageToleranceSetting translateString={translateString} />
       <TransactionDeadlineSetting translateString={translateString} styles={{ marginTop: '30px' }} />
     </Modal>

@@ -30,9 +30,10 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   height: ${MENU_HEIGHT}px;
   background-color: ${({ theme }) => theme.nav.background};
   // border-bottom: solid 2px rgba(133, 133, 133, 0.1);
+  border-bottom: 1px solid rgba(115, 126, 141, 0.16);
   z-index: 20;
   transform: translate3d(0, 0, 0);
-  height: 85px;
+  height: 72px;
 `
 
 const BodyWrapper = styled.div`
@@ -41,6 +42,7 @@ const BodyWrapper = styled.div`
 `
 
 const GetMjtButton = styled.div`
+  box-sizing: border-box;
   align-items: center;
   background: none;
   background-size: auto 50%;
@@ -50,9 +52,9 @@ const GetMjtButton = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   display: flex;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  height: 48px;
+  height: 40px;
   justify-content: center;
   margin: 0px;
   width: 120px;

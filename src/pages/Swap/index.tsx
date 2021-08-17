@@ -40,14 +40,15 @@ import AppBody from '../AppBody'
 
 const SwapCurrencyContainer = styled(AutoColumn)`
   background: #f3f3f3;
-  border-radius: 10px;
+  border-radius: 16px;
+  padding: 0px;
 `
 
 const SwapButton = styled(Button)`
-  border-radius: 5px;
-  height: 60px;
+  border-radius: 12px;
+  height: 48px;
   font-size: 16px;
-  font-family: Kanit, sans-serif;
+  font-weight: 700;
   color: #fff;
 `
 
@@ -340,7 +341,7 @@ const Swap = () => {
             description={TranslateString(1192, 'Trade tokens in an instant')}
           />
           <CardBody>
-            <SwapCurrencyContainer gap="md">
+            <SwapCurrencyContainer gap="sm">
               <CurrencyInputPanel
                 label={
                   independentField === Field.OUTPUT && !showWrap && trade
@@ -359,7 +360,7 @@ const Swap = () => {
               <AutoColumn justify="space-between">
                 <AutoRow
                   justify={isExpertMode ? 'space-between' : 'center'}
-                  style={{ padding: '0 1rem', position: 'relative' }}
+                  style={{ padding: '0', position: 'relative' }}
                 >
                   <ThroughLine />
                   <ArrowWrapper
@@ -367,6 +368,7 @@ const Swap = () => {
                     style={{
                       position: 'absolute',
                       zIndex: 5,
+                      scale: 'sm',
                       // background: theme.colors.input,
                       background: 'rgb(243 243 243)',
                       opacity: 1,

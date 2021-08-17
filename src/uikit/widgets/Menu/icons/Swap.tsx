@@ -6,8 +6,8 @@ const SwapIcon = require('../../../../assets/images/menu/trade_b.svg').default
 const ActiveSwapIcon = require('../../../../assets/images/menu/trade_g.svg').default
 
 const Svg = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

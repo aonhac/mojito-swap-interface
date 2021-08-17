@@ -6,8 +6,8 @@ const HomeIcon = require('../../../../assets/images/menu/home_b.svg').default
 const ActiveHomeIcon = require('../../../../assets/images/menu/home_g.svg').default
 
 const Svg = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
 `
 
 const Icon: React.FC<SvgProps> = (props) => {

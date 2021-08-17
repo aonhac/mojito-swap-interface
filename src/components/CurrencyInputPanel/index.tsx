@@ -20,13 +20,13 @@ const InputRow = styled.div<{ selected: boolean }>`
 `
 const CurrencySelect = styled.button<{ selected: boolean }>`
   align-items: center;
-  height: 44px;
-  font-size: 16px;
+  height: 40px;
+  font-size: 18px;
   font-weight: 500;
   background-color: transparent;
   // color: ${({ selected, theme }) => (selected ? theme.colors.text : '#FFFFFF')};
   color: #fff;
-  border-radius: 4px;
+  border-radius: 8px;
   outline: none;
   cursor: pointer;
   user-select: none;
@@ -35,7 +35,7 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
 
   :focus,
   :hover {
-    background-color: ${({ theme }) => darken(0.05, '#DAEEE4')};
+    background-color: #dbdada;
     color: #fff;
   }
 `
@@ -138,7 +138,7 @@ export default function CurrencyInputPanel({
                   style={{
                     display: 'inline',
                     cursor: 'pointer',
-                    fontWeight: 700,
+                    fontWeight: 500,
                     fontFamily: 'SF Pro Display',
                     color: '#666666',
                   }}
@@ -164,7 +164,14 @@ export default function CurrencyInputPanel({
               />
               {account && currency && showMaxButton && label !== 'To' && (
                 <Button
-                  style={{ fontSize: '16px', fontFamily: 'SF Pro Display' }}
+                  style={{
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    fontFamily: 'SF Pro Display',
+                    background: '#CCE9E3',
+                    borderRadius: '8px',
+                    marginRight: '16px',
+                  }}
                   onClick={onMax}
                   scale="sm"
                   variant="text"
@@ -188,7 +195,7 @@ export default function CurrencyInputPanel({
               {pair ? (
                 <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={16} margin />
               ) : currency ? (
-                <CurrencyLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
+                <CurrencyLogo currency={currency} size="20px" style={{ marginRight: '8px' }} />
               ) : null}
               {pair ? (
                 <Text id="pair">
@@ -198,7 +205,7 @@ export default function CurrencyInputPanel({
                 <Text
                   id="pair"
                   style={{
-                    fontSize: '18px',
+                    fontSize: '14px',
                     color: '#01142A',
                     fontFamily: 'SF Pro Display',
                     marginRight: '4px',

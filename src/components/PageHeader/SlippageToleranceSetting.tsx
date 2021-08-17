@@ -77,7 +77,7 @@ const SlippageToleranceSettings = ({ translateString }: SlippageToleranceSetting
   return (
     <Box mb="16px">
       <Flex alignItems="center" mb="8px">
-        <Text bold>{translateString(88, 'Slippage tolerance')}</Text>
+        <Text>{translateString(88, 'Slippage tolerance')}</Text>
         <QuestionHelper
           text={translateString(
             186,
@@ -94,9 +94,10 @@ const SlippageToleranceSettings = ({ translateString }: SlippageToleranceSetting
               <Option key={predefinedValue}>
                 <Button
                   // style={{ borderRadius: '4px', border: `2px solid ${theme.colors.primary}` }}
-                  style={{ borderRadius: '4px',boxShadow:'none' }}
+                  style={{ borderRadius: '8px', boxShadow: 'none', height: '48px', width: '110px' }}
                   variant={value === predefinedValue ? 'primary' : 'tertiary'}
                   onClick={handleClick}
+                  scale="sm"
                 >
                   {label}
                 </Button>
@@ -107,9 +108,8 @@ const SlippageToleranceSettings = ({ translateString }: SlippageToleranceSetting
         <Flex alignItems="center">
           <Option>
             <Input
-              style={{ borderRadius: '4px',background:'#fff',border:'1px solid #d9d9d9' }}
+              style={{ borderRadius: '8px', background: '#fff', border: '1px solid #d9d9d9', height: '48px' }}
               type="number"
-              scale="lg"
               step={0.1}
               min={0.1}
               placeholder="5%"

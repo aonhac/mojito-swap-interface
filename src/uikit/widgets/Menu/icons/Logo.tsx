@@ -12,7 +12,7 @@ const LogoWrapper = styled.div`
 `
 
 const LogoIcon = styled.img`
-  width: 47px;
+  width: 42px;
   height: auto;
 `
 
