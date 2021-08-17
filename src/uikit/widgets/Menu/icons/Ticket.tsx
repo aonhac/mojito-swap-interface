@@ -2,7 +2,7 @@ import React from 'react'
 import { SvgProps } from '../../../components/Svg'
 import styled from 'styled-components'
 
-const TicketIcon = require('../../../../assets/images/menu/ticket.svg').default
+const TicketIcon = require('../../../../assets/images/menu/ticket_b.svg').default
 const ActiveTicketIcon = require('../../../../assets/images/menu/ticket_g.svg').default
 
 const Svg = styled.img`

@@ -2,7 +2,7 @@ import React from 'react'
 import { SvgProps } from '../../../components/Svg'
 import styled from 'styled-components'
 
-const HomeIcon = require('../../../../assets/images/menu/home.svg').default
+const HomeIcon = require('../../../../assets/images/menu/home_b.svg').default
 const ActiveHomeIcon = require('../../../../assets/images/menu/home_g.svg').default
 
 const Svg = styled.img`
