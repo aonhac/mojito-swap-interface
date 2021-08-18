@@ -9,7 +9,7 @@ const TradeWrap = styled.div`
   align-self: stretch;
   width: 100%;
   background: url(${TradeBg}) 330px -20px no-repeat, #fff;
-  box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
+  // box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
   border-radius: 8px;
   flex: 1;
 `
@@ -22,8 +22,7 @@ const TitleWrap = styled.div`
 `
 
 const Cup = styled.img`
-  width: 21px;
-  height: 39px;
+  width: 39px;
   margin-right: 20px;
 `
 const Content = styled.div`
@@ -40,15 +39,15 @@ const Trade: FunctionComponent = (props) => {
     <TradeWrap>
       <TitleWrap>
         <Cup src={require('../../assets/images/trade.svg').default} />
-        <Text fontSize="24px" color='#000' fontWeight={500}>
+        <Text fontSize="24px" color="primary" fontWeight={700}>
           Trade
         </Text>
       </TitleWrap>
       <Content>
-        <Text fontWeight={500} color="#000">
+        <Text fontWeight={700} color="textSubtle">
           Comming
         </Text>
-        <Text fontWeight={500} color="#000">
+        <Text fontWeight={700} color="textSubtle">
           Soon
         </Text>
       </Content>

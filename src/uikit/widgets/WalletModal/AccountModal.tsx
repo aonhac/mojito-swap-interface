@@ -14,19 +14,23 @@ interface Props {
 }
 
 const AccountModal: React.FC<Props> = ({ account, logout, onDismiss = () => null }) => (
-  <Modal title="Your wallet" onDismiss={onDismiss}>
+  <Modal title="Your wallet" minWidth="420px" onDismiss={onDismiss}>
     <Text
-      fontSize="20px"
+      fontSize="16px"
       bold
       style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginBottom: '8px' }}
     >
       {account}
     </Text>
     <Flex mb="32px">
-      <LinkExternal small href={`https://explorer.kcc.io/address/${account}`} mr="16px">
+      <LinkExternal style={{ fontSize: '14px' }} small href={`https://explorer.kcc.io/address/${account}`} mr="16px">
         View on KCC Explorer
       </LinkExternal>
-      <CopyToClipboard toCopy={account}>Copy Address</CopyToClipboard>
+      <CopyToClipboard toCopy={account}>
+        <Text style={{ fontSize: '14px' }} color="primary" fontWeight={600}>
+          Copy Address
+        </Text>
+      </CopyToClipboard>
     </Flex>
     <Flex justifyContent="center">
       <Button
