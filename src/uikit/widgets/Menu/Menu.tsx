@@ -151,7 +151,7 @@ const Menu: React.FC<NavProps> = ({
         />
         {!!login && !!logout && (
           <Flex>
-            <GetMjtButton>Get MJT</GetMjtButton>
+            {/* <GetMjtButton>Get MJT</GetMjtButton> */}
             <UserBlock account={account} login={login} logout={logout} />
           </Flex>
         )}
