@@ -41,14 +41,10 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss, translateString
   }, [allTransactions])
 
   return (
-    <Modal
-      title={translateString(1202, 'Recent transactions')}
-      onDismiss={onDismiss}
-      style={{ width: '450px !important' }}
-    >
+    <Modal title={translateString(1202, 'Recent transactions')} onDismiss={onDismiss} minWidth="440px">
       {!account && (
         <Flex justifyContent="center" flexDirection="column" alignItems="center">
-          <Text mb="8px" bold>
+          <Text mb="8px" fontSize="14px">
             Please connect your wallet to view your recent transactions
           </Text>
           <Button variant="tertiary" scale="sm" onClick={onDismiss}>

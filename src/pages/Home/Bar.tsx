@@ -7,8 +7,9 @@ const BarWrap = styled.div`
   align-self: stretch;
   width: 100%;
   background: #fff;
-  box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
+  // box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
   border-radius: 8px;
+  background: #5dda98;
 `
 
 const TitleWrap = styled.div`
@@ -36,16 +37,22 @@ const Bar: FunctionComponent = (props) => {
   return (
     <BarWrap>
       <TitleWrap>
-        <Cup src={require('../../assets/images/whitecup.svg').default} style={{fill:'#5DDA98'}} />
-        <Text fontSize="20px" color="#000" fontWeight={500} fontFamily='font-family: Kanit, sans-serif;'>
+        <Cup src={require('../../assets/images/whitecup.svg').default} style={{ fill: '#fff' }} />
+        <Text fontSize="24px" color="#fff" fontWeight={700}>
           Bar
         </Text>
       </TitleWrap>
       <Content>
-        <Text style={{ marginTop: '100px' }} fontSize="24px" fontWeight={500} color="#000" fontFamily='font-family: Kanit, sans-serif;'>
+        <Text
+          style={{ marginTop: '100px' }}
+          fontSize="24px"
+          fontWeight={700}
+          color="#fff"
+          fontFamily="font-family: Kanit, sans-serif;"
+        >
           Comming
         </Text>
-        <Text fontSize="24px" fontWeight={500} color="#000" fontFamily='font-family: Kanit, sans-serif;'>
+        <Text fontSize="24px" fontWeight={700} color="#fff">
           Soon
         </Text>
       </Content>

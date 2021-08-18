@@ -6,13 +6,13 @@ import { RowBetween } from '../../components/Row'
 import TVL from './TVL'
 import Trade from './Trade'
 
-const HomeBg = require('../../assets/images/background.png').default
+const HomeBg = require('../../assets/images/trade-bg.png').default
 
 const HomePageWrap = styled.div`
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 64px);
-  background: url(${HomeBg}) top center no-repeat;
+  min-height: calc(100vh - 48px);
+  background: url(${HomeBg}) top center no-repeat, #94b7b1;
   background-size: cover;
 `
 
@@ -36,7 +36,7 @@ const BrandWrap = styled.div`
   width: 100%;
   height: 175px;
   position: relative;
-  box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
+  // box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
   border-radius: 8px;
 `
 const CartoonLogo = styled.img`
@@ -84,10 +84,10 @@ const index: FunctionComponent = (props) => {
           <CartoonLogo src={require('../../assets/images/cow.png').default} />
           <NameWrap>
             {/* eslint-disable-next-line react/jsx-no-undef */}
-            <Text fontSize="28px" fontWeight={500} color="#000">
+            <Text fontSize="28px" fontWeight={700} color="text">
               Mojito Finance
             </Text>
-            <Text fontSize="18px" fontWeight={400} color="#000" style={{ marginTop: '10px' }}>
+            <Text fontSize="18px" fontWeight="normal" color="#01142A" style={{ marginTop: '10px' }}>
               The #1 AMM and yield farm on KCC
             </Text>
           </NameWrap>
