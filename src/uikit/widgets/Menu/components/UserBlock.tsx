@@ -12,30 +12,44 @@ interface Props {
 
 const ConnectButton = styled.div`
   align-items: center;
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  background: ${({ theme }) => theme.colors.primary};
-  background-size: auto 50%;
-  border-radius: 8px;
+  // background: ${({ theme }) => theme.colors.primary};
+  border-radius: 18px;
   box-sizing: border-box;
-  color: #fff;
   cursor: pointer;
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  height: 40px;
+  height: 36px;
   justify-content: center;
   margin: 0px;
   margin-left: 18px;
   min-width: 36px;
   width: 140px;
   outline: none;
-  padding-left: 16px;
-  padding-right: 16px;
   white-space: nowrap;
   // display: inline-block;
+  background: linear-gradient(115deg, #94b7b1, rgb(7, 188, 113), #3bd590, #009c7e, #96c766);
+
   &:hover {
-    background: ${({ theme }) => theme.colors.primary};
-    border: 2px solid ${({ theme }) => theme.colors.primary};
+    //background: ${({ theme }) => theme.colors.primary};
+    // border: 2px solid ${({ theme }) => theme.colors.primary};
+  }
+`
+
+const ConnectButtonText = styled.div`
+  height: 32px;
+  border-radius: 16px;
+  color: ${({ theme }) => theme.colors.primary};
+  background: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 136px;
+  opacity: 0.97;
+  &:hover {
+    opacity: 0.8;
   }
 `
 
@@ -50,7 +64,7 @@ const UserBlock: React.FC<Props> = ({ account, login, logout }) => {
             onPresentAccountModal()
           }}
         >
-          {accountEllipsis}
+          <ConnectButtonText>{accountEllipsis}</ConnectButtonText>
         </ConnectButton>
       ) : (
         <ConnectButton
@@ -58,7 +72,7 @@ const UserBlock: React.FC<Props> = ({ account, login, logout }) => {
             onPresentConnectModal()
           }}
         >
-          Connect Wallet
+          <ConnectButtonText> Connect Wallet</ConnectButtonText>
         </ConnectButton>
       )}
     </>

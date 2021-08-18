@@ -14,7 +14,7 @@ interface Props {
 }
 
 const AccountModal: React.FC<Props> = ({ account, logout, onDismiss = () => null }) => (
-  <Modal title="Your wallet" minWidth="420px" onDismiss={onDismiss}>
+  <Modal title="Your wallet" minWidth="460px" onDismiss={onDismiss}>
     <Text
       fontSize="16px"
       bold
