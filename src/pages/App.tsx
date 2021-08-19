@@ -21,6 +21,8 @@ import { LanguageContext } from '../hooks/LanguageContext'
 import { TranslationsContext } from '../hooks/TranslationsContext'
 
 import Menu from '../components/Menu'
+import Farms from './Farms'
+import Pools from './Pools'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -90,6 +92,8 @@ export default function App() {
                       <Route exact strict path="/pool" component={Pool} />
                       <Route exact path="/migrate" component={Migration} />
                       <Route exact path="/add" component={AddLiquidity} />
+                      <Route path="/farm" component={Farms} />
+                      <Route path="/pools" component={Pools} />
                       <Route exact path="/" component={Home} />
 
                       <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
@@ -97,6 +101,7 @@ export default function App() {
                       <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
                       <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
                       <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
+
                       <Route path="*" component={NotFound} />
                     </Switch>
                   </Web3ReactManager>

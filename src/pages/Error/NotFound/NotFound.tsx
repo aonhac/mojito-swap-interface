@@ -19,8 +19,8 @@ const NotFound = styled.div`
 `
 
 const Modal = styled.div`
-  width: 587px;
-  height: 538px;
+  width: 480px;
+  height: 400px;
   background: #ffffff;
   box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
   border-radius: 8px;
@@ -34,22 +34,20 @@ const Modal = styled.div`
 
 const LogoIcon = styled.img`
   margin-top: 30px;
-  width: 140px;
+  width: 80px;
   height: auto;
 `
 
 const Number404 = styled.div`
-  margin-top: 20px;
-  height: 54px;
+  margin-top: 0px;
   font-weight: bold;
   color: #5dda98;
-  font-size: 36px;
-  line-height: 40px;
+  font-size: 20px;
 `
 
 const BuildImage = styled.img`
-  margin-top: 30px;
-  height: 200px;
+  margin-top: 0px;
+  height: 120px;
 `
 
 export default function Notfound() {
@@ -58,9 +56,12 @@ export default function Notfound() {
     <NotFound>
       <Modal>
         <LogoIcon src={require('../../../assets/images/logo.svg').default} />
-        <BuildImage src={require('../../../assets/images/build.svg').default} style={{padding:'18px',marginBottom:'10px'}} />
-        <Number404>`Wait Building`</Number404>
-        <Text color="#033a6e" style={{ marginTop: '20px' }}>
+        <BuildImage
+          src={require('../../../assets/images/build.svg').default}
+          style={{ padding: '18px', marginBottom: '10px' }}
+        />
+        <Number404>Wait Building</Number404>
+        <Text color="text" style={{ marginTop: '0px' }}>
           This page is under development.
         </Text>
         <SwapButton

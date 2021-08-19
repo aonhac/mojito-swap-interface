@@ -1,4 +1,5 @@
 import { ChainId, JSBI, Percent, Token, WETH } from 'mojito-sdk'
+import BigNumber from 'bignumber.js'
 
 export const ROUTER_ADDRESS = '0xC9B843f9ADa3ff838CB5c91D7Db859F2d06AD153'
 
@@ -71,3 +72,16 @@ export const BLOCKED_PRICE_IMPACT_NON_EXPERT: Percent = new Percent(JSBI.BigInt(
 
 // used to ensure the user doesn't send so much ETH so they end up with <.01
 export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16)) // .01 ETH
+
+export const KCC_BLOCK_TIME = 3
+
+export const MJT_PER_BLOCK = new BigNumber(40)
+export const BLOCKS_PER_YEAR = new BigNumber((60 / KCC_BLOCK_TIME) * 60 * 24 * 365) // 10512000
+export const BASE_URL = 'https://mojitoswap.finance'
+export const BASE_EXCHANGE_URL = process.env.REACT_OFFICIAL_URL
+export const BASE_ADD_LIQUIDITY_URL = `${BASE_EXCHANGE_URL}/#/add`
+export const BASE_LIQUIDITY_POOL_URL = `${BASE_EXCHANGE_URL}/#/pool`
+export const LOTTERY_MAX_NUMBER_OF_TICKETS = 50
+export const LOTTERY_TICKET_PRICE = 1
+
+export { default as poolsConfig } from './pools'
