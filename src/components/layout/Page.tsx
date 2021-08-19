@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router'
 import { customMeta, DEFAULT_META } from 'constants/meta'
 import { usePriceCakeBusd } from 'state/hooks'
@@ -22,7 +21,7 @@ const StyledPage = styled(Container)`
   }
 `
 
-const PageMeta = () => {
+const PageMeta = (): any => {
   const { pathname } = useLocation()
   const cakePriceUsd = usePriceCakeBusd()
   const cakePriceUsdDisplay = cakePriceUsd.eq(0)
@@ -45,7 +44,7 @@ const PageMeta = () => {
   )
 }
 
-const Page: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+const Page: React.FC<any> = ({ children, ...props }) => {
   return (
     <>
       <StyledPage {...props}>{children}</StyledPage>

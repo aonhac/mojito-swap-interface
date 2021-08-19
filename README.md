@@ -1,6 +1,6 @@
-# 🥞 Mojito Swap Exchange Testnet
+#  Mojito Swap Exchange Testnet
 
-Live at: https://mojito.finance
+Live at: https://app.mojitoswap.finance
 
 This repo is for developer community to develop and test smart contracts in testnet environment.
 

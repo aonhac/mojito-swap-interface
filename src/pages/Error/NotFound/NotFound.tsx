@@ -47,7 +47,8 @@ const Number404 = styled.div`
 
 const BuildImage = styled.img`
   margin-top: 0px;
-  height: 120px;
+  height: 180px;
+  margin-right: 50px;
 `
 
 export default function Notfound() {
@@ -60,12 +61,11 @@ export default function Notfound() {
           src={require('../../../assets/images/build.svg').default}
           style={{ padding: '18px', marginBottom: '10px' }}
         />
-        <Number404>Wait Building</Number404>
-        <Text color="text" style={{ marginTop: '0px' }}>
+        <Text color="textSubtle" bold style={{ marginTop: '0px', fontSize: '16px' }}>
           This page is under development.
         </Text>
         <SwapButton
-          style={{ width: '100%', height: '60px', marginTop: '20px' }}
+          style={{ width: '100%', height: '48px', marginTop: '30px' }}
           onClick={() => {
             history.push('/home')
           }}
