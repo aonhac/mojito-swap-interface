@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import { Pair } from 'mojito-sdk'
+import { Pair } from 'mojito-testnet-sdk'
 import { Button, CardBody, Text } from '../../uikit'
 import CardNav from 'components/CardNav'
 import Question from 'components/QuestionHelper'

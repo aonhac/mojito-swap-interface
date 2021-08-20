@@ -15002,6 +15002,19 @@ mojito-sdk@^0.0.3:
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
+mojito-testnet-sdk@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/mojito-testnet-sdk/-/mojito-testnet-sdk-0.0.1.tgz#4f663e3c9475c7982d44124b0668a9d2c1ef19bc"
+  integrity sha512-dXOZdJy/WKs1/GVMhgA+jbauRp6HuxhHMMaY755AYGO/t9MigyJge+ZPT/w6FLjvw5ndhHdzOa2mVRfDm9IwBg==
+  dependencies:
+    "@pancakeswap-libs/pancake-swap-core" "^0.1.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
+
 moment@^2.27.0:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"

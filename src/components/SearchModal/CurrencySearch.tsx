@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from 'mojito-sdk'
+import { Currency, ETHER, Token } from 'mojito-testnet-sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Text, CloseIcon } from '../../uikit'
 import { useSelector } from 'react-redux'

@@ -27,6 +27,7 @@ import { RowProps } from './components/FarmTable/Row'
 import ToggleView from './components/ToggleView/ToggleView'
 import { DesktopColumnSchema, ViewMode } from './components/types'
 import Select, { OptionProps } from './components/Select/Select'
+import { useDispatch } from 'react-redux'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -124,7 +125,7 @@ const Farms: React.FC = () => {
   const [sortOption, setSortOption] = useState('hot')
   const prices = useGetApiPrices()
 
-  const dispatch = useAppDispatch()
+  const dispatch = useDispatch()
   const { fastRefresh } = useRefresh()
   useEffect(() => {
     if (account) {
