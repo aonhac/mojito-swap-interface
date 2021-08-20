@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from 'mojito-sdk'
+import { CurrencyAmount, ETHER, JSBI } from 'mojito-testnet-sdk'
 import { MIN_ETH } from '../constants'
 
 /**

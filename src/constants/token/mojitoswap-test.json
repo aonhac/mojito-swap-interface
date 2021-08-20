@@ -14,6 +14,13 @@
   ],
   "tokens": [
     {
+      "name": "MojitoSwap Token",
+      "symbol": "MJT",
+      "address": "0xAe2933C2aD27984983f9396e25218a70fC791812",
+      "chainId": 322,
+      "decimals": 18
+    },
+    {
       "name": "KCC-Peg Wrapped ETH",
       "symbol": "WETH",
       "address": "0xF8Cb9f1D136Ff4c883320b5B4fa80048b888F459",

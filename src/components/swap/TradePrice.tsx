@@ -1,5 +1,5 @@
 import React from 'react'
-import { Price } from 'mojito-sdk'
+import { Price } from 'mojito-testnet-sdk'
 import { SyncAltIcon, Text } from '../../uikit'
 import { StyledBalanceMaxMini } from './styleds'
 

@@ -20,6 +20,7 @@ import {
 } from './actions'
 import { State, Farm, Pool, ProfileState, TeamsState, AchievementState, PriceState } from './types'
 import { fetchPrices } from './prices'
+import { setBlock } from './block'
 
 export const useFetchPublicData = () => {
   const dispatch = useAppDispatch()
@@ -33,7 +34,7 @@ export const useFetchPublicData = () => {
     const web3 = getWeb3NoAccount()
     const interval = setInterval(async () => {
       const blockNumber = await web3.eth.getBlockNumber()
-      // dispatch(setBlock(blockNumber))
+      dispatch(setBlock(blockNumber))
     }, 6000)
 
     return () => clearInterval(interval)

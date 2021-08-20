@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from 'mojito-sdk'
+import { ChainId } from 'mojito-testnet-sdk'
 
 export interface SerializableTransactionReceipt {
   to: string

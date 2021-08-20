@@ -1,20 +1,14 @@
-import { ChainId, JSBI, Percent, Token, WETH } from 'mojito-sdk'
+import { ChainId, JSBI, Percent, Token, WETH, ROUTER_ADDRESS } from 'mojito-testnet-sdk'
 import BigNumber from 'bignumber.js'
 
-export const ROUTER_ADDRESS = '0xC9B843f9ADa3ff838CB5c91D7Db859F2d06AD153'
+export { ROUTER_ADDRESS }
 
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const MJT = new Token(
-  ChainId.MAINNET,
-  '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
-  18,
-  'MJT',
-  'MojitoSwap Token'
-)
+export const MJT = new Token(322, '0xAe2933C2aD27984983f9396e25218a70fC791812', 18, 'MJT', 'MojitoSwap Token')
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],

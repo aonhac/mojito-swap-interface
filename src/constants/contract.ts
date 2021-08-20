@@ -1,10 +1,10 @@
 export default {
   masterChef: {
-    322: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
+    322: '0x3d381B521c7d711EdbC3932969434b6450949498',
     321: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
   },
   sousChef: {
-    322: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
+    322: '0x6294567466C7E9Ed4561ebE3C515F3c00215D71F',
     321: '0x6ab8463a4185b80905e05a9ff80a2d6b714b9e95',
   },
   lottery: {

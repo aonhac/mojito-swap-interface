@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from 'mojito-sdk'
+import { currencyEquals, Trade } from 'mojito-testnet-sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

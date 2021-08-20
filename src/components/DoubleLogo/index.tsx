@@ -1,4 +1,4 @@
-import { Currency } from 'mojito-sdk'
+import { Currency } from 'mojito-testnet-sdk'
 import React from 'react'
 import styled from 'styled-components'
 import CurrencyLogo from '../CurrencyLogo'

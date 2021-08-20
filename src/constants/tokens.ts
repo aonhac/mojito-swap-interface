@@ -3,6 +3,19 @@ const tokens = {
     symbol: 'BNB',
     projectLink: 'https://www.binance.com/',
   },
+  kcs: {
+    symbol: 'KCS',
+    projectLink: 'https://www.binance.com/',
+  },
+  wkcs: {
+    symbol: 'WKCS',
+    address: {
+      321: '0x6551358EDC7fee9ADAB1E2E49560E68a12E82d9e',
+      322: '0x4446fc4eb47f2f6586f9faab68b3498f86c07521',
+    },
+    decimals: 18,
+    projectLink: '',
+  },
   cake: {
     symbol: 'CAKE',
     address: {
@@ -12,194 +25,33 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://pancakeswap.finance/',
   },
-  txl: {
-    symbol: 'TXL',
+  usdt: {
+    symbol: 'USDT',
     address: {
-      321: '0x1ffd0b47127fdd40322e54521c9e2c7f0d66aafc5',
-      322: '',
+      321: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+      322: '0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc',
     },
     decimals: 18,
-    projectLink: 'https://tixl.org/',
+    projectLink: '',
   },
-  cos: {
-    symbol: 'COS',
+  usdc: {
+    symbol: 'USDT',
     address: {
-      321: '0x96Dd399F9c3AFda1F194182F71600F1B65946501',
-      322: '',
+      321: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+      322: '0xD6c7E27a598714c2226404Eb054e0c074C906Fc9',
     },
     decimals: 18,
-    projectLink: 'https://www.contentos.io/',
+    projectLink: '',
   },
-  bunny: {
-    symbol: 'BUNNY',
+
+  mjt: {
+    symbol: 'MJT',
     address: {
-      321: '0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51',
-      322: '',
+      321: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+      322: '0xAe2933C2aD27984983f9396e25218a70fC791812',
     },
     decimals: 18,
-    projectLink: 'https://pancakebunny.finance/',
-  },
-  alice: {
-    symbol: 'ALICE',
-    address: {
-      321: '0xac51066d7bec65dc4589368da368b212745d63e8',
-      322: '',
-    },
-    decimals: 6,
-    projectLink: 'https://www.myneighboralice.com/',
-  },
-  for: {
-    symbol: 'FOR',
-    address: {
-      321: '0x658A109C5900BC6d2357c87549B651670E5b0539',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://www.for.tube/home',
-  },
-  bux: {
-    symbol: 'BUX',
-    address: {
-      321: '0x211ffbe424b90e25a15531ca322adf15532279e45',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://getbux.com/bux-crypto/',
-  },
-  nuls: {
-    symbol: 'NULS',
-    address: {
-      321: '0x8cd6e29d3686d24d3c2018cee54621ea0f89313b',
-      322: '',
-    },
-    decimals: 8,
-    projectLink: 'https://www.nuls.io/',
-  },
-  belt: {
-    symbol: 'BELT',
-    address: {
-      321: '0xE0e514c71282b6f4e823703a39374Cf58dc3eA4f',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://beta.belt.fi/',
-  },
-  ramp: {
-    symbol: 'RAMP',
-    address: {
-      321: '0x8519ea49c9322f50ceffa444d240fb655e89248aa',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://rampdefi.com/',
-  },
-  bfi: {
-    symbol: 'BFI',
-    address: {
-      321: '0x81859801b01764d4f0fa5e64729f5a6c3b91435b',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://bearn.fi/',
-  },
-  dexe: {
-    symbol: 'DEXE',
-    address: {
-      321: '0x039cb485212f996a9dbb85a9a75d898f94d38da6',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://dexe.network/',
-  },
-  bel: {
-    symbol: 'BEL',
-    address: {
-      321: '0x8443f0919322f06a61670b735ed92734f32128692f',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://bella.fi/',
-  },
-  tpt: {
-    symbol: 'TPT',
-    address: {
-      321: '0xeca41281c24451168a37211f0bc2b8645af45092',
-      322: '',
-    },
-    decimals: 4,
-    projectLink: 'https://www.tokenpocket.pro/',
-  },
-  watch: {
-    symbol: 'WATCH',
-    address: {
-      321: '0x7a9f28eb62c791422aa23ceae1da9c847cbec9b0',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://yieldwatch.net/',
-  },
-  xmark: {
-    symbol: 'xMARK',
-    address: {
-      321: '0x26a5dfab467d4f58fb266648cae769503cec9580',
-      322: '',
-    },
-    decimals: 9,
-    projectLink: 'https://benchmarkprotocol.finance/',
-  },
-  bmxx: {
-    symbol: 'bMXX',
-    address: {
-      321: '0x4131b87f74415190425ccd873048c708f8005823',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://multiplier.finance/',
-  },
-  iotx: {
-    symbol: 'IOTX',
-    address: {
-      321: '0x9678e42cebeb63f231322d726b29b1cb20d0064e5',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://iotex.io/',
-  },
-  bor: {
-    symbol: 'BOR',
-    address: {
-      321: '0x92d77321c60dcfd4c689290e8a9f4d263b3b32241',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://www.boringdao.com/',
-  },
-  bopen: {
-    symbol: 'bOPEN',
-    address: {
-      321: '0xf35262a9d427f96d2437379ef090db986eae5d42',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://opendao.io/',
-  },
-  dodo: {
-    symbol: 'DODO',
-    address: {
-      321: '0x67ee3cb086f8a16f34bee3ca72fad36f7db929e2',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://dodoex.io/',
-  },
-  swingby: {
-    symbol: 'SWINGBY',
-    address: {
-      321: '0x71de20e0c4616e7fcbfdd3f875d3218492cbe4739',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://swingby.network/',
+    projectLink: 'https://mojitoswap.finance/',
   },
   bry: {
     symbol: 'BRY',
@@ -669,15 +521,7 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://litecoin.org/',
   },
-  usdc: {
-    symbol: 'USDC',
-    address: {
-      321: '0x8ac76a51cc950d9822d68b83fe1ad322b32cd580d',
-      322: '',
-    },
-    decimals: 18,
-    projectLink: 'https://www.centre.io/usdc',
-  },
+
   dai: {
     symbol: 'DAI',
     address: {
@@ -731,15 +575,6 @@ const tokens = {
     },
     decimals: 18,
     projectLink: 'https://chain.link/',
-  },
-  usdt: {
-    symbol: 'USDT',
-    address: {
-      322: '0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5',
-      321: '0x55d398326f99059ff775485246999027b31322955',
-    },
-    decimals: 18,
-    projectLink: 'https://tether.to/',
   },
   btcb: {
     symbol: 'BTCB',
