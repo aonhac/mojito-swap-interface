@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from 'mojito-sdk'
+import { Currency, ETHER, Token } from 'mojito-testnet-sdk'
 
 export function currencyId(currency: Currency): string {
   if (currency === ETHER) return 'KCS'

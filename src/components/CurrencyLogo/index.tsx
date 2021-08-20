@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from 'mojito-sdk'
+import { Currency, ETHER, Token } from 'mojito-testnet-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import useHttpLocations from '../../hooks/useHttpLocations'

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Fraction, Percent } from 'mojito-sdk'
+import { Currency, CurrencyAmount, Fraction, Percent } from 'mojito-testnet-sdk'
 import React from 'react'
 import { Button, Text } from '../../uikit'
 import { TranslateString } from 'utils/translateTextHelpers'

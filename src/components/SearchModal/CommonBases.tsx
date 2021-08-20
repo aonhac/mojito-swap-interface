@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from '../../uikit'
-import { ChainId, Currency, currencyEquals, ETHER, Token } from 'mojito-sdk'
+import { ChainId, Currency, currencyEquals, ETHER, Token } from 'mojito-testnet-sdk'
 import styled from 'styled-components'
 
 import useI18n from 'hooks/useI18n'

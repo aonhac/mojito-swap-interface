@@ -1,4 +1,4 @@
-import { Trade, TradeType } from 'mojito-sdk'
+import { Trade, TradeType } from 'mojito-testnet-sdk'
 import React, { useMemo, useState } from 'react'
 import { Text, Button } from '../../uikit'
 import { Repeat } from 'react-feather'

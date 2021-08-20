@@ -1,5 +1,5 @@
 import React, { useState, useCallback, CSSProperties } from 'react'
-import { Currency, Pair } from 'mojito-sdk'
+import { Currency, Pair } from 'mojito-testnet-sdk'
 import { Button, ChevronDownIcon, Text } from '../../uikit'
 import styled, { useTheme } from 'styled-components'
 import { darken } from 'polished'

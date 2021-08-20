@@ -1,4 +1,4 @@
-import { Token } from 'mojito-sdk'
+import { Token } from 'mojito-testnet-sdk'
 import { isAddress } from '../../utils'
 
 export function filterTokens(tokens: Token[], search: string): Token[] {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Currency, Percent, Price } from 'mojito-sdk'
+import { Currency, Percent, Price } from 'mojito-testnet-sdk'
 import { Text } from '../../uikit'
 import { AutoColumn } from '../../components/Column'
 import { AutoRow } from '../../components/Row'

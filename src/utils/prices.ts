@@ -1,4 +1,4 @@
-import { CurrencyAmount, Fraction, JSBI, Percent, TokenAmount, Trade } from 'mojito-sdk'
+import { CurrencyAmount, Fraction, JSBI, Percent, TokenAmount, Trade } from 'mojito-testnet-sdk'
 import {
   BLOCKED_PRICE_IMPACT_NON_EXPERT,
   ALLOWED_PRICE_IMPACT_HIGH,
@@ -9,7 +9,7 @@ import {
 import { Field } from '../state/swap/actions'
 import { basisPointsToPercent } from './index'
 
-const BASE_FEE = new Percent(JSBI.BigInt(20), JSBI.BigInt(10000))
+const BASE_FEE = new Percent(JSBI.BigInt(30), JSBI.BigInt(10000))
 const ONE_HUNDRED_PERCENT = new Percent(JSBI.BigInt(10000), JSBI.BigInt(10000))
 const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(BASE_FEE)
 
@@ -20,6 +20,7 @@ export function computeTradePriceBreakdown(trade?: Trade): {
 } {
   // for each hop in our trade, take away the x*y=k price impact from 0.2% fees
   // e.g. for 3 tokens/2 hops: 1 - ((1 - .02) * (1-.02))
+
   const realizedLPFee = !trade
     ? undefined
     : ONE_HUNDRED_PERCENT.subtract(
