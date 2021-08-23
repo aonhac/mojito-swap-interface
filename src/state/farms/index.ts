@@ -8,6 +8,7 @@ import {
   fetchFarmUserTokenBalances,
   fetchFarmUserStakedBalances,
 } from './fetchFarmUser'
+
 import { FarmsState, Farm } from '../types'
 
 const initialState: FarmsState = { data: [...farmsConfig] }
@@ -41,8 +42,10 @@ export const fetchFarmsPublicDataAsync = () => async (dispatch) => {
   const farms = await fetchFarms()
   dispatch(setFarmsPublicData(farms))
 }
+
 export const fetchFarmUserDataAsync = (account) => async (dispatch) => {
-  const userFarmAllowances = await fetchFarmUserAllowances(account)
+  const userFarmAllowances = await fetchFarmUserAllowances(account) // error
+
   const userFarmTokenBalances = await fetchFarmUserTokenBalances(account)
   const userStakedBalances = await fetchFarmUserStakedBalances(account)
   const userFarmEarnings = await fetchFarmUserEarnings(account)

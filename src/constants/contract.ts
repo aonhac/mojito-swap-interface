@@ -17,7 +17,7 @@ export default {
   },
   mulltiCall: {
     321: '0x1ee38d535d541c55c9dae27b12edf090c608e6fb',
-    322: '0x67ADCB4dF3931b0C5Da724058ADC2174a9844412',
+    322: '0x081464aCF4Fa445c303B04f15e7448fC61A7Ce30',
   },
   pancakeProfile: {
     321: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
