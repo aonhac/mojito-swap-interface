@@ -45,6 +45,13 @@ export const CardBtn = styled(Button)`
   box-shadow: none;
 `
 
+export const CardBodyFeat = styled(CardBody)`
+  width: 392px;
+  margin: 0 auto 20px auto;
+  border: 1px solid rgba(115,126,141,0.16);
+  border-radius: 12px;
+`
+
 interface PositionCardProps {
   pair: Pair
   // eslint-disable-next-line react/no-unused-prop-types
@@ -57,9 +64,8 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
   const { account } = useActiveWeb3React()
 
   const theme = useTheme()
-
-  const currency0 = showUnwrapped ? pair.token0 : unwrappedToken(pair.token0)
-  const currency1 = showUnwrapped ? pair.token1 : unwrappedToken(pair.token1)
+  const currency0 = showUnwrapped ? unwrappedToken(pair.token0) : pair.token0
+  const currency1 = showUnwrapped ? unwrappedToken(pair.token1) : pair.token1
 
   const [showMore, setShowMore] = useState(false)
 
@@ -81,15 +87,16 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
   return (
     <>
       {userPoolBalance && (
-        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: '400px' }}>
+        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: '440px' }}>
           <Text
             style={{
               padding: 0,
               width: '100%',
               height: '40px',
               lineHeight: '50px',
+              margin: '8px 0 10px 0',
               textTransform: 'uppercase',
-              fontWeight: 500,
+              fontWeight: 700,
               textAlign: 'center',
               color: `${theme.colors.text}`,
             }}
@@ -99,8 +106,8 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
             LP Tokens in your Wallet
           </Text>
 
-          <CardBody style={{ width: '100%' }}>
-            <AutoColumn gap="12px" style={{ width: '100%', padding: '0px 20px 20px 20px' }}>
+          <CardBodyFeat>
+            <AutoColumn gap="12px" style={{ width: '100%', padding: '14px 20px 20px 20px' }}>
               <FixedHeightRow onClick={() => setShowMore(!showMore)}>
                 <RowFixed>
                   <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24} />
@@ -109,12 +116,19 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
                   </Text>
                 </RowFixed>
                 <RowFixed>
-                  <Text fontSize="14px" color={theme.colors.textSubtle} fontWeight={500}>
+                  <Text fontSize="14px" color={theme.colors.primary} fontWeight={700}>
                     {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
                   </Text>
                 </RowFixed>
               </FixedHeightRow>
-              <AutoColumn gap="4px">
+              <AutoColumn 
+                gap="16px" 
+                style={{ 
+                  background: theme.colors.backgroundCard,
+                  borderRadius: '8px',
+                  padding: '24px',
+                  marginTop: '10px',
+                }}>
                 <FixedHeightRow>
                   <Text fontSize="14px" fontWeight={500}>
                     {currency0.symbol}:
@@ -145,7 +159,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
                 </FixedHeightRow>
               </AutoColumn>
             </AutoColumn>
-          </CardBody>
+          </CardBodyFeat>
         </UIKitCard>
       )}
     </>
@@ -158,7 +172,6 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
   const history = useHistory()
 
   const theme = useTheme()
-
   const currency0 = unwrappedToken(pair.token0)
   const currency1 = unwrappedToken(pair.token1)
 
