@@ -1,7 +1,6 @@
 import { Trade, TradeType } from 'mojito-testnet-sdk'
 import React, { useMemo, useState } from 'react'
-import { Text, Button } from '../../uikit'
-import { Repeat } from 'react-feather'
+import { Text, Button, SyncAltIcon } from '../../uikit'
 
 import useI18n from 'hooks/useI18n'
 import { Field } from '../../state/swap/actions'
@@ -44,7 +43,7 @@ export default function SwapModalFooter({
     <>
       <AutoColumn gap="0px">
         <RowBetween align="center">
-          <Text fontSize="14px">Price</Text>
+          <Text fontSize="14px" color="textRemark">Price</Text>
           <Text
             fontSize="14px"
             style={{
@@ -58,14 +57,14 @@ export default function SwapModalFooter({
           >
             {formatExecutionPrice(trade, showInverted)}
             <StyledBalanceMaxMini onClick={() => setShowInverted(!showInverted)}>
-              <Repeat size={14} />
+              <SyncAltIcon width="20px" color="primary"/>
             </StyledBalanceMaxMini>
           </Text>
         </RowBetween>
 
         <RowBetween>
           <RowFixed>
-            <Text fontSize="14px">
+            <Text fontSize="14px" color="textRemark">
               {trade.tradeType === TradeType.EXACT_INPUT
                 ? TranslateString(1210, 'Minimum received')
                 : TranslateString(220, 'Maximum sold')}
@@ -92,7 +91,7 @@ export default function SwapModalFooter({
         </RowBetween>
         <RowBetween>
           <RowFixed>
-            <Text fontSize="14px">{TranslateString(226, 'Price Impact')}</Text>
+            <Text fontSize="14px" color="textRemark">{TranslateString(226, 'Price Impact')}</Text>
             <QuestionHelper
               text={TranslateString(224, 'The difference between the market price and your price due to trade size.')}
             />
@@ -101,7 +100,7 @@ export default function SwapModalFooter({
         </RowBetween>
         <RowBetween>
           <RowFixed>
-            <Text fontSize="14px">{TranslateString(228, 'Liquidity Provider Fee')}</Text>
+            <Text fontSize="14px" color="textRemark">{TranslateString(228, 'Liquidity Provider Fee')}</Text>
             <QuestionHelper
               text={TranslateString(
                 999,

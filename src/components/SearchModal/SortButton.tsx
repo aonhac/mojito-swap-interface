@@ -4,16 +4,21 @@ import styled from 'styled-components'
 import { RowFixed } from '../Row'
 
 export const FilterWrapper = styled(RowFixed)`
-  padding: 8px;
   background-color: ${({ theme }) => theme.colors.invertedContrast};
   color: ${({ theme }) => theme.colors.text};
   border-radius: 8px;
   user-select: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
   & > * {
     user-select: none;
   }
   :hover {
     cursor: pointer;
+    background: #EAEAEA;
+    border-radius: 6px; 
   }
 `
 

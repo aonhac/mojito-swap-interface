@@ -38,11 +38,15 @@ interface CurrencySearchProps {
 const ThroughLine = styled.div`
   width: 100%;
   height: 1px;
-  opacity: 0.27;
+  opacity: 0.25;
   background: #979797;
   position: relative;
   top: 2px;
-  left: 0;
+  left: -20px;
+  margin-bottom: 8px;
+  padding: 0 20px;
+  box-sizing: content-box;
+}
 `
 
 export function CurrencySearch({
@@ -149,9 +153,9 @@ export function CurrencySearch({
   const TranslateString = useI18n()
   return (
     <Column style={{ width: '100%', flex: '1 1', borderRadius: '16px' }}>
-      <PaddedColumn gap="14px">
+      <PaddedColumn gap="14px" style={{paddingBottom: '0px'}}>
         <RowBetween>
-          <Text fontSize="20px" color="text" style={{ fontWeight: 500 }}>
+          <Text fontSize="20px" color="text" style={{ fontWeight: 700 }}>
             {TranslateString(82, 'Select a token')}
             <QuestionHelper
               text={TranslateString(
@@ -163,7 +167,7 @@ export function CurrencySearch({
           <CloseIcon style={{ cursor: 'pointer' }} onClick={onDismiss} />
         </RowBetween>
 
-        {/* <ThroughLine /> */}
+        <ThroughLine />
 
         <SearchInput
           type="text"
@@ -178,12 +182,12 @@ export function CurrencySearch({
           <CommonBases chainId={chainId} onSelect={handleCurrencySelect} selectedCurrency={selectedCurrency} />
         )}
         <RowBetween>
-          <Text fontSize="14px">{TranslateString(126, 'Token name')}</Text>
+          <Text fontSize="16px">{TranslateString(126, 'Token name')}</Text>
           <SortButton ascending={invertSearchOrder} toggleSortOrder={() => setInvertSearchOrder((iso) => !iso)} />
         </RowBetween>
       </PaddedColumn>
 
-      <Separator />
+      {/* <Separator /> */}
 
       <div style={{ flex: '1' }}>
         <AutoSizer disableWidth>

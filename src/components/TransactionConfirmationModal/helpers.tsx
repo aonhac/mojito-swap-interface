@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   border-right: 4px;
 `
 export const Section = styled(AutoColumn)`
-  padding: 24px;
+  padding: 23px;
 `
 
 export const ConfirmedIcon = styled(ColumnCenter)`
@@ -28,7 +28,9 @@ export const BottomSection = styled(Section)`
 const StyledContentHeader = styled.div`
   align-items: center;
   display: flex;
-
+  margin-top: -10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #97979740;
   & > ${Heading} {
     flex: 1;
   }
@@ -41,9 +43,9 @@ type ContentHeaderProps = {
 
 export const ContentHeader = ({ children, onDismiss }: ContentHeaderProps) => (
   <StyledContentHeader>
-    <Heading>{children}</Heading>
+    <Heading style={{ fontWeight: 700 }}>{children}</Heading>
     <IconButton onClick={onDismiss} variant="text">
-      <CloseIcon color="primary" />
+      <CloseIcon color="#737E8D" height="25px" width="25px"/>
     </IconButton>
   </StyledContentHeader>
 )

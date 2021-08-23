@@ -31,34 +31,33 @@ const AddIcon = styled.img`
 `
 
 const NoLiquuidityNotice = styled.div`
-  margin-top: 20px;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  background: #ecfff5;
   color: #033a6e;
-  padding: 20px 0;
 `
 const FindButton = styled.div`
-  margin-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px 5px;
   height: 34px;
-  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   border-radius: 14px;
   font-weight: 400;
-  color: #fff;
   font-size: 14px;
   cursor: pointer;
 `
 
+
 const Line = styled.div`
   width: 100%;
-  opacity: 0.22;
+  opacity: 0.18;
+  padding: 0 30px;
+  box-sizing: content-box;
+  margin-left: -30px;
   border: 1px solid #979797;
 `
 
@@ -109,7 +108,7 @@ export default function Pool() {
         <AutoColumn gap="lg" justify="center" style={{ width: '100%' }}>
           <CardBody style={{ width: '100%' }}>
             <AutoColumn gap="12px" style={{ width: '100%' }}>
-              <RowBetween padding="0 8px" align="center" justifyContent="flex-start">
+              <Row padding="0 8px" align="center" justifyContent="flex-start">
                 <Text color={theme.colors.text}>{TranslateString(107, 'Your Liquidity')}</Text>
                 <Question
                   text={TranslateString(
@@ -117,11 +116,11 @@ export default function Pool() {
                     'When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below.'
                   )}
                 />
-              </RowBetween>
+              </Row>
 
               {!account ? (
-                <LightCard padding="20px" style={{ background: '#F4F3F3', height: '120px', borderRadius: '16px' }}>
-                  <Text color="#666666" fontSize="14px" textAlign="center" style={{ lineHeight: '70px' }}>
+                <LightCard padding="20px" style={{ background: '#F4F3F3', height: '120px', borderRadius: '12px' }}>
+                  <Text color="textRemark" fontSize="14px" textAlign="center" style={{ lineHeight: '70px' }}>
                     {TranslateString(156, 'Connect to a wallet to view your liquidity.')}
                   </Text>
                 </LightCard>
@@ -132,14 +131,16 @@ export default function Pool() {
                   </Text>
                 </LightCard>
               ) : allV2PairsWithLiquidity?.length > 0 ? (
-                <LightCard padding="10px" style={{ borderRadius: '16px' }}>
+                <LightCard padding="0 10px 10px 10px" style={{ borderRadius: '12px' }}>
                   {allV2PairsWithLiquidity.map((v2Pair) => (
                     <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
                   ))}
+                  <Line style={{marginTop: '30px'}}/>
                   <NoLiquuidityNotice>
                     <Text
                       width="auto"
-                      color={theme.colors.primary}
+                      color={theme.colors.textRemark}
+                      fontWeight="500"
                       fontSize="14px"
                       style={{ padding: '.5rem 0 .5rem 0' }}
                     >
@@ -183,9 +184,8 @@ export default function Pool() {
           id="join-pool-button"
           as={Link}
           to="/add/KCS"
-          style={{ margin: '10px 5% 20px', borderRadius: '16px', width: '90%', height: '48px' }}
+          style={{ margin: '-20px 5% 20px', borderRadius: '12px', width: '90%', height: '48px', fontSize: '18px' }}
         >
-          <AddIcon style={{ marginRight: '10px' }} src={require('../../assets/images/plus.svg').default} />
           {TranslateString(168, 'Add Liquidity')}
         </Button>
       </AppBody>

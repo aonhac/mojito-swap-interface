@@ -33,7 +33,7 @@ export function PoolPriceBar({
           <Text fontSize="16px" fontWeight={800} color={theme.colors.primary}>
             {price?.toSignificant(6) ?? '-'}
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
+          <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
             {currencies[Field.CURRENCY_B]?.symbol} per {currencies[Field.CURRENCY_A]?.symbol}
           </Text>
         </AutoColumn>
@@ -41,7 +41,7 @@ export function PoolPriceBar({
           <Text fontSize="16px" fontWeight={800} color={theme.colors.primary}>
             {price?.invert()?.toSignificant(6) ?? '-'}
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
+          <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
             {currencies[Field.CURRENCY_A]?.symbol} per {currencies[Field.CURRENCY_B]?.symbol}
           </Text>
         </AutoColumn>
@@ -52,7 +52,7 @@ export function PoolPriceBar({
               : (poolTokenPercentage?.lessThan(ONE_BIPS) ? '<0.01' : poolTokenPercentage?.toFixed(2)) ?? '0'}
             %
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
+          <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
             Share of Pool
           </Text>
         </AutoColumn>

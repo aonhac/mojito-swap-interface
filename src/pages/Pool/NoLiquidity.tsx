@@ -48,7 +48,7 @@ const NoLiquidity: FunctionComponent<Props> = ({ TranslateString }) => {
     <NoLiquidityWrap>
       <SwapIcon src={require('../../assets/images/cup.svg').default} />
       <TextWrap>
-        <Text color="#666666" textAlign="center" style={{ marginTop: '16px' }}>
+        <Text color="textRemark" textAlign="center" style={{ marginTop: '16px' }}>
           {TranslateString(104, 'No liquidity found.')}
         </Text>
       </TextWrap>
