@@ -1,5 +1,3 @@
-import random from 'lodash/random'
-
 // Array of available nodes to connect to
 export const nodes = [process.env.REACT_APP_NETWORK_URL]
 

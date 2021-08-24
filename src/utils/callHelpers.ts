@@ -2,6 +2,10 @@ import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
 
 export const approve = async (lpContract, masterChefContract, account) => {
+  // debugger
+  console.log('_______________')
+  console.log(lpContract, masterChefContract)
+  console.log(account)
   return lpContract.methods
     .approve(masterChefContract.options.address, ethers.constants.MaxUint256)
     .send({ from: account })

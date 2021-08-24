@@ -17,6 +17,7 @@ import toasts from './toasts'
 import { getThemeCache } from '../utils/theme'
 import pricesReducer from './prices'
 import blockReducer from './block'
+import thunk from 'redux-thunk'
 
 type MergedState = {
   user: {
@@ -50,7 +51,7 @@ const store = configureStore({
     block: blockReducer,
   },
   // @ts-ignore
-  middleware: [...getDefaultMiddleware({ thunk: false }), save({ states: PERSISTED_KEYS })],
+  middleware: [...getDefaultMiddleware({ thunk: true }), save({ states: PERSISTED_KEYS })],
   // @ts-ignore
   preloadedState: loadedState,
 })
@@ -59,6 +60,7 @@ store.dispatch(updateVersion())
 
 export type AppState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+
 export const useAppDispatch = () => useDispatch<any>()
 
 export default store

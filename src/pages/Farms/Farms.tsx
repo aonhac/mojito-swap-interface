@@ -27,7 +27,6 @@ import { RowProps } from './components/FarmTable/Row'
 import ToggleView from './components/ToggleView/ToggleView'
 import { DesktopColumnSchema, ViewMode } from './components/types'
 import Select, { OptionProps } from './components/Select/Select'
-import { useDispatch } from 'react-redux'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -120,20 +119,22 @@ const Farms: React.FC = () => {
   const farmsLP = useFarms()
   const cakePrice = usePriceCakeBusd()
   const [query, setQuery] = useState('')
-  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'pancake_farm_view')
+  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'mojito_farm_view')
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
   const prices = useGetApiPrices()
 
-  const dispatch = useDispatch()
   const { fastRefresh } = useRefresh()
+
+  const dispatch = useAppDispatch()
+
   useEffect(() => {
     if (account) {
       dispatch(fetchFarmUserDataAsync(account))
     }
   }, [account, dispatch, fastRefresh])
 
-  const [stakedOnly, setStakedOnly] = usePersistState(false, 'pancake_farm_staked')
+  const [stakedOnly, setStakedOnly] = usePersistState(false, 'mojito_farm_staked')
   const isActive = !pathname.includes('history')
 
   const activeFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier !== '0X')
@@ -208,7 +209,7 @@ const Farms: React.FC = () => {
     const { token, quoteToken } = farm
     const tokenAddress = token?.address
     const quoteTokenAddress = quoteToken?.address
-    const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('PANCAKE', '')
+    const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('MOJITO', '')
 
     const row: RowProps = {
       apr: {

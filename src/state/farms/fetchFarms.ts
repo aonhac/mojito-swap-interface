@@ -5,7 +5,6 @@ import masterchefABI from 'constants/abis/masterchef.json'
 import multicall from 'utils/multicall'
 import { getAddress, getMasterChefAddress } from 'utils/addressHelpers'
 import farmsConfig from 'constants/farms'
-import { FarmConfig } from 'constants/types'
 
 const fetchFarms = async () => {
   const data = await Promise.all(
