@@ -156,10 +156,10 @@ export default function AddLiquidity({
     let method: (...args: any) => Promise<TransactionResponse>
     let args: Array<string | string[] | number>
     let value: BigNumber | null
-    if (currencyA === ETHER || currencyB === ETHER) {
+    if (currencyA === ETHER || currencyB === ETHER || ACurrencyIsWKCS || BCurrencyIsWKCS) {
       console.log('has kcs')
 
-      const tokenBIsKCS = currencyB === ETHER
+      const tokenBIsKCS = currencyB === ETHER || BCurrencyIsWKCS
       estimate = router.estimateGas.addLiquidityETH
       method = router.addLiquidityETH
       args = [
@@ -219,16 +219,18 @@ export default function AddLiquidity({
   }
 
   const modalHeader = () => {
+    const ACurrency = ACurrencyIsWKCS ? ETHER : currencies[Field.CURRENCY_A]
+    const BCurrency = BCurrencyIsWKCS ? ETHER : currencies[Field.CURRENCY_B]
     return noLiquidity ? (
       <AutoColumn gap="0px">
         <LightCard mt="20px" borderRadius="20px">
           <RowFlat style={{ width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
             <UIKitText fontSize="28px" mr="0px" fontWeight={600}>
-              {`${currencies[Field.CURRENCY_A]?.symbol}/${currencies[Field.CURRENCY_B]?.symbol}`}
+              {`${ACurrency?.symbol}/${BCurrency?.symbol}`}
             </UIKitText>
             <DoubleCurrencyLogo
-              currency0={currencies[Field.CURRENCY_A]}
-              currency1={currencies[Field.CURRENCY_B]}
+              currency0={ACurrency}
+              currency1={BCurrency}
               size={28}
             />
           </RowFlat>
@@ -237,21 +239,21 @@ export default function AddLiquidity({
     ) : (
       <AutoColumn gap="20px">
         <RowFlat style={{ marginTop: '20px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <UIKitText fontSize="36px" mr="8px" fontWeight={800}>
+          <UIKitText fontSize="48px" mr="8px" fontWeight={800}>
             {liquidityMinted?.toSignificant(6)}
           </UIKitText>
           <DoubleCurrencyLogo
-            currency0={currencies[Field.CURRENCY_A]}
-            currency1={currencies[Field.CURRENCY_B]}
+            currency0={ACurrency}
+            currency1={BCurrency}
             size={36}
           />
         </RowFlat>
-        <Row>
+        <Row style={{marginTop: '-20px'}}>
           <UIKitText fontSize="16px" color="text">
-            {`${currencies[Field.CURRENCY_A]?.symbol}/${currencies[Field.CURRENCY_B]?.symbol} Pool Tokens`}
+            {`${ACurrency?.symbol}/${BCurrency?.symbol} Pool Tokens`}
           </UIKitText>
         </Row>
-        <UIKitText small textAlign="left" padding="20px" style={{ background: '#F5F5F5' }}>
+        <UIKitText small textAlign="left" padding="20px" style={{ background: '#F5F5F5', borderRadius: '8px' }}>
           {`Output is estimated. If the price changes by more than ${
             allowedSlippage / 100
           }% your transaction will revert.`}
@@ -269,6 +271,8 @@ export default function AddLiquidity({
         noLiquidity={noLiquidity}
         onAdd={onAdd}
         poolTokenPercentage={poolTokenPercentage}
+        ACurrencyIsWKCS={ACurrencyIsWKCS}
+        BCurrencyIsWKCS={BCurrencyIsWKCS}
       />
     )
   }
