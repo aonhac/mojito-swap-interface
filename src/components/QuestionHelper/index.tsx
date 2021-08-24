@@ -23,6 +23,10 @@ const QuestionWrapper = styled.div`
   }
 `
 
+const StyledArrowLeft = styled(Info)`
+  color: ${({ theme }) => theme.colors.textRemark};
+`
+
 export default function QuestionHelper({ text }: { text: string } ) {
   const [show, setShow] = useState<boolean>(false)
 
@@ -33,7 +37,7 @@ export default function QuestionHelper({ text }: { text: string } ) {
     <span style={{ marginLeft: 4 }}>
       <Tooltip text={text} show={show}>
         <QuestionWrapper onClick={open} onMouseEnter={open} onMouseLeave={close}>
-          <Info size={16} color="textRemark"/>
+          <StyledArrowLeft size={16} />
         </QuestionWrapper>
       </Tooltip>
     </span>

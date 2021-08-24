@@ -165,12 +165,14 @@ export default function CurrencyInputPanel({
               {account && currency && showMaxButton && label !== 'To' && (
                 <Button
                   style={{
-                    fontSize: '14px',
+                    fontSize: '13px',
                     fontWeight: 700,
                     fontFamily: 'SF Pro Display',
-                    background: '#CCE9E3',
-                    borderRadius: '8px',
-                    marginRight: '16px',
+                    background: '#18BB971A',
+                    borderRadius: '4px',
+                    marginRight: '12px',
+                    width: '42px',
+                    height: '22px',
                   }}
                   onClick={onMax}
                   scale="sm"

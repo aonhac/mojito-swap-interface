@@ -422,35 +422,33 @@ const Swap = () => {
                   <AddressInputPanel id="recipient" value={recipient} onChange={onChangeRecipient} />
                 </>
               ) : null}
-
-              {showWrap ? null : (
-                <Card padding=".25rem .75rem 0 .75rem" borderRadius="20px">
-                  <AutoColumn gap="4px">
-                    {Boolean(trade) && (
-                      <RowBetween align="center">
-                        <Text fontSize="14px">{TranslateString(1182, 'Price')}</Text>
-                        <TradePrice
-                          price={trade?.executionPrice}
-                          showInverted={showInverted}
-                          setShowInverted={setShowInverted}
-                        />
-                      </RowBetween>
-                    )}
-                    {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
-                      <RowBetween align="center" style={{ padding: '0 0 20px 0', color: '#000' }}>
-                        <Text fontSize="14px" style={{ color: '#000' }}>
-                          {TranslateString(88, 'Slippage Tolerance')}
-                        </Text>
-                        <Text fontSize="14px" style={{ color: '#000' }}>
-                          {allowedSlippage / 100}%
-                        </Text>
-                      </RowBetween>
-                    )}
-                  </AutoColumn>
-                </Card>
-              )}
             </SwapCurrencyContainer>
-
+            {showWrap ? null : (
+              <Card padding="0.8rem .75rem 0 .75rem" borderRadius="20px">
+                <AutoColumn gap="10px">
+                  {Boolean(trade) && (
+                    <RowBetween align="center">
+                      <Text fontSize="14px" color={theme.colors.textRemark}>{TranslateString(1182, 'Price')}</Text>
+                      <TradePrice
+                        price={trade?.executionPrice}
+                        showInverted={showInverted}
+                        setShowInverted={setShowInverted}
+                      />
+                    </RowBetween>
+                  )}
+                  {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
+                    <RowBetween align="center" style={{ padding: '0 0 10px 0', color: '#000' }}>
+                      <Text fontSize="14px" style={{ color: theme.colors.textRemark }}>
+                        {TranslateString(88, 'Slippage Tolerance')}
+                      </Text>
+                      <Text fontSize="14px" style={{ color: '#000' }}>
+                        {allowedSlippage / 100}%
+                      </Text>
+                    </RowBetween>
+                  )}
+                </AutoColumn>
+              </Card>
+            )}
             <BottomGrouping>
               {!account ? (
                 <ConnectWalletButton width="100%" />

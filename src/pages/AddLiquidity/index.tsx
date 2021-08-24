@@ -59,8 +59,8 @@ export default function AddLiquidity({
 
   const oneCurrencyIsWKCS = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(currencyA, WETH[chainId])) ||
-        (currencyB && currencyEquals(currencyB, WETH[chainId])))
+      ((currencyA && (currencyEquals(WETH[chainId], currencyA) || currencyA.symbol === 'KCS')) ||
+        (currencyB && (currencyEquals(WETH[chainId], currencyB) || currencyB.symbol === 'KCS')))
   )
 
   const ACurrencyIsWKCS = Boolean(

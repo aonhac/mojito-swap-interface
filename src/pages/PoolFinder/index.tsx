@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from 'mojito-testnet-sdk'
+import { Currency, ETHER, JSBI, TokenAmount, } from 'mojito-testnet-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Button, ChevronDownIcon, AddIcon, CardBody, Text } from '../../uikit'
 import CardNav from 'components/CardNav'
@@ -87,7 +87,7 @@ export default function PoolFinder() {
       </Text>
     </LightCard>
   )
-
+  
   return (
     <Container>
       <CardNav activeIndex={1} />

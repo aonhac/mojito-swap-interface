@@ -55,7 +55,7 @@ export default function SwapModalHeader({
           <CurrencyLogo currency={trade.inputAmount.currency} size="24px" style={{ marginRight: '12px' }} />
           <Text fontSize="14px" style={{ marginLeft: '10px', fontWeight: 500 }}>
             {trade.inputAmount.currency.symbol}
-          </Text>
+          </Text> 
         </RowFixed>
         <RowFixed gap="0px">
           <Text
@@ -93,13 +93,13 @@ export default function SwapModalHeader({
         </RowFixed>
       </IconBg>
       {showAcceptChanges ? (
-        <SwapShowAcceptChanges justify="flex-start" gap="0px">
+        <SwapShowAcceptChanges justify="flex-start" gap="0px" style={{width: '100%'}}>
           <RowBetween>
             <RowFixed>
               <AlertTriangle size={20} style={{ marginRight: '8px', minWidth: 24 }} />
               <Text color="primary"> Price Updated</Text>
             </RowFixed>
-            <Button onClick={onAcceptChanges}>Accept</Button>
+            <Button onClick={onAcceptChanges} style={{borderRadius: '12px'}}>Accept</Button>
           </RowBetween>
         </SwapShowAcceptChanges>
       ) : null}

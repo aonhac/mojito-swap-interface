@@ -54,7 +54,7 @@ export default function SwapModalFooter({
               paddingLeft: '8px',
               fontWeight: 500,
             }}
-          >
+          > 
             {formatExecutionPrice(trade, showInverted)}
             <StyledBalanceMaxMini onClick={() => setShowInverted(!showInverted)}>
               <SyncAltIcon width="20px" color="primary"/>
@@ -122,6 +122,7 @@ export default function SwapModalFooter({
           mt="10px"
           id="confirm-swap-or-send"
           width="100%"
+          style={{background: severity > 2 ? null : '#18BB97', color: severity > 2 ? '#FF4446' : 'white'}}
         >
           {severity > 2 ? 'Swap Anyway' : 'Confirm Swap'}
         </SwapButton>
