@@ -47,7 +47,7 @@ export function AddRemoveTabs({ adding }: { adding: boolean }) {
   const theme = useTheme()
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem', border: `1px solid ${theme.colors.cardBorder}` }}>
+      <RowBetween style={{ padding: '1rem', borderBottom: `1px solid ${theme.colors.cardBorder}` }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>

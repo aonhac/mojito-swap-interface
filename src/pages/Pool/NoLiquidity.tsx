@@ -18,8 +18,8 @@ const NoLiquidityWrap = styled.div`
 `
 
 const SwapIcon = styled.img`
-  height: 110px;
-  width: 60px;
+  height: 120px;
+  width: 120px;
 `
 const TextWrap = styled.div`
   display: flex;
