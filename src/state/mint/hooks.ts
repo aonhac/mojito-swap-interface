@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Percent, Price, TokenAmount } from 'mojito-testnet-sdk'
+import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Percent, Price, TokenAmount, currencyEquals, WETH } from 'mojito-testnet-sdk'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PairState, usePair } from '../../data/Reserves'
@@ -57,13 +57,23 @@ export function useDerivedMintInfo(
     pairState === PairState.NOT_EXISTS || Boolean(totalSupply && JSBI.equal(totalSupply.raw, ZERO))
 
   // balances
+  // conversion WKCS to get the right balance
+  const ACurrencyIsWKCS = Boolean(
+    chainId &&
+      (currencyA && currencyEquals(currencyA, WETH[chainId]))
+  )
+  const BCurrencyIsWKCS = Boolean(
+    chainId &&
+      (currencyB && currencyEquals(currencyB, WETH[chainId]))
+  )
   const balances = useCurrencyBalances(account ?? undefined, [
     currencies[Field.CURRENCY_A],
     currencies[Field.CURRENCY_B],
+    ETHER
   ])
   const currencyBalances: { [field in Field]?: CurrencyAmount } = {
-    [Field.CURRENCY_A]: balances[0],
-    [Field.CURRENCY_B]: balances[1],
+    [Field.CURRENCY_A]: ACurrencyIsWKCS ? balances[2] : balances[0],
+    [Field.CURRENCY_B]: BCurrencyIsWKCS ? balances[2] :  balances[1],
   }
 
   // amounts
@@ -143,7 +153,7 @@ export function useDerivedMintInfo(
   }
 
   const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
-  
+ 
   if (currencyAAmount && currencyBalances?.[Field.CURRENCY_A]?.lessThan(currencyAAmount)) {
     error = `Insufficient ${currencies[Field.CURRENCY_A]?.symbol} balance`
   }

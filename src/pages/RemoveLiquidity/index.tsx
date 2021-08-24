@@ -17,8 +17,9 @@ import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { AddRemoveTabs } from '../../components/NavigationTabs'
 import { MinimalPositionCard } from '../../components/PositionCard'
-import { RowBetween, RowFixed } from '../../components/Row'
+import { RowBetween, RowFixed, AutoRow } from '../../components/Row'
 import Container from '../../components/Container'
+import CardNav from 'components/CardNav'
 
 import Slider from '../../components/Slider'
 import CurrencyLogo from '../../components/CurrencyLogo'
@@ -42,9 +43,6 @@ import { useBurnActionHandlers, useDerivedBurnInfo, useBurnState } from '../../s
 import { Field } from '../../state/burn/actions'
 import { useUserDeadline, useUserSlippageTolerance } from '../../state/user/hooks'
 import { SwapButton } from '../../components/Button'
-import { background } from 'styled-system';
-import { AutoRow } from '../../components/Row/index';
-import { createNonNullExpression } from 'typescript'
 
 const OutlineCard = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
@@ -474,6 +472,7 @@ export default function RemoveLiquidity({
 
   return (
     <Container>
+      <CardNav activeIndex={1} />
       <AppBody>
         <AddRemoveTabs adding={false} />
         <Wrapper>

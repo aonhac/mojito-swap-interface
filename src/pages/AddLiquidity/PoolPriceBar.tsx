@@ -1,5 +1,5 @@
 import React from 'react'
-import { Currency, Percent, Price } from 'mojito-testnet-sdk'
+import { Currency, Percent, Price, ETHER } from 'mojito-testnet-sdk'
 import { Text } from '../../uikit'
 import { AutoColumn } from '../../components/Column'
 import { AutoRow } from '../../components/Row'
@@ -18,14 +18,19 @@ export function PoolPriceBar({
   noLiquidity,
   poolTokenPercentage,
   price,
+  ACurrencyIsWKCS,
+  BCurrencyIsWKCS
 }: {
   currencies: { [field in Field]?: Currency }
   noLiquidity?: boolean
   poolTokenPercentage?: Percent
   price?: Price
+  ACurrencyIsWKCS?: boolean
+  BCurrencyIsWKCS?: boolean
 }) {
   const theme = useTheme()
-
+  const BCurrencySymbol = BCurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_B]?.symbol
+  const ACurrencySymbol = ACurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_A]?.symbol
   return (
     <AutoColumn gap="md">
       <AutoRow justify="space-around" gap="4px">
@@ -34,7 +39,7 @@ export function PoolPriceBar({
             {price?.toSignificant(6) ?? '-'}
           </Text>
           <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
-            {currencies[Field.CURRENCY_B]?.symbol} per {currencies[Field.CURRENCY_A]?.symbol}
+            {BCurrencySymbol} per {ACurrencySymbol}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
@@ -42,7 +47,7 @@ export function PoolPriceBar({
             {price?.invert()?.toSignificant(6) ?? '-'}
           </Text>
           <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
-            {currencies[Field.CURRENCY_A]?.symbol} per {currencies[Field.CURRENCY_B]?.symbol}
+            {ACurrencySymbol} per {BCurrencySymbol}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">

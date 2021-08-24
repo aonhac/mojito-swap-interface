@@ -25,7 +25,7 @@ import { useTransactionAdder } from 'state/transactions/hooks'
 import { useIsExpertMode, useUserDeadline, useUserSlippageTolerance } from 'state/user/hooks'
 import { calculateGasMargin, calculateSlippageAmount, getRouterContract } from 'utils'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
-import { wrappedCurrency, unwrappedToken } from 'utils/wrappedCurrency'
+import { wrappedCurrency } from 'utils/wrappedCurrency'
 import { currencyId } from 'utils/currencyId'
 import Pane from 'components/Pane'
 import Container from 'components/Container'
@@ -405,6 +405,8 @@ export default function AddLiquidity({
                   </UIKitText>
                   <Pane style={{ border: 'none' }}>
                     <PoolPriceBar
+                      ACurrencyIsWKCS={ACurrencyIsWKCS}
+                      BCurrencyIsWKCS={BCurrencyIsWKCS}
                       currencies={currencies}
                       poolTokenPercentage={poolTokenPercentage}
                       noLiquidity={noLiquidity}
@@ -432,7 +434,7 @@ export default function AddLiquidity({
                             {approvalA === ApprovalState.PENDING ? (
                               <Dots>Approving {currencies[Field.CURRENCY_A]?.symbol}</Dots>
                             ) : (
-                              `Approve ${currencies[Field.CURRENCY_A]?.symbol}`
+                              `Approve ${ACurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_A]?.symbol}`
                             )}
                           </SwapButton>
                         )}
@@ -445,7 +447,7 @@ export default function AddLiquidity({
                             {approvalB === ApprovalState.PENDING ? (
                               <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
                             ) : (
-                              `Approve ${currencies[Field.CURRENCY_B]?.symbol}`
+                              `Approve ${BCurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_B]?.symbol}`
                             )}
                           </SwapButton>
                         )}
