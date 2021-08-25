@@ -5,6 +5,7 @@ import Bar from './Bar'
 import { RowBetween } from '../../components/Row'
 import TVL from './TVL'
 import Trade from './Trade'
+import Banner from './Banner'
 
 const HomeBg = require('../../assets/images/trade-bg.png').default
 
@@ -78,32 +79,35 @@ const Margin = styled.div`
 
 const index: FunctionComponent = (props) => {
   return (
-    <HomePageWrap>
-      <HomeContentWrap>
-        <BrandWrap>
-          <CartoonLogo src={require('../../assets/images/cow.png').default} />
-          <NameWrap>
-            {/* eslint-disable-next-line react/jsx-no-undef */}
-            <Text fontSize="28px" fontWeight={700} color="text">
-              Mojito Finance
-            </Text>
-            <Text fontSize="18px" fontWeight="normal" color="#01142A" style={{ marginTop: '10px' }}>
-              The #1 AMM and yield farm on KCC
-            </Text>
-          </NameWrap>
-          <MintImage src={require('../../assets/images/mint.png').default} />
-        </BrandWrap>
+    <>
+      <Banner />
+      <HomePageWrap>
+        <HomeContentWrap>
+          <BrandWrap>
+            <CartoonLogo src={require('../../assets/images/cow.png').default} />
+            <NameWrap>
+              {/* eslint-disable-next-line react/jsx-no-undef */}
+              <Text fontSize="28px" fontWeight={700} color="text">
+                Mojito Finance
+              </Text>
+              <Text fontSize="18px" fontWeight="normal" color="#01142A" style={{ marginTop: '10px' }}>
+                The #1 AMM and yield farm on KCC
+              </Text>
+            </NameWrap>
+            <MintImage src={require('../../assets/images/mint.png').default} />
+          </BrandWrap>
 
-        <RowBetween style={{ marginTop: '46px', height: '474px' }}>
-          <Bar />
-          <TVLAndTradeWrap style={{ marginLeft: '32px' }}>
-            <TVL />
-            <Margin />
-            <Trade />
-          </TVLAndTradeWrap>
-        </RowBetween>
-      </HomeContentWrap>
-    </HomePageWrap>
+          <RowBetween style={{ marginTop: '46px', height: '474px' }}>
+            <Bar />
+            <TVLAndTradeWrap style={{ marginLeft: '32px' }}>
+              <TVL />
+              <Margin />
+              <Trade />
+            </TVLAndTradeWrap>
+          </RowBetween>
+        </HomeContentWrap>
+      </HomePageWrap>
+    </>
   )
 }
 

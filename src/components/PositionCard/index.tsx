@@ -58,9 +58,11 @@ interface PositionCardProps {
   showUnwrapped?: boolean
   // eslint-disable-next-line react/no-unused-prop-types
   removeOnly?: boolean
+  // eslint-disable-next-line react/no-unused-prop-types
+  width?: string
 }
 
-export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCardProps) {
+export function MinimalPositionCard({ pair, showUnwrapped = false, width }: PositionCardProps) {
   const { account } = useActiveWeb3React()
 
   const theme = useTheme()
@@ -87,7 +89,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
   return (
     <>
       {userPoolBalance && (
-        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: '440px' }}>
+        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: width || '440px' }}>
           <Text
             style={{
               padding: 0,
