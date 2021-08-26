@@ -1,4 +1,8 @@
 export default {
+  merkleDistributor: {
+    321: '',
+    322: '0x7e55cE129bd84D272739668ebEbD1aE44Fdca701',
+  },
   masterChef: {
     322: '0x3d381B521c7d711EdbC3932969434b6450949498',
     321: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',

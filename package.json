@@ -102,6 +102,7 @@
   "husky": {
     "hooks": {}
   },
+  "proxy": "https://gentle-frost-9e74.uniswap.workers.dev",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -43,13 +43,7 @@ const Bar: FunctionComponent = (props) => {
         </Text>
       </TitleWrap>
       <Content>
-        <Text
-          style={{ marginTop: '100px' }}
-          fontSize="24px"
-          fontWeight={700}
-          color="#fff"
-          fontFamily="font-family: Kanit, sans-serif;"
-        >
+        <Text style={{ marginTop: '100px' }} fontSize="24px" fontWeight={700} color="#fff" fontFamily="SF Pro Display">
           Comming
         </Text>
         <Text fontSize="24px" fontWeight={700} color="#fff">

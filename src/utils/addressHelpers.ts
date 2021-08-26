@@ -8,6 +8,10 @@ export const getAddress = (address: Address): string => {
   return address[chainId] ? address[chainId] : address[mainNetChainId]
 }
 
+export const getAirdropAddress = () => {
+  return getAddress(addresses.merkleDistributor)
+}
+
 export const getCakeAddress = () => {
   return getAddress(tokens.cake.address)
 }

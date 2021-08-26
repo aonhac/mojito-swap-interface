@@ -1,10 +1,13 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { Text } from '../../uikit'
-import Bar from './Bar'
-import { RowBetween } from '../../components/Row'
+import { useWeb3React } from '@web3-react/core'
+
 import TVL from './TVL'
 import Trade from './Trade'
+import { Button, Text } from '../../uikit'
+import { RowBetween } from '../../components/Row'
+import Bar from './Bar'
+import ClaimAirdrop from '../../components/ClaimAirdrop/Claim'
 
 const HomeBg = require('../../assets/images/trade-bg.png').default
 
@@ -76,7 +79,8 @@ const Margin = styled.div`
   height: 40px;
 `
 
-const index: FunctionComponent = (props) => {
+const HomePage: FunctionComponent<any> = (props) => {
+  const { account } = useWeb3React()
   return (
     <HomePageWrap>
       <HomeContentWrap>
@@ -102,9 +106,10 @@ const index: FunctionComponent = (props) => {
             <Trade />
           </TVLAndTradeWrap>
         </RowBetween>
+        <ClaimAirdrop />
       </HomeContentWrap>
     </HomePageWrap>
   )
 }
 
-export default index
+export default HomePage
