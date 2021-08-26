@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components'
-import { Text } from '../../uikit'
-import { RowBetween } from '../../components/Row'
 
 import Banner from './Banner'
 import Airdrop from './Airdrop'
@@ -19,7 +17,7 @@ const HomePageWrap = styled.div`
 `
 
 const HomeContentWrap = styled.div`
-  margin: 0 auto; 
+  margin: 0 auto;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -28,8 +26,7 @@ const HomeContentWrap = styled.div`
   max-width: 1200px;
 `
 
-
-const index: React.FunctionComponent = (props) => {
+const HomePage: React.FunctionComponent = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const theme = useTheme()
   return (
@@ -39,11 +36,11 @@ const index: React.FunctionComponent = (props) => {
       <HomePageWrap>
         <HomeContentWrap>
           <Trade />
-          <Bar/>
+          <Bar />
         </HomeContentWrap>
       </HomePageWrap>
     </>
   )
 }
 
-export default index
+export default HomePage

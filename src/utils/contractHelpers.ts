@@ -12,6 +12,7 @@ import {
   getBunnyFactoryAddress,
   getBunnySpecialAddress,
   getCakeAddress,
+  getAirdropAddress,
   getLotteryAddress,
   getLotteryTicketAddress,
   getMasterChefAddress,
@@ -30,11 +31,21 @@ import cakeAbi from 'constants/abis/mjt.json'
 // import lotteryTicketAbi from 'config/abi/lotteryNft.json'
 import masterChef from 'constants/abis/masterchef.json'
 import sousChef from 'constants/abis/sousChef.json'
+import merkleDistributor from 'constants/abis/merkle-distributor.json'
 // import sousChefBnb from 'config/abi/sousChefBnb.json'
+import { Contract } from 'ethers'
+import { JsonRpcProvider } from '@ethersproject/providers'
+import { getSigner } from './index'
 
 const getContract = (abi: any, address: string, web3?: Web3) => {
   const _web3 = web3 ?? web3NoAccount
   return new _web3.eth.Contract(abi as unknown as AbiItem, address)
+}
+
+export const getAirdropContract = (library: any) => {
+  const signer = library?.getSigner()
+  const provider = signer ?? new JsonRpcProvider(process.env.REACT_APP_NETWORK_URL).getSigner()
+  return new Contract(getAirdropAddress(), merkleDistributor, provider)
 }
 
 export const getBep20Contract = (address: string, web3?: Web3) => {

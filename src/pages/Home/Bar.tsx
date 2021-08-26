@@ -4,7 +4,7 @@ import { Pair } from 'mojito-testnet-sdk'
 import { Text } from '../../uikit'
 import { AutoColumn } from 'components/Column';
 import { AutoRow, RowBetween, RowFixed } from 'components/Row';
-import { DarkGreyTitle, PrimaryTitleMD, GradientBtn } from './styles';
+import { DarkGreyTitle, PrimaryTitleMD } from './styles';
 import { useTokenBalancesWithLoadingIndicator } from 'state/wallet/hooks'
 import { toV2LiquidityToken, useTrackedTokenPairs } from 'state/user/hooks'
 import { useActiveWeb3React } from 'hooks'
@@ -21,7 +21,7 @@ const UpArrow = styled.img`
 `
 
 const Panel = styled.div`
-  background: #FFFEFE;
+  background: #fffefe;
   box-shadow: 0px 24px 48px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
   padding: 24px 32px;
@@ -35,13 +35,12 @@ const StatusPanel = styled(Panel)`
 const TvlPanel = styled(Panel)`
   width: 551px;
   height: 142px;
-  background: linear-gradient(90deg, #FC9C47 0%, #FFC961 100%);
+  background: linear-gradient(90deg, #fc9c47 0%, #ffc961 100%);
 `
 
 const VolumePanel = styled(TvlPanel)`
   background: white;
 `
-
 
 const Bar: FunctionComponent = (props) => {
   const theme = useTheme()
@@ -74,7 +73,9 @@ const Bar: FunctionComponent = (props) => {
     return (
       <RowBetween>
         <DarkGreyTitle>{title}</DarkGreyTitle>
-        <Text fontSize="14px" color={theme.colors.text}>{content}</Text>
+        <Text fontSize="14px" color={theme.colors.text}>
+          {content}
+        </Text>
       </RowBetween>
     )
   }
@@ -129,33 +130,39 @@ const Bar: FunctionComponent = (props) => {
               </AutoColumn>
             </TvlPanel>
             <VolumePanel>
-              <AutoColumn gap="sm">
-                <PrimaryTitleMD 
+            <AutoColumn gap="sm">
+                <PrimaryTitleMD
                   style={{
                     color: theme.colors.text,
-                    fontSize: '14px'
-                  }}>Volume (24 h)
+                    fontSize: '14px',
+                  }}
+                >
+                  Volume (24 h)
                 </PrimaryTitleMD>
-                <PrimaryTitleMD 
+                <PrimaryTitleMD
                   style={{
                     color: theme.colors.text,
-                    fontSize: '32px'
-                  }}>$ 300,000.00
+                    fontSize: '32px',
+                  }}
+                >
+                  $ 300,000.00
                 </PrimaryTitleMD>
                 <RowFixed>
-                  <PrimaryTitleMD 
+                  <PrimaryTitleMD
                     style={{
-                      fontSize: '16px'
-                    }}>+15.56%
+                      fontSize: '16px',
+                    }}
+                  >
+                    +15.56%
                   </PrimaryTitleMD>
-                  <UpArrow src={ImgArrow}/>
+                  <UpArrow src={ImgArrow} />
                 </RowFixed>
               </AutoColumn>
             </VolumePanel>
           </AutoColumn>
       </RowBetween>
     </>
-  ) 
+  )
 }
 
 export default Bar
