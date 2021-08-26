@@ -167,7 +167,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, width }: Posi
     </>
   )
 }
-
+ 
 export default function FullPositionCard({ pair, removeOnly }: PositionCardProps) {
   const { account } = useActiveWeb3React()
 

@@ -38,3 +38,18 @@ export default function DoubleCurrencyLogo({
     </Wrapper>
   )
 }
+
+export function DoubleHomeLogo({
+  currency0,
+  currency1,
+  size = 16,
+  margin = false,
+}: DoubleCurrencyLogoProps) {
+  const HomeLogoStyle = {marginLeft: '-10px', border: '3px solid white', borderRadius: '100%'}
+  return (
+    <Wrapper sizeraw={size} style={{marginRight: '16px'}}>
+      {currency0 && <HigherLogo currency={currency0} size={`${size.toString()}px`} style={HomeLogoStyle}/>}
+      {currency1 && <CoveredLogo currency={currency1} size={`${size.toString()}px`} sizeraw={size} style={HomeLogoStyle} />}
+    </Wrapper>
+  )
+}

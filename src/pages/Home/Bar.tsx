@@ -1,9 +1,17 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components'
-import { Text, Button } from '../../uikit'
-import Column, { AutoColumn } from 'components/Column';
-import { AutoRow, RowBetween, RowFixed, RowFlat } from 'components/Row';
-import { DarkGreyTitle, GreyTitle, PrimaryTitleMD, GradientBtn } from './styles';
+import { Pair } from 'mojito-testnet-sdk'
+import { Text } from '../../uikit'
+import { AutoColumn } from 'components/Column';
+import { AutoRow, RowBetween, RowFixed } from 'components/Row';
+import { DarkGreyTitle, PrimaryTitleMD, GradientBtn } from './styles';
+import { useTokenBalancesWithLoadingIndicator } from 'state/wallet/hooks'
+import { toV2LiquidityToken, useTrackedTokenPairs } from 'state/user/hooks'
+import { useActiveWeb3React } from 'hooks'
+import { usePairs } from 'data/Reserves'
+
+import BarItem from './BarItem'
+
 
 const ImgArrow = require('../../assets/images/home/upArrow.png').default
 
@@ -37,6 +45,31 @@ const VolumePanel = styled(TvlPanel)`
 
 const Bar: FunctionComponent = (props) => {
   const theme = useTheme()
+  const trackedTokenPairs = useTrackedTokenPairs()
+  const { account } = useActiveWeb3React()
+  const tokenPairsWithLiquidityTokens = useMemo(
+    () => trackedTokenPairs.map((tokens) => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
+    [trackedTokenPairs]
+  )
+  const liquidityTokens = useMemo(
+    () => tokenPairsWithLiquidityTokens.map((tpwlt) => tpwlt.liquidityToken),
+    [tokenPairsWithLiquidityTokens]
+  )
+  const [v2PairsBalances] = useTokenBalancesWithLoadingIndicator(
+    account ?? undefined,
+    liquidityTokens
+  )
+  const liquidityTokensWithBalances = useMemo(
+    () =>
+      tokenPairsWithLiquidityTokens.filter(({ liquidityToken }) =>
+        v2PairsBalances[liquidityToken.address]?.greaterThan('0')
+      ),
+    [tokenPairsWithLiquidityTokens, v2PairsBalances]
+  )
+
+  const v2Pairs = usePairs(liquidityTokensWithBalances.map(({ tokens }) => tokens))
+  const allV2PairsWithLiquidity = v2Pairs.map(([, pair]) => pair).filter((v2Pair): v2Pair is Pair => Boolean(v2Pair))
+
   const StatItem = (title: string, content: string | number) => {
     return (
       <RowBetween>
@@ -45,10 +78,21 @@ const Bar: FunctionComponent = (props) => {
       </RowBetween>
     )
   }
+
   return (
     <>
       <Text fontWeight="700" fontSize="32px" mt="64px" color={theme.colors.text}>Top Bars</Text>
       <Text fontSize="16px" color={`${theme.colors.textTips}80`}>Select some bars for you.Don’t you come for drink</Text>
+      <AutoRow>
+        {/* todo: replace liquidityList to real data */}
+        {allV2PairsWithLiquidity?.length > 0 ? (
+          [0, 1, 2,].map((item) => {
+            return(
+              <BarItem key={item} row={item} pair={allV2PairsWithLiquidity[0]} />
+            )
+          })
+        ) : null}
+      </AutoRow>
       <RowBetween style={{flexWrap: 'wrap'}}>
           <StatusPanel>
             <AutoColumn gap="15px">
