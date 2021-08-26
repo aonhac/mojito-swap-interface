@@ -204,7 +204,7 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
       <AutoColumn gap="10px" style={{ width: '100%' }}>
         <FixedHeightRow onClick={() => setShowMore(!showMore)} style={{ cursor: 'pointer' }}>
           <RowFixed>
-            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24} />
+            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24}/>
             <Text fontSize="16px" style={{ color: `${theme.colors.text}`, fontWeight: 500 }}>
               {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}
             </Text>

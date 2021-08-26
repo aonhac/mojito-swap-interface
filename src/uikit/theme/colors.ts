@@ -36,6 +36,7 @@ export const lightColors: Colors = {
   textDisabled: '#BDC2C4',
   textSubtle: '#66727F',
   textRemark: '#666666',
+  textTips: '#292929',
   disabled: '#E9EAEB',
   borderColor: '#fff',
   borderDark: '#C9C9C9',
@@ -73,6 +74,7 @@ export const darkColors: Colors = {
   textDisabled: '#ffffff',
   textSubtle: '#64ffb2',
   textRemark: '#666666',
+  textTips: '#292929',
   disabled: '#524B63',
   borderDark: '#C9C9C9',
   gradients: {
