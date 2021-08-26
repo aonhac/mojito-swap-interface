@@ -1,5 +1,5 @@
 import React from 'react'
-import { Currency, Percent, Price } from 'mojito-testnet-sdk'
+import { Currency, Percent, Price, ETHER } from 'mojito-testnet-sdk'
 import { Text } from '../../uikit'
 import { AutoColumn } from '../../components/Column'
 import { AutoRow } from '../../components/Row'
@@ -18,14 +18,19 @@ export function PoolPriceBar({
   noLiquidity,
   poolTokenPercentage,
   price,
+  ACurrencyIsWKCS,
+  BCurrencyIsWKCS
 }: {
   currencies: { [field in Field]?: Currency }
   noLiquidity?: boolean
   poolTokenPercentage?: Percent
   price?: Price
+  ACurrencyIsWKCS?: boolean
+  BCurrencyIsWKCS?: boolean
 }) {
   const theme = useTheme()
-
+  const BCurrencySymbol = BCurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_B]?.symbol
+  const ACurrencySymbol = ACurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_A]?.symbol
   return (
     <AutoColumn gap="md">
       <AutoRow justify="space-around" gap="4px">
@@ -33,16 +38,16 @@ export function PoolPriceBar({
           <Text fontSize="16px" fontWeight={800} color={theme.colors.primary}>
             {price?.toSignificant(6) ?? '-'}
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
-            {currencies[Field.CURRENCY_B]?.symbol} per {currencies[Field.CURRENCY_A]?.symbol}
+          <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
+            {BCurrencySymbol} per {ACurrencySymbol}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
           <Text fontSize="16px" fontWeight={800} color={theme.colors.primary}>
             {price?.invert()?.toSignificant(6) ?? '-'}
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
-            {currencies[Field.CURRENCY_A]?.symbol} per {currencies[Field.CURRENCY_B]?.symbol}
+          <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
+            {ACurrencySymbol} per {BCurrencySymbol}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
@@ -52,7 +57,7 @@ export function PoolPriceBar({
               : (poolTokenPercentage?.lessThan(ONE_BIPS) ? '<0.01' : poolTokenPercentage?.toFixed(2)) ?? '0'}
             %
           </Text>
-          <Text fontSize="14px" fontWeight={400} color="#666666" pt={1}>
+          <Text fontSize="14px" fontWeight={400} color="textRemark" pt={1}>
             Share of Pool
           </Text>
         </AutoColumn>

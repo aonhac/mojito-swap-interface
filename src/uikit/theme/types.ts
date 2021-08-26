@@ -56,12 +56,16 @@ export type Colors = {
   background: string
   backgroundDisabled: string
   backgroundAlt: string
+  backgroundHover: string
+  backgroundCard: string
   text: string
   textDisabled: string
   textSubtle: string
+  textRemark: string
+  textTips: string
   disabled: string
   borderColor: string
-
+  borderDark: string
   // Gradients
   gradients: Gradients
 

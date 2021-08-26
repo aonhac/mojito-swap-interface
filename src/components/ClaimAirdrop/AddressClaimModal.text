@@ -1,0 +1,168 @@
+import React, { useState } from 'react'
+import Modal from '../Modal'
+import { AutoColumn, ColumnCenter } from '../Column'
+import styled from 'styled-components'
+import { RowBetween } from '../Row'
+import { useClaimCallback, useUserUnclaimedAmount, useUserHasAvailableClaim } from '../../state/claim/hooks'
+import { Text } from 'uikit/components/Text'
+import AddressInputPanel from '../AddressInputPanel'
+import useENS from '../../hooks/useENS'
+import { useActiveWeb3React } from '../../hooks'
+import { isAddress } from 'ethers/lib/utils'
+import { useIsTransactionPending } from '../../state/transactions/hooks'
+import { TokenAmount } from '@uniswap/sdk-core'
+import { getKCCExplorerLink, shortenAddress } from '../../utils'
+import Button from '../../uikit/components/Button/Button'
+import { Link } from 'react-router-dom'
+
+const ContentWrapper = styled(AutoColumn)`
+  width: 100%;
+`
+
+const ModalUpper = styled.div`
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);
+`
+
+const ConfirmOrLoadingWrapper = styled.div<{ activeBG: boolean }>`
+  width: 100%;
+  padding: 24px;
+  position: relative;
+  background: ${({ activeBG }) =>
+    activeBG &&
+    'radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(255, 0, 122, 0.2) 0%, rgba(33, 114, 229, 0.2) 100%), #FFFFFF;'};
+`
+
+const ConfirmedIcon = styled(ColumnCenter)`
+  padding: 60px 0;
+`
+
+export default function AddressClaimModal() {
+  const { chainId, library } = useActiveWeb3React()
+
+  // state for smart contract input
+  const [typed, setTyped] = useState('')
+  function handleRecipientType(val: string) {
+    setTyped(val)
+  }
+
+  // monitor for third party recipient of claim
+  const { address: parsedAddress } = useENS(typed)
+
+  // used for UI loading states
+  const [attempting, setAttempting] = useState<boolean>(false)
+
+  // monitor the status of the claim from contracts and txns
+  const { claimCallback } = useClaimCallback(parsedAddress, library)
+
+  const unclaimedAmount: any = useUserUnclaimedAmount(parsedAddress, library)
+
+  // check if the user has something available
+  const hasAvailableClaim = useUserHasAvailableClaim(parsedAddress, library)
+
+  const [hash, setHash] = useState<string | undefined>()
+
+  // monitor the status of the claim from contracts and txns
+  const claimPending = useIsTransactionPending(hash ?? '')
+  const claimConfirmed = hash && !claimPending
+
+  // use the hash to monitor this txn
+
+  function onClaim() {
+    setAttempting(true)
+    claimCallback()
+      .then((h) => {
+        setHash(h)
+      })
+      // reset modal and log error
+      .catch((error) => {
+        setAttempting(false)
+        console.log(error)
+      })
+  }
+
+  function wrappedOnDismiss() {
+    setAttempting(false)
+    setHash(undefined)
+    setTyped('')
+  }
+
+  return (
+    <>
+      {!attempting && (
+        <>
+          <div>
+            <RowBetween>
+              <Text fontWeight={500}>Claim UNI Token 111</Text>
+            </RowBetween>
+            <Text fontWeight={700} fontSize="36px">
+              {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} MJT
+            </Text>
+          </div>
+
+          <AutoColumn gap="md" style={{ padding: '1rem', paddingTop: '0' }} justify="center">
+            <Text fontWeight={500}>
+              Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on
+              submission.
+            </Text>
+
+            <AddressInputPanel value={typed} onChange={handleRecipientType} />
+            {parsedAddress && !hasAvailableClaim && <Text>Address has no available claim</Text>}
+            <Button
+              disabled={!isAddress(parsedAddress ?? '') || !hasAvailableClaim}
+              padding="16px 16px"
+              width="100%"
+              onClick={onClaim}
+            >
+              Claim MJT
+            </Button>
+          </AutoColumn>
+        </>
+      )}
+
+      {(attempting || claimConfirmed) && (
+        <ConfirmOrLoadingWrapper activeBG={true}>
+          <RowBetween>
+            <div>close</div>
+          </RowBetween>
+          <AutoColumn gap="100px" justify="center">
+            <AutoColumn gap="12px" justify="center">
+              <Text fontWeight={600} color="black">
+                {claimConfirmed ? 'Claimed' : 'Claiming'}
+              </Text>
+              {!claimConfirmed && (
+                <Text fontSize="36px" color="#ff007a" fontWeight={800}>
+                  {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} UNI
+                </Text>
+              )}
+              {parsedAddress && (
+                <Text fontWeight={600} color="black">
+                  for {shortenAddress(parsedAddress)}
+                </Text>
+              )}
+            </AutoColumn>
+            {claimConfirmed && (
+              <>
+                <Text fontWeight={500} color="black">
+                  <span role="img" aria-label="party-hat">
+                    🎉{' '}
+                  </span>
+                  Welcome to team mojito :){' '}
+                  <span role="img" aria-label="party-hat">
+                    🎉
+                  </span>
+                </Text>
+              </>
+            )}
+            {attempting && !hash && <Text color="black">Confirm this transaction in your wallet</Text>}
+            {attempting && hash && !claimConfirmed && chainId && hash && (
+              <Link to={getKCCExplorerLink(chainId, hash, 'transaction')} style={{ zIndex: 99 }}>
+                View transaction on Etherscan
+              </Link>
+            )}
+          </AutoColumn>
+        </ConfirmOrLoadingWrapper>
+      )}
+    </>
+  )
+}

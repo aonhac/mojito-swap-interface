@@ -14,6 +14,7 @@ export const PaddedColumn = styled(AutoColumn)`
 
 export const MenuItem = styled(RowBetween)`
   padding: 4px 20px;
+  margin: 15px 0;
   height: 56px;
   display: grid;
   grid-template-columns: auto minmax(auto, 1fr) auto minmax(0, 72px);
@@ -21,7 +22,7 @@ export const MenuItem = styled(RowBetween)`
   cursor: ${({ disabled }) => !disabled && 'pointer'};
   pointer-events: ${({ disabled }) => disabled && 'none'};
   :hover {
-    background-color: ${({ theme, disabled }) => !disabled && theme.colors.invertedContrast};
+    background-color: ${({ theme, disabled, selected }) => !disabled && !selected && theme.colors.backgroundHover};
   }
   opacity: ${({ disabled, selected }) => (disabled || selected ? 0.5 : 1)};
 `
@@ -29,22 +30,22 @@ export const MenuItem = styled(RowBetween)`
 export const SearchInput = styled.input`
   position: relative;
   display: flex;
-  padding: 10px;
+  padding: 15px 20px;
   align-items: center;
   width: 100%;
   white-space: nowrap;
   background: none;
   outline: none;
-  border-radius: 16px;
+  border-radius: 8px;
   color: ${({ theme }) => theme.colors.text};
-  border: 1px solid ${({ theme }) => theme.colors.tertiary};
+  border: 1px solid ${({ theme }) => theme.colors.borderDark};
   -webkit-appearance: none;
   font-family: 'San Pro Display';
 
-  font-size: 14px;
+  font-size: 16px;
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.textDisabled};
+    color: ${({ theme }) => theme.colors.borderDark};
   }
   transition: border 100ms;
   :focus {

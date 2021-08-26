@@ -11,20 +11,26 @@ import { AutoRow } from '../Row'
 import CurrencyLogo from '../CurrencyLogo'
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
-  border: 1px solid ${({ theme, disable }) => (disable ? 'transparent' : theme.colors.tertiary)};
-  border-radius: 10px;
   display: flex;
   padding: 6px;
-
+  border-radius: 8px;
   align-items: center;
   :hover {
     cursor: ${({ disable }) => !disable && 'pointer'};
-    background-color: ${({ theme, disable }) => !disable && theme.colors.invertedContrast};
+    background-color: ${({ theme, disable }) => !disable && theme.colors.backgroundHover};
   }
 
   background-color: ${({ theme, disable }) => disable && theme.colors.tertiary};
   opacity: ${({ disable }) => disable && '0.4'};
 `
+
+const BoxWrapper = styled(AutoColumn)`
+  border: 1px solid ${({ theme }) => (theme.colors.borderDark)};
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 5px;
+`
+
 
 export default function CommonBases({
   chainId,
@@ -37,9 +43,9 @@ export default function CommonBases({
 }) {
   const TranslateString = useI18n()
   return (
-    <AutoColumn gap="md">
+    <BoxWrapper gap="md">
       <AutoRow>
-        <Text fontSize="14px">Common bases</Text>
+        <Text fontSize="14px" fontWeight={500}>Common bases</Text>
         <QuestionHelper text={TranslateString(1204, 'These tokens are commonly paired with other tokens.')} />
       </AutoRow>
       <AutoRow gap="4px">
@@ -52,18 +58,18 @@ export default function CommonBases({
           disable={selectedCurrency === ETHER}
         >
           <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
-          <Text>KCS</Text>
+          <Text fontSize="14px">KCS</Text>
         </BaseWrapper>
         {(chainId ? SUGGESTED_BASES[chainId] : []).map((token: Token) => {
           const selected = selectedCurrency instanceof Token && selectedCurrency.address === token.address
           return (
             <BaseWrapper onClick={() => !selected && onSelect(token)} disable={selected} key={token.address}>
               <CurrencyLogo currency={token} style={{ marginRight: 8 }} />
-              <Text>{token.symbol}</Text>
+              <Text fontSize="14px">{token.symbol}</Text>
             </BaseWrapper>
           )
         })}
       </AutoRow>
-    </AutoColumn>
+    </BoxWrapper>
   )
 }

@@ -15,7 +15,7 @@ const ConfirmationModalContent = ({ title, bottomContent, onDismiss, topContent 
         <ContentHeader onDismiss={onDismiss}>{title}</ContentHeader>
         {topContent()}
       </Section>
-      <BottomSection gap="12px">{bottomContent()}</BottomSection>
+      <BottomSection gap="12px" style={{paddingTop: '0'}}>{bottomContent()}</BottomSection>
     </Wrapper>
   )
 }

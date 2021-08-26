@@ -63,7 +63,7 @@ export default function CurrencySearchModal({
           selectedCurrency={selectedCurrency}
           otherSelectedCurrency={otherSelectedCurrency}
           showCommonBases={false}
-        />
+        /> 
       ) : (
         <CurrencySearch
           isOpen={isOpen}
@@ -72,7 +72,7 @@ export default function CurrencySearchModal({
           onChangeList={handleClickChangeList}
           selectedCurrency={selectedCurrency}
           otherSelectedCurrency={otherSelectedCurrency}
-          showCommonBases={false}
+          showCommonBases={true}
         />
       )}
     </Modal>

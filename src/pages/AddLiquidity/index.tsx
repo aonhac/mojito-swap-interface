@@ -59,10 +59,22 @@ export default function AddLiquidity({
 
   const oneCurrencyIsWKCS = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(currencyA, WETH[chainId])) ||
-        (currencyB && currencyEquals(currencyB, WETH[chainId])))
+      ((currencyA && (currencyEquals(WETH[chainId], currencyA) || currencyA.symbol === 'KCS')) ||
+        (currencyB && (currencyEquals(WETH[chainId], currencyB) || currencyB.symbol === 'KCS')))
   )
+
+  const ACurrencyIsWKCS = Boolean(
+    chainId &&
+      (currencyA && currencyEquals(currencyA, WETH[chainId]))
+  )
+
+  const BCurrencyIsWKCS = Boolean(
+    chainId &&
+      (currencyB && currencyEquals(currencyB, WETH[chainId]))
+  )
+
   const expertMode = useIsExpertMode()
+
 
   // mint state
   const { independentField, typedValue, otherTypedValue } = useMintState()
@@ -144,10 +156,10 @@ export default function AddLiquidity({
     let method: (...args: any) => Promise<TransactionResponse>
     let args: Array<string | string[] | number>
     let value: BigNumber | null
-    if (currencyA === ETHER || currencyB === ETHER) {
+    if (currencyA === ETHER || currencyB === ETHER || ACurrencyIsWKCS || BCurrencyIsWKCS) {
       console.log('has kcs')
 
-      const tokenBIsKCS = currencyB === ETHER
+      const tokenBIsKCS = currencyB === ETHER || BCurrencyIsWKCS
       estimate = router.estimateGas.addLiquidityETH
       method = router.addLiquidityETH
       args = [
@@ -207,16 +219,18 @@ export default function AddLiquidity({
   }
 
   const modalHeader = () => {
+    const ACurrency = ACurrencyIsWKCS ? ETHER : currencies[Field.CURRENCY_A]
+    const BCurrency = BCurrencyIsWKCS ? ETHER : currencies[Field.CURRENCY_B]
     return noLiquidity ? (
       <AutoColumn gap="0px">
         <LightCard mt="20px" borderRadius="20px">
           <RowFlat style={{ width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
             <UIKitText fontSize="28px" mr="0px" fontWeight={600}>
-              {`${currencies[Field.CURRENCY_A]?.symbol}/${currencies[Field.CURRENCY_B]?.symbol}`}
+              {`${ACurrency?.symbol}/${BCurrency?.symbol}`}
             </UIKitText>
             <DoubleCurrencyLogo
-              currency0={currencies[Field.CURRENCY_A]}
-              currency1={currencies[Field.CURRENCY_B]}
+              currency0={ACurrency}
+              currency1={BCurrency}
               size={28}
             />
           </RowFlat>
@@ -225,21 +239,21 @@ export default function AddLiquidity({
     ) : (
       <AutoColumn gap="20px">
         <RowFlat style={{ marginTop: '20px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <UIKitText fontSize="36px" mr="8px" fontWeight={800}>
+          <UIKitText fontSize="48px" mr="8px" fontWeight={800}>
             {liquidityMinted?.toSignificant(6)}
           </UIKitText>
           <DoubleCurrencyLogo
-            currency0={currencies[Field.CURRENCY_A]}
-            currency1={currencies[Field.CURRENCY_B]}
+            currency0={ACurrency}
+            currency1={BCurrency}
             size={36}
           />
         </RowFlat>
-        <Row>
+        <Row style={{marginTop: '-20px'}}>
           <UIKitText fontSize="16px" color="text">
-            {`${currencies[Field.CURRENCY_A]?.symbol}/${currencies[Field.CURRENCY_B]?.symbol} Pool Tokens`}
+            {`${ACurrency?.symbol}/${BCurrency?.symbol} Pool Tokens`}
           </UIKitText>
         </Row>
-        <UIKitText small textAlign="left" padding="20px" style={{ background: '#F5F5F5' }}>
+        <UIKitText small textAlign="left" padding="20px" style={{ background: '#F5F5F5', borderRadius: '8px' }}>
           {`Output is estimated. If the price changes by more than ${
             allowedSlippage / 100
           }% your transaction will revert.`}
@@ -257,6 +271,8 @@ export default function AddLiquidity({
         noLiquidity={noLiquidity}
         onAdd={onAdd}
         poolTokenPercentage={poolTokenPercentage}
+        ACurrencyIsWKCS={ACurrencyIsWKCS}
+        BCurrencyIsWKCS={BCurrencyIsWKCS}
       />
     )
   }
@@ -300,7 +316,7 @@ export default function AddLiquidity({
     }
     setTxHash('')
   }, [onFieldAInput, txHash])
-
+  
   return (
     <Container>
       <CardNav activeIndex={1} />
@@ -346,15 +362,15 @@ export default function AddLiquidity({
               <CurrencyInputPanel
                 value={formattedAmounts[Field.CURRENCY_A]}
                 onUserInput={onFieldAInput}
-                onMax={() => {
+                onMax={() => { 
                   onFieldAInput(maxAmounts[Field.CURRENCY_A]?.toExact() ?? '')
                 }}
                 onCurrencySelect={handleCurrencyASelect}
                 showMaxButton={!atMaxAmounts[Field.CURRENCY_A]}
-                currency={currencies[Field.CURRENCY_A]}
+                currency={ACurrencyIsWKCS ? ETHER : currencies[Field.CURRENCY_A]}
                 id="add-liquidity-input-tokena"
                 showCommonBases={false}
-                styles={{ background: '#F5F5F5', borderRadius: '12px' }}
+                styles={{ background: '#ffffff', borderRadius: '12px', border: `1px solid rgba(115,126,141,0.16)`  }}
               />
               <ColumnCenter>
                 <AddIcon color="primary" />
@@ -367,10 +383,10 @@ export default function AddLiquidity({
                   onFieldBInput(maxAmounts[Field.CURRENCY_B]?.toExact() ?? '')
                 }}
                 showMaxButton={!atMaxAmounts[Field.CURRENCY_B]}
-                currency={currencies[Field.CURRENCY_B]}
+                currency={BCurrencyIsWKCS ? ETHER : currencies[Field.CURRENCY_B]}
                 id="add-liquidity-input-tokenb"
                 showCommonBases={false}
-                styles={{ background: '#F5F5F5', borderRadius: '12px' }}
+                styles={{ background: '#ffffff', borderRadius: '12px', border: `1px solid rgba(115,126,141,0.16)` }}
               />
               {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
                 <div
@@ -393,6 +409,8 @@ export default function AddLiquidity({
                   </UIKitText>
                   <Pane style={{ border: 'none' }}>
                     <PoolPriceBar
+                      ACurrencyIsWKCS={ACurrencyIsWKCS}
+                      BCurrencyIsWKCS={BCurrencyIsWKCS}
                       currencies={currencies}
                       poolTokenPercentage={poolTokenPercentage}
                       noLiquidity={noLiquidity}
@@ -420,7 +438,7 @@ export default function AddLiquidity({
                             {approvalA === ApprovalState.PENDING ? (
                               <Dots>Approving {currencies[Field.CURRENCY_A]?.symbol}</Dots>
                             ) : (
-                              `Approve ${currencies[Field.CURRENCY_A]?.symbol}`
+                              `Approve ${ACurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_A]?.symbol}`
                             )}
                           </SwapButton>
                         )}
@@ -433,7 +451,7 @@ export default function AddLiquidity({
                             {approvalB === ApprovalState.PENDING ? (
                               <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
                             ) : (
-                              `Approve ${currencies[Field.CURRENCY_B]?.symbol}`
+                              `Approve ${BCurrencyIsWKCS ? ETHER.symbol : currencies[Field.CURRENCY_B]?.symbol}`
                             )}
                           </SwapButton>
                         )}
@@ -464,7 +482,7 @@ export default function AddLiquidity({
         </Wrapper>
       </AppBody>
       {pair && !noLiquidity && pairState !== PairState.INVALID ? (
-        <AutoColumn style={{ minWidth: '20rem', marginTop: '1rem' }}>
+        <AutoColumn style={{ minWidth: '20rem', marginTop: '1rem', maxWidth: '440px'}}>
           <MinimalPositionCard showUnwrapped={oneCurrencyIsWKCS} pair={pair} />
         </AutoColumn>
       ) : null}

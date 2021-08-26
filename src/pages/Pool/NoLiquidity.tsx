@@ -18,8 +18,8 @@ const NoLiquidityWrap = styled.div`
 `
 
 const SwapIcon = styled.img`
-  height: 110px;
-  width: 60px;
+  height: 120px;
+  width: 120px;
 `
 const TextWrap = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const NoLiquidity: FunctionComponent<Props> = ({ TranslateString }) => {
     <NoLiquidityWrap>
       <SwapIcon src={require('../../assets/images/cup.svg').default} />
       <TextWrap>
-        <Text color="#666666" textAlign="center" style={{ marginTop: '16px' }}>
+        <Text color="textRemark" textAlign="center" style={{ marginTop: '16px' }}>
           {TranslateString(104, 'No liquidity found.')}
         </Text>
       </TextWrap>

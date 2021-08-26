@@ -15,22 +15,41 @@ import Card from '../Card'
 import { AutoColumn } from '../Column'
 import CurrencyLogo from '../CurrencyLogo'
 import DoubleCurrencyLogo from '../DoubleLogo'
-import { RowBetween, RowFixed } from '../Row'
+import Row, { RowBetween, RowFixed } from '../Row'
 import { Dots } from '../swap/styleds'
 import { SwapButton } from '../Button'
 import { variant } from '../../uikit/components/Skeleton/types'
 
 export const FixedHeightRow = styled(RowBetween)`
-  height: 24px;
+  height: 12px;
 `
 
 export const HoverCard = styled(Card)`
-  border: 1px solid ${({ theme }) => theme.colors.invertedContrast};
-  border-radius: 16px;
+  border: 1px solid ${({ theme }) => darken(0.15, theme.colors.invertedContrast)};
+  border-radius: 12px;
   user-select: none;
-  :hover {
-    border: 1px solid ${({ theme }) => darken(0.06, theme.colors.invertedContrast)};
-  }
+`
+
+export const CardBtn = styled(Button)`
+  height: 48px;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.invertedContrast};
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  border-radius: 8px;
+  box-shadow: none;
+`
+
+export const CardBodyFeat = styled(CardBody)`
+  width: 392px;
+  margin: 0 auto 20px auto;
+  border: 1px solid rgba(115,126,141,0.16);
+  border-radius: 12px;
 `
 
 interface PositionCardProps {
@@ -39,15 +58,16 @@ interface PositionCardProps {
   showUnwrapped?: boolean
   // eslint-disable-next-line react/no-unused-prop-types
   removeOnly?: boolean
+  // eslint-disable-next-line react/no-unused-prop-types
+  width?: string
 }
 
-export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCardProps) {
+export function MinimalPositionCard({ pair, showUnwrapped = false, width }: PositionCardProps) {
   const { account } = useActiveWeb3React()
 
   const theme = useTheme()
-
-  const currency0 = showUnwrapped ? pair.token0 : unwrappedToken(pair.token0)
-  const currency1 = showUnwrapped ? pair.token1 : unwrappedToken(pair.token1)
+  const currency0 = showUnwrapped ? unwrappedToken(pair.token0) : pair.token0
+  const currency1 = showUnwrapped ? unwrappedToken(pair.token1) : pair.token1
 
   const [showMore, setShowMore] = useState(false)
 
@@ -69,15 +89,16 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
   return (
     <>
       {userPoolBalance && (
-        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: '400px' }}>
+        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: width || '440px' }}>
           <Text
             style={{
               padding: 0,
               width: '100%',
               height: '40px',
               lineHeight: '50px',
+              margin: '8px 0 10px 0',
               textTransform: 'uppercase',
-              fontWeight: 500,
+              fontWeight: 700,
               textAlign: 'center',
               color: `${theme.colors.text}`,
             }}
@@ -87,8 +108,8 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
             LP Tokens in your Wallet
           </Text>
 
-          <CardBody style={{ width: '100%' }}>
-            <AutoColumn gap="12px" style={{ width: '100%', padding: '0px 20px 20px 20px' }}>
+          <CardBodyFeat>
+            <AutoColumn gap="12px" style={{ width: '100%', padding: '14px 20px 20px 20px' }}>
               <FixedHeightRow onClick={() => setShowMore(!showMore)}>
                 <RowFixed>
                   <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24} />
@@ -97,12 +118,19 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
                   </Text>
                 </RowFixed>
                 <RowFixed>
-                  <Text fontSize="14px" color={theme.colors.textSubtle} fontWeight={500}>
+                  <Text fontSize="14px" color={theme.colors.primary} fontWeight={700}>
                     {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
                   </Text>
                 </RowFixed>
               </FixedHeightRow>
-              <AutoColumn gap="4px">
+              <AutoColumn 
+                gap="16px" 
+                style={{ 
+                  background: theme.colors.backgroundCard,
+                  borderRadius: '8px',
+                  padding: '24px',
+                  marginTop: '10px',
+                }}>
                 <FixedHeightRow>
                   <Text fontSize="14px" fontWeight={500}>
                     {currency0.symbol}:
@@ -133,7 +161,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
                 </FixedHeightRow>
               </AutoColumn>
             </AutoColumn>
-          </CardBody>
+          </CardBodyFeat>
         </UIKitCard>
       )}
     </>
@@ -146,7 +174,6 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
   const history = useHistory()
 
   const theme = useTheme()
-
   const currency0 = unwrappedToken(pair.token0)
   const currency1 = unwrappedToken(pair.token1)
 
@@ -159,7 +186,7 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
     !!userPoolBalance && !!totalPoolTokens && JSBI.greaterThanOrEqual(totalPoolTokens.raw, userPoolBalance.raw)
       ? new Percent(userPoolBalance.raw, totalPoolTokens.raw)
       : undefined
-
+ 
   const [token0Deposited, token1Deposited] =
     !!pair &&
     !!totalPoolTokens &&
@@ -177,8 +204,8 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
       <AutoColumn gap="10px" style={{ width: '100%' }}>
         <FixedHeightRow onClick={() => setShowMore(!showMore)} style={{ cursor: 'pointer' }}>
           <RowFixed>
-            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24} />
-            <Text fontSize="16px" style={{ color: `${theme.colors.primary}`, fontWeight: 500 }}>
+            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24}/>
+            <Text fontSize="16px" style={{ color: `${theme.colors.text}`, fontWeight: 500 }}>
               {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}
             </Text>
           </RowFixed>
@@ -193,12 +220,22 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
         {showMore && (
           <>
             <FixedHeightRow style={{ margin: '10px 0 0 0' }}>
-              <Text color={theme.colors.primary} fontSize="24px" style={{ fontWeight: 500 }}>
-                {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
-              </Text>
+              <Row>
+                <Text color={theme.colors.text} fontSize="16px" style={{ fontWeight: 500, marginRight: '5px' }}>Pool tokens</Text>
+                <Text color={theme.colors.primary} fontSize="16px" style={{ fontWeight: 700 }}>
+                  {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
+                </Text>
+              </Row>
             </FixedHeightRow>
-            <AutoColumn gap="8px" style={{ paddingTop: '10px', borderTop: `1px solid ${theme.colors.disabled}` }}>
-              <FixedHeightRow>
+            <AutoColumn 
+              gap="20px" 
+              style={{ 
+                padding: '24px',
+                marginTop: '5px',
+                background: `${theme.colors.backgroundCard}`,
+                borderRadius: '8px',
+              }}>
+              <FixedHeightRow> 
                 <RowFixed>
                   <Text fontSize="14px" style={{ fontWeight: 500 }}>
                     Pooled {currency0.symbol}:
@@ -206,7 +243,7 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
                 </RowFixed>
                 {token0Deposited ? (
                   <RowFixed>
-                    <Text fontSize="14px" color={theme.colors.primary} style={{ fontWeight: 500 }} ml="6px">
+                    <Text fontSize="14px" color={theme.colors.textRemark} style={{ fontWeight: 500 }} ml="6px">
                       {token0Deposited?.toSignificant(6)}
                     </Text>
                   </RowFixed>
@@ -223,7 +260,7 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
                 </RowFixed>
                 {token1Deposited ? (
                   <RowFixed>
-                    <Text fontSize="14px" color={theme.colors.primary} style={{ fontWeight: 500 }} ml="6px">
+                    <Text fontSize="14px" color={theme.colors.textRemark} style={{ fontWeight: 500 }} ml="6px">
                       {token1Deposited?.toSignificant(6)}
                     </Text>
                   </RowFixed>
@@ -235,30 +272,27 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
                 <Text fontSize="14px" style={{ fontWeight: 500 }}>
                   Your pool share:
                 </Text>
-                <Text fontSize="14px" color={theme.colors.primary} style={{ fontWeight: 500 }}>
+                <Text fontSize="14px" color={theme.colors.textRemark} style={{ fontWeight: 500 }}>
                   {poolTokenPercentage ? `${poolTokenPercentage.toFixed(2)}%` : '-'}
                 </Text>
               </FixedHeightRow>
-
-              <RowBetween marginTop="10px">
-                {removeOnly && (
-                  <Button
-                    as={Link}
-                    to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
-                    style={{ width: '100%', background: `${theme.colors.primary}`, borderRadius: '4px' }}
-                  >
-                    Add
-                  </Button>
-                )}
-                <Button
-                  as={Link}
-                  style={{ width: '100%', background: `${theme.colors.primary}`, borderRadius: '4px' }}
-                  to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}
-                >
-                  Remove
-                </Button>
-              </RowBetween>
             </AutoColumn>
+            <RowBetween marginTop="10px">
+              {removeOnly && (
+                <CardBtn
+                  as={Link}
+                  to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
+                >
+                  Add
+                </CardBtn>
+              )}
+              <CardBtn
+                as={Link}
+                to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}
+              >
+                Remove
+              </CardBtn>
+            </RowBetween>
             <AutoColumn justify="center" style={{ cursor: 'pointer', marginTop: '10px' }}>
               <Text
                 fontSize="16px"

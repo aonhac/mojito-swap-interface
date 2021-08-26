@@ -5,6 +5,8 @@ import { ArrowLeft } from 'react-feather'
 import { RowBetween } from 'components/Row'
 import QuestionHelper from 'components/QuestionHelper'
 import useI18n from 'hooks/useI18n'
+import { useTheme } from 'styled-components'
+
 
 const Tabs = styled.div`
   display: flex;
@@ -42,9 +44,10 @@ export function FindPoolTabs() {
 
 export function AddRemoveTabs({ adding }: { adding: boolean }) {
   const TranslateString = useI18n()
+  const theme = useTheme()
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem' }}>
+      <RowBetween style={{ padding: '1rem', borderBottom: `1px solid ${theme.colors.cardBorder}` }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>

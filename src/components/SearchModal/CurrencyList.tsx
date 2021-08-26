@@ -177,7 +177,6 @@ export default function CurrencyList({
   showETH: boolean
 }) {
   const itemData = useMemo(() => (showETH ? [Currency.ETHER, ...currencies] : [...currencies]), [currencies, showETH])
-
   const Row = useCallback(
     ({ data, index, style }) => {
       const currency: Currency = data[index]

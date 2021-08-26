@@ -7,7 +7,7 @@ interface TradePriceProps {
   price?: Price
   showInverted: boolean
   setShowInverted: (showInverted: boolean) => void
-}
+} 
 
 export default function TradePrice({ price, showInverted, setShowInverted }: TradePriceProps) {
   const formattedPrice = showInverted ? price?.toSignificant(6) : price?.invert()?.toSignificant(6)
@@ -23,7 +23,7 @@ export default function TradePrice({ price, showInverted, setShowInverted }: Tra
         <>
           {formattedPrice ?? '-'} {label}
           <StyledBalanceMaxMini onClick={() => setShowInverted(!showInverted)}>
-            <SyncAltIcon width="20px" color="primary" style={{ background: '#F1F1F1' }} />
+            <SyncAltIcon width="20px" color="primary"/>
           </StyledBalanceMaxMini>
         </>
       ) : (

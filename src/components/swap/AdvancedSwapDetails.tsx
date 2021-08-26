@@ -45,7 +45,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         </RowBetween>
         <RowBetween>
           <RowFixed>
-            <Text fontSize="14px">{TranslateString(226, 'Price Impact')}</Text>
+            <Text fontSize="14px" >{TranslateString(226, 'Price Impact')}</Text>
             <QuestionHelper
               text={TranslateString(
                 224,
@@ -62,7 +62,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
             <QuestionHelper
               text={TranslateString(
                 230,
-                'For each trade a 0.2% fee is paid. 0.17% goes to liquidity providers and 0.03% goes to the PancakeSwap treasury.'
+                'For each trade a 0.3% fee is paid. 0.17% goes to liquidity providers and 0.03% goes to the MojitoSwap treasury.'
               )}
             />
           </RowFixed>

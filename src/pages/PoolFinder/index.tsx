@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from 'mojito-testnet-sdk'
+import { Currency, ETHER, JSBI, TokenAmount, } from 'mojito-testnet-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Button, ChevronDownIcon, AddIcon, CardBody, Text } from '../../uikit'
 import CardNav from 'components/CardNav'
@@ -87,7 +87,7 @@ export default function PoolFinder() {
       </Text>
     </LightCard>
   )
-
+  
   return (
     <Container>
       <CardNav activeIndex={1} />
@@ -102,7 +102,7 @@ export default function PoolFinder() {
               }}
               startIcon={currency0 ? <CurrencyLogo currency={currency0} style={{ marginRight: '.5rem' }} /> : null}
               endIcon={<ChevronDownIcon width="24px" color="white" />}
-              width="100%"
+              // width="100%"
             >
               {currency0 ? currency0.symbol : TranslateString(82, 'Select a Token')}
             </SwapButton>
@@ -118,7 +118,7 @@ export default function PoolFinder() {
               }}
               startIcon={currency1 ? <CurrencyLogo currency={currency1} style={{ marginRight: '.5rem' }} /> : null}
               endIcon={<ChevronDownIcon width="24px" color="white" />}
-              width="100%"
+              // width="100%"
             >
               {currency1 ? currency1.symbol : TranslateString(82, 'Select a Token')}
             </SwapButton>
@@ -134,7 +134,7 @@ export default function PoolFinder() {
             {currency0 && currency1 ? (
               pairState === PairState.EXISTS ? (
                 hasPosition && pair ? (
-                  <MinimalPositionCard pair={pair} />
+                  <MinimalPositionCard pair={pair} width="auto"/>
                 ) : (
                   <LightCard padding="45px 10px">
                     <AutoColumn gap="sm" justify="center">

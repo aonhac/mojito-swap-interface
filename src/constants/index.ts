@@ -20,13 +20,16 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.TESTNET]: [WETH[ChainId.TESTNET]],
   [ChainId.MAINNET]: [WETH[ChainId.TESTNET]],
 }
-
+ 
 /**
  * Some tokens can only be swapped via certain pairs, so we override the list of bases that are considered for these
  * tokens.
  */
 export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: Token[] } } = {
   [ChainId.MAINNET]: {},
+  // [ChainId.TESTNET]: {
+  //   '0xAe2933C2aD27984983f9396e25218a70fC791812': [MJT]
+  // },
 }
 
 // used for display in the default list when adding liquidity
