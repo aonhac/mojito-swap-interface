@@ -12,7 +12,7 @@ const HomePageWrap = styled.div`
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 48px);
-  background: url(${HomeBg}) top center no-repeat, #94b7b1;
+  background: url(${HomeBg}) top center no-repeat, #fff;
   background-size: cover;
 `
 

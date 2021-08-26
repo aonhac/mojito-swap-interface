@@ -5,7 +5,7 @@ import { useWeb3React } from '@web3-react/core'
 import ClaimButton from './ClaimButton'
 import { ClaimStatus } from './types'
 import BN from 'bignumber.js'
-import { useClaimCallback, useClaimed, useUserHasAvailableClaim, useUserUnclaimedAmount } from 'state/claim/hooks'
+import { useClaimed, useUserHasAvailableClaim, useUserUnclaimedAmount } from 'state/claim/hooks'
 import { useUserClaimData } from '../../state/claim/hooks'
 
 const ClaimWrap = styled.div`
@@ -28,7 +28,7 @@ const NumberText = styled(Text)`
   color: #ff7b1b;
   font-size: 50px;
   font-weight: 800;
-  font-family: 'SF Pro Display';
+  font-family: 'mojitofont-bold';
   margin-bottom: 10px;
   margin-left: 20px;
 `
@@ -110,7 +110,7 @@ const ClaimAirdrop: React.FunctionComponent = () => {
 
   return (
     <ClaimWrap>
-      {queryAirdropLoading ? (
+      {queryAirdropLoading && account ? (
         <TextWrap>
           <Text fontSize="24px" fontWeight={600}>
             Loading...
@@ -118,35 +118,41 @@ const ClaimAirdrop: React.FunctionComponent = () => {
         </TextWrap>
       ) : null}
 
-      {claimInfo.status === ClaimStatus.NOCONNECT ? <TextWrap /> : null}
+      {(claimInfo.status === ClaimStatus.NOCONNECT && !queryAirdropLoading) || !account ? <TextWrap /> : null}
 
-      {claimInfo.status === ClaimStatus.NOBALANCE ? (
+      {claimInfo.status === ClaimStatus.NOBALANCE && !queryAirdropLoading ? (
         <TextWrap>
           <Text fontSize="24px" fontWeight={600}>
             Your MJT Airdrop:
           </Text>
-          <NumberText>0 MJT</NumberText>
+          <NumberText fontWeight={800}>0 MJT</NumberText>
         </TextWrap>
       ) : null}
 
-      {claimInfo.status === ClaimStatus.AVAILABLE ? (
+      {claimInfo.status === ClaimStatus.AVAILABLE && !queryAirdropLoading ? (
         <TextWrap>
           <Text fontSize="24px" fontWeight={600}>
             Your MJT Airdrop
           </Text>
-          <NumberText>{userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0} MJT</NumberText>
+          <NumberText fontWeight={800}>
+            {userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0} MJT
+          </NumberText>
         </TextWrap>
       ) : null}
 
-      {claimInfo.status === ClaimStatus.CLAIMED ? (
-        <TextWrap>
+      {claimInfo.status === ClaimStatus.CLAIMED && !queryAirdropLoading ? (
+        <TextWrap style={{ marginTop: '40px' }}>
           <Text fontSize="24px" fontWeight={600}>
             You have received:
           </Text>
-          <NumberText>{userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0} MJT</NumberText>
+          <NumberText fontWeight={800}>
+            {userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0} MJT
+          </NumberText>
         </TextWrap>
       ) : null}
-      {userCliamed ? null : <ClaimButton claimInfo={claimInfo} setClaimInfo={setClaimInfo} />}
+      {(userCliamed || queryAirdropLoading) && account ? null : (
+        <ClaimButton claimInfo={claimInfo} setClaimInfo={setClaimInfo} />
+      )}
     </ClaimWrap>
   )
 }

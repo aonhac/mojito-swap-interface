@@ -13,7 +13,7 @@ const Tab = styled.button<TabProps>`
   border: 0;
   outline: 0;
   flex-grow: 1;
-  font-family: 'SF Pro Display';
+  font-family: 'mojitofont';
   padding: ${getPadding};
   border-radius: ${getBorderRadius};
   font-size: 16px;

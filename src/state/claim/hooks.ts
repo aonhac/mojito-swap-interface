@@ -150,7 +150,7 @@ export function useClaimCallback(library?: any): {
         .claim(...args, { value: null, gasLimit: calculateGasMargin(estimatedGasLimit) })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
-            summary: `Claimed ${unclaimedAmount?.toSignificant(4)} MJT`,
+            summary: `Claimed ${unclaimedAmount?.raw.toString(10)} MJT`,
             claim: { recipient: account },
           } as any)
           return response.hash
