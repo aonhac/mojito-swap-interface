@@ -43,7 +43,9 @@ const getContract = (abi: any, address: string, web3?: Web3) => {
 }
 
 export const getAirdropContract = (library: any) => {
-  return new Contract(getAirdropAddress(), merkleDistributor, library.getSigner())
+  const signer = library?.getSigner()
+  const provider = signer ?? new JsonRpcProvider(process.env.REACT_APP_NETWORK_URL).getSigner()
+  return new Contract(getAirdropAddress(), merkleDistributor, provider)
 }
 
 export const getBep20Contract = (address: string, web3?: Web3) => {

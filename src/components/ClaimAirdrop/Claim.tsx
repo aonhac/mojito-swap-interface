@@ -13,6 +13,7 @@ const ClaimWrap = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  height: 160px;
 `
 
 const TextWrap = styled.div`
@@ -20,6 +21,7 @@ const TextWrap = styled.div`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
+  height: 90px;
 `
 
 const NumberText = styled(Text)`
@@ -46,22 +48,32 @@ const ClaimAirdrop: React.FunctionComponent = () => {
     claimData: null,
   })
 
-  const getClaim = () => {
-    console.log('gege')
-  }
-
   const unclaimedAmount: any = useUserUnclaimedAmount(library)
 
-  const hasAvailableClaim = useUserHasAvailableClaim(library)
+  const [hasAvailableClaim, availableLoading] = useUserHasAvailableClaim(library)
 
-  const userClaimData = useUserClaimData(account)
+  const [userClaimData, userClaimDataLoading] = useUserClaimData(account)
 
-  const userCliamed = useClaimed(library)
+  const [userCliamed, claimedLoading] = useClaimed(library)
+
+  const queryAirdropLoading = React.useMemo(() => {
+    return availableLoading || claimedLoading || userClaimDataLoading
+  }, [availableLoading, claimedLoading, userClaimDataLoading])
 
   React.useMemo(() => {
     console.log(unclaimedAmount, hasAvailableClaim)
     console.log(userClaimData)
-    if (hasAvailableClaim) {
+
+    if (!account) {
+      setClaimInfo(() => {
+        return {
+          text: 'Connect Wallet',
+          disabled: false,
+          status: ClaimStatus.NOCONNECT,
+          claimData: null,
+        }
+      })
+    } else if (hasAvailableClaim) {
       setClaimInfo((info) => {
         return {
           ...info,
@@ -81,31 +93,39 @@ const ClaimAirdrop: React.FunctionComponent = () => {
           text: '',
         }
       })
-    }
-  }, [unclaimedAmount, hasAvailableClaim, userClaimData, userCliamed])
-
-  React.useEffect(() => {
-    if (!account) {
-      setClaimInfo(() => {
+    } else {
+      setClaimInfo((info) => {
         return {
-          text: 'Connect Wallet',
-          disabled: false,
-          status: ClaimStatus.NOCONNECT,
-          claimData: null,
+          ...info,
+          claimData: userClaimData,
+          status: ClaimStatus.NOBALANCE,
+          disabled: true,
+          text: 'Claim Now !',
         }
       })
     }
-  }, [account, setClaimInfo])
+  }, [unclaimedAmount, hasAvailableClaim, userClaimData, userCliamed, account])
 
   // You have received：300MJT
 
   return (
     <ClaimWrap>
-      {claimInfo.status === ClaimStatus.NOCONNECT ? (
+      {queryAirdropLoading ? (
         <TextWrap>
           <Text fontSize="24px" fontWeight={600}>
-            Connect wallet to receive airdrop
+            Loading...
           </Text>
+        </TextWrap>
+      ) : null}
+
+      {claimInfo.status === ClaimStatus.NOCONNECT ? <TextWrap /> : null}
+
+      {claimInfo.status === ClaimStatus.NOBALANCE ? (
+        <TextWrap>
+          <Text fontSize="24px" fontWeight={600}>
+            Your MJT Airdrop:
+          </Text>
+          <NumberText>0 MJT</NumberText>
         </TextWrap>
       ) : null}
 
@@ -114,7 +134,7 @@ const ClaimAirdrop: React.FunctionComponent = () => {
           <Text fontSize="24px" fontWeight={600}>
             Your MJT Airdrop
           </Text>
-          <NumberText>{userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0}JT</NumberText>
+          <NumberText>{userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0} MJT</NumberText>
         </TextWrap>
       ) : null}
 
@@ -123,7 +143,7 @@ const ClaimAirdrop: React.FunctionComponent = () => {
           <Text fontSize="24px" fontWeight={600}>
             You have received:
           </Text>
-          <NumberText>{userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0}MJT</NumberText>
+          <NumberText>{userClaimData ? new BN(userClaimData?.amount).div(10 ** 18).toString(10) : 0} MJT</NumberText>
         </TextWrap>
       ) : null}
       {userCliamed ? null : <ClaimButton claimInfo={claimInfo} setClaimInfo={setClaimInfo} />}

@@ -58,9 +58,11 @@ interface PositionCardProps {
   showUnwrapped?: boolean
   // eslint-disable-next-line react/no-unused-prop-types
   removeOnly?: boolean
+  // eslint-disable-next-line react/no-unused-prop-types
+  width?: string
 }
 
-export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCardProps) {
+export function MinimalPositionCard({ pair, showUnwrapped = false, width }: PositionCardProps) {
   const { account } = useActiveWeb3React()
 
   const theme = useTheme()
@@ -87,7 +89,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
   return (
     <>
       {userPoolBalance && (
-        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: '440px' }}>
+        <UIKitCard style={{ background: 'rgba(255,255,255,0.9)', borderRadius: '16px', width: width || '440px' }}>
           <Text
             style={{
               padding: 0,
@@ -202,7 +204,7 @@ export default function FullPositionCard({ pair, removeOnly }: PositionCardProps
       <AutoColumn gap="10px" style={{ width: '100%' }}>
         <FixedHeightRow onClick={() => setShowMore(!showMore)} style={{ cursor: 'pointer' }}>
           <RowFixed>
-            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24} />
+            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin size={24}/>
             <Text fontSize="16px" style={{ color: `${theme.colors.text}`, fontWeight: 500 }}>
               {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}
             </Text>

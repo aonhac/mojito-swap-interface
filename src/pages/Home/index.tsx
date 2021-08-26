@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
-import { useWeb3React } from '@web3-react/core'
+import styled, { useTheme } from 'styled-components'
 
-import TVL from './TVL'
+import Banner from './Banner'
+import Airdrop from './Airdrop'
 import Trade from './Trade'
-import { Button, Text } from '../../uikit'
-import { RowBetween } from '../../components/Row'
 import Bar from './Bar'
-import ClaimAirdrop from '../../components/ClaimAirdrop/Claim'
 
 const HomeBg = require('../../assets/images/trade-bg.png').default
 
@@ -23,92 +20,26 @@ const HomeContentWrap = styled.div`
   margin: 0 auto;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  width: 914px;
-  height: 175px;
-`
-
-const BrandWrap = styled.div`
-  margin-top: 100px;
-  background: #fff;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 175px;
-  position: relative;
-  // box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
-  border-radius: 8px;
-`
-const CartoonLogo = styled.img`
-  width: 172px;
-  height: 222px;
-  position: relative;
-  bottom: 23px;
-  left: 54px;
-`
-
-const MintImage = styled.img`
-  width: 125px;
-  height: 114px;
-  position: relative;
-  top: -70px;
-  right: -24px;
-`
-
-const NameWrap = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  text-align: left;
-  margin-left: 90px;
-  margin-right: 80px;
+  padding: 64px 40px;
+  max-width: 1200px;
 `
 
-const TVLAndTradeWrap = styled.div`
-  width: 50%;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-`
-
-const Margin = styled.div`
-  height: 40px;
-`
-
-const HomePage: FunctionComponent<any> = (props) => {
-  const { account } = useWeb3React()
+const HomePage: React.FunctionComponent = (props) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const theme = useTheme()
   return (
-    <HomePageWrap>
-      <HomeContentWrap>
-        <BrandWrap>
-          <CartoonLogo src={require('../../assets/images/cow.png').default} />
-          <NameWrap>
-            {/* eslint-disable-next-line react/jsx-no-undef */}
-            <Text fontSize="28px" fontWeight={700} color="text">
-              Mojito Finance
-            </Text>
-            <Text fontSize="18px" fontWeight="normal" color="#01142A" style={{ marginTop: '10px' }}>
-              The #1 AMM and yield farm on KCC
-            </Text>
-          </NameWrap>
-          <MintImage src={require('../../assets/images/mint.png').default} />
-        </BrandWrap>
-
-        <RowBetween style={{ marginTop: '46px', height: '474px' }}>
+    <>
+      <Banner />
+      <Airdrop />
+      <HomePageWrap>
+        <HomeContentWrap>
+          <Trade />
           <Bar />
-          <TVLAndTradeWrap style={{ marginLeft: '32px' }}>
-            <TVL />
-            <Margin />
-            <Trade />
-          </TVLAndTradeWrap>
-        </RowBetween>
-        <ClaimAirdrop />
-      </HomeContentWrap>
-    </HomePageWrap>
+        </HomeContentWrap>
+      </HomePageWrap>
+    </>
   )
 }
 

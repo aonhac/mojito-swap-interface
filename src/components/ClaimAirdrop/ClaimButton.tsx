@@ -21,6 +21,13 @@ interface ClaimButtonProps {
 const ClaimStyledButton = styled.div<{ disabled: boolean }>`
   width: 240px;
   background: linear-gradient(90deg, #ffc961 0%, #fc9c47 100%);
+  opacity: ${({ disabled }) => {
+    if (disabled) {
+      return 0.5
+    }
+    return 1
+  }};
+
   box-shadow: 0px 18px 36px rgba(253, 167, 78, 0.4);
   border-radius: 32px;
   display: flex;

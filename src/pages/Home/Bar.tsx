@@ -1,56 +1,133 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
-import { Text } from '../../uikit'
+import styled, { useTheme } from 'styled-components'
+import { Text, Button } from '../../uikit'
+import Column, { AutoColumn } from 'components/Column'
+import { AutoRow, RowBetween, RowFixed, RowFlat } from 'components/Row'
+import { DarkGreyTitle, GreyTitle, PrimaryTitleMD, GradientBtn } from './styles'
 
-const BarWrap = styled.div`
-  justify-self: stretch;
-  align-self: stretch;
-  width: 100%;
-  background: #fff;
-  // box-shadow: 0 2px 15px 0 rgba(223, 229, 216, 1);
-  border-radius: 8px;
-  background: #5dda98;
+const ImgArrow = require('../../assets/images/home/upArrow.png').default
+
+const UpArrow = styled.img`
+  width: 16px;
+  margin-left: 6px;
 `
 
-const TitleWrap = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  padding: 33px;
-  color: #fff;
+const Panel = styled.div`
+  background: #fffefe;
+  box-shadow: 0px 24px 48px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 24px 32px;
 `
 
-const Cup = styled.img`
-  width: 21px;
-  height: 39px;
-  margin-right: 20px;
+const StatusPanel = styled(Panel)`
+  width: 527px;
+  height: 308px;
+  margin-top: 36px;
 `
-const Content = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  height: 350px;
-  width: 100%;
+const TvlPanel = styled(Panel)`
+  width: 551px;
+  height: 142px;
+  background: linear-gradient(90deg, #fc9c47 0%, #ffc961 100%);
+`
+
+const VolumePanel = styled(TvlPanel)`
+  background: white;
 `
 
 const Bar: FunctionComponent = (props) => {
+  const theme = useTheme()
+  const StatItem = (title: string, content: string | number) => {
+    return (
+      <RowBetween>
+        <DarkGreyTitle>{title}</DarkGreyTitle>
+        <Text fontSize="14px" color={theme.colors.text}>
+          {content}
+        </Text>
+      </RowBetween>
+    )
+  }
   return (
-    <BarWrap>
-      <TitleWrap>
-        <Cup src={require('../../assets/images/whitecup.svg').default} style={{ fill: '#fff' }} />
-        <Text fontSize="24px" color="#fff" fontWeight={700}>
-          Bar
-        </Text>
-      </TitleWrap>
-      <Content>
-        <Text style={{ marginTop: '100px' }} fontSize="24px" fontWeight={700} color="#fff" fontFamily="SF Pro Display">
-          Comming
-        </Text>
-        <Text fontSize="24px" fontWeight={700} color="#fff">
-          Soon
-        </Text>
-      </Content>
-    </BarWrap>
+    <>
+      <Text fontWeight="700" fontSize="32px" mt="64px" color={theme.colors.text}>
+        Top Bars
+      </Text>
+      <Text fontSize="16px" color={`${theme.colors.textTips}80`}>
+        Select some bars for you.Don’t you come for drink
+      </Text>
+      <RowBetween style={{ flexWrap: 'wrap' }}>
+        <StatusPanel>
+          <AutoColumn gap="15px">
+            <PrimaryTitleMD style={{ color: theme.colors.text }}>MJT Stat</PrimaryTitleMD>
+            {StatItem('Market Cap', '$ 120,222,111.00')}
+            {StatItem('Total Minted', '146,900.00')}
+            {StatItem('Total Burned', '146,900.00')}
+            {StatItem('Circulating Supply', '146,900.00')}
+            {StatItem('New MJT/block', '1000')}
+            {StatItem('Max Supply', '5,000,000.00')}
+          </AutoColumn>
+        </StatusPanel>
+        <AutoColumn gap="24px">
+          <TvlPanel style={{ marginTop: '36px' }}>
+            <AutoColumn gap="sm">
+              <PrimaryTitleMD
+                style={{
+                  color: theme.colors.invertedContrast,
+                  fontSize: '14px',
+                }}
+              >
+                Total Value Lock (TVL)
+              </PrimaryTitleMD>
+              <PrimaryTitleMD
+                style={{
+                  color: theme.colors.invertedContrast,
+                  fontSize: '32px',
+                }}
+              >
+                $ 300,000.00
+              </PrimaryTitleMD>
+              <PrimaryTitleMD
+                style={{
+                  color: theme.colors.invertedContrast,
+                  fontSize: '14px',
+                }}
+              >
+                Across all LPs and Wine Pools
+              </PrimaryTitleMD>
+            </AutoColumn>
+          </TvlPanel>
+          <VolumePanel>
+            <AutoColumn gap="sm">
+              <PrimaryTitleMD
+                style={{
+                  color: theme.colors.text,
+                  fontSize: '14px',
+                }}
+              >
+                Volume (24 h)
+              </PrimaryTitleMD>
+              <PrimaryTitleMD
+                style={{
+                  color: theme.colors.text,
+                  fontSize: '32px',
+                }}
+              >
+                $ 300,000.00
+              </PrimaryTitleMD>
+              <RowFixed>
+                <PrimaryTitleMD
+                  style={{
+                    fontSize: '16px',
+                  }}
+                >
+                  +15.56%
+                </PrimaryTitleMD>
+                <UpArrow src={ImgArrow} />
+              </RowFixed>
+            </AutoColumn>
+          </VolumePanel>
+        </AutoColumn>
+      </RowBetween>
+    </>
   )
 }
 
