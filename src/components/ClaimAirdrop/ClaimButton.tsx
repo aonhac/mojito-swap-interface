@@ -3,11 +3,16 @@ import styled from 'styled-components'
 import { Text } from 'uikit/components/Text'
 import { useWeb3React } from '@web3-react/core'
 import useAuth from 'hooks/useAuth'
-import { useWalletModal } from 'uikit'
+import { Modal, useWalletModal } from 'uikit'
 import { useUserClaimData, useClaimCallback, useUserHasAvailableClaim, useUserUnclaimedAmount } from 'state/claim/hooks'
 
 import { ClaimStatus } from './types'
 import { useIsTransactionPending } from 'state/transactions/hooks'
+import TransactionConfirmationModal, {
+  ConfirmationModalContent,
+  ConfirmationPendingContent,
+  TransactionSubmittedContent,
+} from 'components/TransactionConfirmationModal'
 
 interface ClaimButtonProps {
   claimInfo: {
@@ -44,7 +49,7 @@ const ClaimStyledButton = styled.div<{ disabled: boolean }>`
 `
 
 const ClaimText = styled(Text)`
-  font-family: 'SF Pro Display';
+  font-family: 'mojitofont';
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -56,7 +61,7 @@ const ClaimText = styled(Text)`
 `
 
 const ClaimButton: React.FunctionComponent<ClaimButtonProps> = ({ claimInfo, setClaimInfo }) => {
-  const { account, library } = useWeb3React()
+  const { account, library, chainId } = useWeb3React()
   const { login, logout } = useAuth()
 
   const { onPresentConnectModal } = useWalletModal(login, logout, account as any)
@@ -67,6 +72,8 @@ const ClaimButton: React.FunctionComponent<ClaimButtonProps> = ({ claimInfo, set
   // monitor the status of the claim from contracts and txns
   const { claimCallback } = useClaimCallback(library)
   const [hash, setHash] = React.useState<string | undefined>()
+
+  const [pendingText, setPendingText] = React.useState<string>('Confirm transaction')
 
   // monitor the status of the claim from contracts and txns
   const claimPending = useIsTransactionPending(hash ?? '')
@@ -98,6 +105,16 @@ const ClaimButton: React.FunctionComponent<ClaimButtonProps> = ({ claimInfo, set
 
   return (
     <ClaimStyledButton disabled={claimInfo.disabled} onClick={claim}>
+      <TransactionConfirmationModal
+        isOpen={attempting}
+        onDismiss={() => {
+          setAttempting(false)
+        }}
+        hash={hash}
+        pendingText={pendingText}
+        attemptingTxn={true}
+        content={(<Text>hhelo</Text>) as any}
+      />
       <ClaimText>{claimInfo.text}</ClaimText>
     </ClaimStyledButton>
   )

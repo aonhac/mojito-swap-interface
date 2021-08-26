@@ -29,12 +29,12 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
     <StyledPageHeader>
       <Flex alignItems="center">
         <Details>
-          <Heading mb="8px" style={{ fontSize: '20px', fontFamily: 'SF Pro Display', fontWeight: 700 }}>
+          <Heading mb="8px" style={{ fontSize: '20px', fontFamily: 'mojitofont', fontWeight: 700 }}>
             {title}
           </Heading>
           {description && (
             // <Text color="textSubtle" fontSize="14px">
-            <Text color="textSubtle" fontSize="14px" fontFamily="SF Pro Display">
+            <Text color="textSubtle" fontSize="14px" fontFamily="mojitofont">
               {description}
             </Text>
           )}

@@ -18,7 +18,7 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   text-overflow: ellipsis;
   padding: 0;
   -webkit-appearance: textfield;
-  font-family: 'SF Pro Display';
+  font-family: 'mojitofont';
 
   ::-webkit-search-decoration {
     -webkit-appearance: none;

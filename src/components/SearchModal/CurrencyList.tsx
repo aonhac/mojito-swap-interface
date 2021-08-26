@@ -104,7 +104,6 @@ function CurrencyRow({
   const isOnSelectedList = isTokenOnList(selectedTokenList, currency)
   const customAdded = useIsUserAddedToken(currency)
   const balance = useCurrencyBalance(account ?? undefined, currency)
-
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
 

@@ -23,6 +23,7 @@ const AirdropWarp = styled.div`
 const AirdropTitle = styled.img`
   width: 478px;
   margin-bottom: 25px;
+  height: auto;
 `
 
 const ImgWarp = styled(RowFlat)`
@@ -31,6 +32,7 @@ const ImgWarp = styled(RowFlat)`
 
 const AirdropLogo = styled.img`
   width: 417px;
+  height: auto;
   margin-right: 106px;
 `
 

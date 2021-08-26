@@ -17,7 +17,7 @@ const Wrapper = styled(Flex)`
 const Inner = styled(Flex)`
   justify-content: space-between;
   flex-grow: 1;
-  font-family: 'SF Pro Display';
+  font-family: 'mojitofont';
 
   & > button + button {
     margin-left: 4px;

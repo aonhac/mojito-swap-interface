@@ -125,7 +125,7 @@ export default function CurrencyInputPanel({
                 fontSize="14px"
                 style={{
                   fontWeight: 700,
-                  fontFamily: 'SF Pro Display',
+                  fontFamily: 'mojitofont',
                   color: '#666666',
                 }}
               >
@@ -139,7 +139,7 @@ export default function CurrencyInputPanel({
                     display: 'inline',
                     cursor: 'pointer',
                     fontWeight: 500,
-                    fontFamily: 'SF Pro Display',
+                    fontFamily: 'mojitofont',
                     color: '#666666',
                   }}
                 >
@@ -167,7 +167,7 @@ export default function CurrencyInputPanel({
                   style={{
                     fontSize: '13px',
                     fontWeight: 700,
-                    fontFamily: 'SF Pro Display',
+                    fontFamily: 'mojitofont',
                     background: '#18BB971A',
                     borderRadius: '4px',
                     marginRight: '12px',
@@ -209,7 +209,7 @@ export default function CurrencyInputPanel({
                   style={{
                     fontSize: '14px',
                     color: '#01142A',
-                    fontFamily: 'SF Pro Display',
+                    fontFamily: 'mojitofont',
                     marginRight: '4px',
                   }}
                 >
